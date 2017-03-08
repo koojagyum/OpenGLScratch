@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1088F111E704C6200C060FF /* MyOpenGLView.swift */; };
 		D15650111E647504008B5428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650101E647504008B5428 /* AppDelegate.swift */; };
 		D15650131E647504008B5428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650121E647504008B5428 /* ViewController.swift */; };
 		D15650151E647505008B5428 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D15650141E647505008B5428 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D1088F111E704C6200C060FF /* MyOpenGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLView.swift; sourceTree = "<group>"; };
 		D156500D1E647504008B5428 /* OpenGLScratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLScratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15650101E647504008B5428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D15650121E647504008B5428 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				D15650141E647505008B5428 /* Assets.xcassets */,
 				D15650161E647505008B5428 /* Main.storyboard */,
 				D15650191E647505008B5428 /* Info.plist */,
+				D1088F111E704C6200C060FF /* MyOpenGLView.swift */,
 			);
 			path = OpenGLScratch;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			files = (
 				D15650131E647504008B5428 /* ViewController.swift in Sources */,
 				D15650111E647504008B5428 /* AppDelegate.swift in Sources */,
+				D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +293,7 @@
 				D156501E1E647505008B5428 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

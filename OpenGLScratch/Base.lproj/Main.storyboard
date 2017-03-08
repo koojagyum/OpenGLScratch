@@ -688,7 +688,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="380"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <openGLView useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r5R-78-urL">
+                            <openGLView useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r5R-78-urL" customClass="MyOpenGLView" customModule="OpenGLScratch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="60" width="480" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="r5R-78-urL" secondAttribute="height" multiplier="3:2" id="r89-U4-blp"/>
