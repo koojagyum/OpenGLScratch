@@ -764,6 +764,7 @@
                     </view>
                     <connections>
                         <outlet property="infoLabel" destination="ggu-gd-bys" id="mqE-TJ-LIw"/>
+                        <outlet property="openGLView" destination="r5R-78-urL" id="xF3-Sb-YO0"/>
                         <outlet property="popUpButton" destination="rq2-Oo-YXf" id="HP5-qF-GBT"/>
                     </connections>
                 </viewController>

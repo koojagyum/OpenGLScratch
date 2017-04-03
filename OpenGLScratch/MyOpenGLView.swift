@@ -22,6 +22,10 @@ class MyOpenGLView : NSOpenGLView {
             return self._renderer
         }
         set {
+            guard let context = self.openGLContext else {
+                return
+            }
+            context.makeCurrentContext()
             _renderer?.dispose()
             _renderer = newValue
             _renderer?.prepare()
@@ -32,7 +36,6 @@ class MyOpenGLView : NSOpenGLView {
         guard let context = self.openGLContext else {
             return
         }
-        NSLog("draw called\n")
         context.makeCurrentContext()
         self.renderer?.render()
         context.flushBuffer()
@@ -41,7 +44,6 @@ class MyOpenGLView : NSOpenGLView {
     override func awakeFromNib() {
         let pixelFormatAttributes:[NSOpenGLPixelFormatAttribute] = [
             NSOpenGLPixelFormatAttribute(NSOpenGLPFADoubleBuffer),
-            NSOpenGLPixelFormatAttribute(NSOpenGLPFAAccelerated), 0,
             NSOpenGLPixelFormatAttribute(NSOpenGLPFAOpenGLProfile),
             NSOpenGLPixelFormatAttribute(NSOpenGLProfileVersion4_1Core),
             0
@@ -56,5 +58,6 @@ class MyOpenGLView : NSOpenGLView {
         }
 
         self.openGLContext = generatedContext
+        self.pixelFormat = pixelFormat
     }
 }

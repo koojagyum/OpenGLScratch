@@ -17,6 +17,7 @@ class ViewController: NSViewController {
 
     @IBOutlet weak var popUpButton: NSPopUpButtonCell!
     @IBOutlet weak var infoLabel: NSTextField!
+    @IBOutlet weak var openGLView: MyOpenGLView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,8 @@ class ViewController: NSViewController {
 
     @IBAction func runButton(_ sender: Any) {
         infoLabel.stringValue = popUpButton.titleOfSelectedItem!
+        openGLView.renderer = TriangleRenderer()
+        openGLView.needsDisplay = true
     }
 
 }
