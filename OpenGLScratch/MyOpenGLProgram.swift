@@ -22,7 +22,7 @@ class MyOpenGLProgram {
 
     init?(vshSource: String, fshSource: String) {
         self.program = self.createProgram(vshSource, fshSource)
-        if (state != ProgramState.Available) {
+        if (!self.available) {
             return nil
         }
     }
