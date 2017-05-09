@@ -67,12 +67,15 @@ class TriangleRenderer: MyOpenGLRendererDelegate {
         glBufferData(GLenum(GL_ARRAY_BUFFER), MemoryLayout<GLfloat>.stride * vertices.count, vertices, GLenum(GL_STATIC_DRAW))
 
         glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(6 * MemoryLayout<GLfloat>.stride), nil)
-        let colorSlotFirstComponent = UnsafeRawPointer(bitPattern: MemoryLayout<GLfloat>.stride * 3)
-        glVertexAttribPointer(1, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(6 * MemoryLayout<GLfloat>.stride), colorSlotFirstComponent)
+        glVertexAttribPointer(1, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(6 * MemoryLayout<GLfloat>.stride), BUFFER_OFFSET(MemoryLayout<GLfloat>.stride * 3))
         glEnableVertexAttribArray(0)
         glEnableVertexAttribArray(1)
 
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
         glBindVertexArray(0)
+    }
+
+    func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
+        return UnsafeRawPointer(bitPattern: i)
     }
 }
