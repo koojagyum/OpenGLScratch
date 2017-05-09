@@ -14,10 +14,10 @@ class RectangleRenderer: TriangleRenderer {
 
     override func prepareVertices() {
         let vertices: [GLfloat] = [
-            -0.5, -0.5, +0.0,
-            +0.5, -0.5, +0.0,
-            +0.5, +0.5, +0.0,
-            -0.5, +0.5, +0.0
+            -0.5, -0.5, +0.0, 1.0, 0.0, 0.0,
+            +0.5, -0.5, +0.0, 0.0, 1.0, 0.0,
+            +0.5, +0.5, +0.0, 0.0, 0.0, 1.0,
+            -0.5, +0.5, +0.0, 1.0, 1.0, 0.0,
         ]
         let indices: [GLuint] = [
             0, 1, 2,
@@ -35,8 +35,11 @@ class RectangleRenderer: TriangleRenderer {
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), self.ebo)
         glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), MemoryLayout<GLuint>.stride * indices.count, indices, GLenum(GL_STATIC_DRAW))
 
-        glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(3 * MemoryLayout<GLfloat>.stride), nil)
+        glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(6 * MemoryLayout<GLfloat>.stride), nil)
+        let colorSlotFirstComponent = UnsafeRawPointer(bitPattern: MemoryLayout<GLfloat>.stride * 3)
+        glVertexAttribPointer(1, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(6 * MemoryLayout<GLfloat>.stride), colorSlotFirstComponent)
         glEnableVertexAttribArray(0)
+        glEnableVertexAttribArray(1)
 
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
         glBindVertexArray(0)

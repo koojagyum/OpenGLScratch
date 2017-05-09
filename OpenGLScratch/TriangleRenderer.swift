@@ -17,17 +17,21 @@ class TriangleRenderer: MyOpenGLRendererDelegate {
         let vshSource =
         "#version 330 core" + "\n" +
         "layout (location = 0) in vec3 position;" + "\n" +
+        "layout (location = 1) in vec3 color;" + "\n" +
+        "out vec3 ourColor;" + "\n" +
         "void main()" + "\n" +
         "{" + "\n" +
         "gl_Position = vec4(position.x, position.y, position.z, 1.0);" + "\n" +
+        "ourColor = color;" + "\n" +
         "}" + "\n"
 
         let fshSource =
         "#version 330 core" + "\n" +
+        "in vec3 ourColor;" + "\n" +
         "out vec4 color;" + "\n" +
         "void main()" + "\n" +
         "{" + "\n" +
-        "color = vec4(1.0, 0.5, 0.2, 1.0);" + "\n" +
+        "color = vec4(ourColor, 1.0);" + "\n" +
         "}" + "\n"
 
         self.shaderProgram = MyOpenGLProgram(vshSource: vshSource, fshSource: fshSource)
@@ -50,9 +54,9 @@ class TriangleRenderer: MyOpenGLRendererDelegate {
     
     func prepareVertices() {
         let vertices: [GLfloat] = [
-            -0.5, -0.5, +0.0,
-            +0.5, -0.5, +0.0,
-            +0.0, +0.5, +0.0
+            -0.5, -0.5, +0.0, 1.0, 0.0, 0.0,
+            +0.5, -0.5, +0.0, 0.0, 1.0, 0.0,
+            +0.0, +0.5, +0.0, 0.0, 0.0, 1.0,
         ]
 
         glGenVertexArrays(1, &self.vao)
@@ -62,8 +66,11 @@ class TriangleRenderer: MyOpenGLRendererDelegate {
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), self.vbo)
         glBufferData(GLenum(GL_ARRAY_BUFFER), MemoryLayout<GLfloat>.stride * vertices.count, vertices, GLenum(GL_STATIC_DRAW))
 
-        glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(3 * MemoryLayout<GLfloat>.stride), nil)
+        glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(6 * MemoryLayout<GLfloat>.stride), nil)
+        let colorSlotFirstComponent = UnsafeRawPointer(bitPattern: MemoryLayout<GLfloat>.stride * 3)
+        glVertexAttribPointer(1, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(6 * MemoryLayout<GLfloat>.stride), colorSlotFirstComponent)
         glEnableVertexAttribArray(0)
+        glEnableVertexAttribArray(1)
 
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
         glBindVertexArray(0)
