@@ -31,7 +31,6 @@ class TriangleRenderer: MyOpenGLRendererDelegate {
         "}" + "\n"
 
         self.shaderProgram = self.createProgram(vshSource, fshSource)
-        glUseProgram(self.shaderProgram)
         self.prepareVertices()
     }
     

@@ -36,8 +36,11 @@ class MyOpenGLView : NSOpenGLView {
         guard let context = self.openGLContext else {
             return
         }
+        guard let renderer = self.renderer else {
+            return
+        }
         context.makeCurrentContext()
-        self.renderer?.render()
+        renderer.render()
         context.flushBuffer()
     }
 
