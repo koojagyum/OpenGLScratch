@@ -49,7 +49,7 @@ class TriangleRenderer: MyOpenGLRendererDelegate {
     }
     
     func prepareVertices() {
-        let vertices: [Float] = [
+        let vertices: [GLfloat] = [
             -0.5, -0.5, +0.0,
             +0.5, -0.5, +0.0,
             +0.0, +0.5, +0.0
