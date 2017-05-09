@@ -36,11 +36,14 @@ class MyOpenGLView : NSOpenGLView {
         guard let context = self.openGLContext else {
             return
         }
-        guard let renderer = self.renderer else {
-            return
-        }
         context.makeCurrentContext()
-        renderer.render()
+        if let renderer = self.renderer {
+            renderer.render()
+        }
+        else {
+            glClearColor(0.0, 0.0, 0.0, 1.0)
+            glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
+        }
         context.flushBuffer()
     }
 

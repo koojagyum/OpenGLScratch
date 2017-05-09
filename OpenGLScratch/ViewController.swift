@@ -19,6 +19,8 @@ class ViewController: NSViewController {
     @IBOutlet weak var infoLabel: NSTextField!
     @IBOutlet weak var openGLView: MyOpenGLView!
 
+    let renderers = [SceneType.Triangle: TriangleRenderer(), SceneType.Cube: nil, SceneType.Camera: nil]
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,8 +39,14 @@ class ViewController: NSViewController {
     }
 
     @IBAction func runButton(_ sender: Any) {
-        infoLabel.stringValue = popUpButton.titleOfSelectedItem!
-        openGLView.renderer = TriangleRenderer()
+        if let name = popUpButton.titleOfSelectedItem, let sceneType = SceneType(rawValue:name), let renderer = self.renderers[sceneType] {
+            infoLabel.stringValue = name
+            openGLView.renderer = renderer
+        }
+        else {
+            infoLabel.stringValue = ""
+            openGLView.renderer = nil
+        }
         openGLView.needsDisplay = true
     }
 
