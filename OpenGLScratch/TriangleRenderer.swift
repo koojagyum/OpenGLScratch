@@ -35,9 +35,6 @@ class TriangleRenderer: MyOpenGLRendererDelegate {
     }
     
     func render() {
-        glClearColor(0.0, 0.0, 0.0, 1.0)
-        glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
-
         if let program = self.shaderProgram, program.useProgram() {
             glBindVertexArray(self.vao)
             glDrawArrays(GLenum(GL_TRIANGLES), 0, 3)
