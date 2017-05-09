@@ -8,15 +8,19 @@
 
 import Cocoa
 
-// Move this into the proper module
+// Move these into the proper module
 enum SceneType: String {
     case Triangle, Cube, Camera
 }
 
+enum PolygonMode: String {
+    case FILL, LINE, POINT
+}
+
 class ViewController: NSViewController {
 
-    @IBOutlet weak var popUpButton: NSPopUpButtonCell!
-    @IBOutlet weak var infoLabel: NSTextField!
+    @IBOutlet weak var rendererSelector: NSPopUpButtonCell!
+    @IBOutlet weak var polygonModeSelector: NSPopUpButtonCell!
     @IBOutlet weak var openGLView: MyOpenGLView!
 
     let renderers = [SceneType.Triangle: TriangleRenderer(), SceneType.Cube: nil, SceneType.Camera: nil]
@@ -25,11 +29,17 @@ class ViewController: NSViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        popUpButton.removeAllItems()
         let availableScenes = [SceneType.Triangle, SceneType.Cube, SceneType.Camera]
         for i in availableScenes {
-            popUpButton.addItem(withTitle: i.rawValue)
+            rendererSelector.addItem(withTitle: i.rawValue)
         }
+
+        let availableModes = [PolygonMode.FILL, PolygonMode.LINE, PolygonMode.POINT]
+        for i in availableModes {
+            polygonModeSelector.addItem(withTitle: i.rawValue)
+        }
+
+        self.selectRenderer(self.rendererSelector)
     }
 
     override var representedObject: Any? {
@@ -38,17 +48,21 @@ class ViewController: NSViewController {
         }
     }
 
-    @IBAction func runButton(_ sender: Any) {
-        if let name = popUpButton.titleOfSelectedItem, let sceneType = SceneType(rawValue:name), let renderer = self.renderers[sceneType] {
-            infoLabel.stringValue = name
+    @IBAction func selectRenderer(_ sender: Any) {
+        if let name = rendererSelector.titleOfSelectedItem, let sceneType = SceneType(rawValue:name), let renderer = self.renderers[sceneType] {
             openGLView.renderer = renderer
         }
         else {
-            infoLabel.stringValue = ""
             openGLView.renderer = nil
         }
         openGLView.needsDisplay = true
     }
 
+    @IBAction func selectPolygonMode(_ sender: Any) {
+        if let name = polygonModeSelector.titleOfSelectedItem {
+            openGLView.polygonMode = name
+            self.selectRenderer(self.rendererSelector)
+        }
+    }
 }
 

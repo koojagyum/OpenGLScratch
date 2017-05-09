@@ -31,6 +31,7 @@ class MyOpenGLView : NSOpenGLView {
             _renderer?.prepare()
         }
     }
+    var polygonMode: String = "FILL"
 
     override func draw(_ dirtyRect: NSRect) {
         guard let context = self.openGLContext else {
@@ -42,6 +43,7 @@ class MyOpenGLView : NSOpenGLView {
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
 
         if let renderer = self.renderer {
+            self.setupPolygonMode()
             renderer.render()
         }
 
@@ -66,5 +68,21 @@ class MyOpenGLView : NSOpenGLView {
 
         self.openGLContext = generatedContext
         self.pixelFormat = pixelFormat
+    }
+
+    private func setupPolygonMode() {
+        var mode = GL_LINE
+        switch (self.polygonMode) {
+            case "FILL":
+                mode = GL_FILL
+            case "LINE":
+                mode = GL_LINE
+            case "POINT":
+                mode = GL_POINT
+                glPointSize(5.0)
+        default:
+            mode = GL_FILL
+        }
+        glPolygonMode(GLenum(GL_FRONT_AND_BACK), GLenum(mode))
     }
 }
