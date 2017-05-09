@@ -11,7 +11,7 @@ import OpenGL.GL3
 class TriangleRenderer: MyOpenGLRendererDelegate {
     var vao: GLuint = 0
     var vbo: GLuint = 0
-    var shaderProgram: GLuint = 0
+    var shaderProgram: MyOpenGLProgram?
 
     func prepare() {
         let vshSource =
@@ -30,7 +30,7 @@ class TriangleRenderer: MyOpenGLRendererDelegate {
         "color = vec4(1.0, 0.5, 0.2, 1.0);" + "\n" +
         "}" + "\n"
 
-        self.shaderProgram = self.createProgram(vshSource, fshSource)
+        self.shaderProgram = MyOpenGLProgram(vshSource: vshSource, fshSource: fshSource)
         self.prepareVertices()
     }
     
@@ -38,16 +38,17 @@ class TriangleRenderer: MyOpenGLRendererDelegate {
         glClearColor(0.0, 0.0, 0.0, 1.0)
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
 
-        glUseProgram(self.shaderProgram)
-        glBindVertexArray(self.vao)
-        glDrawArrays(GLenum(GL_TRIANGLES), 0, 3)
-        glBindVertexArray(0)
+        if let program = self.shaderProgram, program.useProgram() {
+            glBindVertexArray(self.vao)
+            glDrawArrays(GLenum(GL_TRIANGLES), 0, 3)
+            glBindVertexArray(0)
+        }
     }
     
     func dispose() {
         glDeleteVertexArrays(1, &self.vao)
         glDeleteBuffers(1, &self.vbo)
-        glDeleteProgram(self.shaderProgram)
+        self.shaderProgram = nil
     }
     
     func prepareVertices() {
@@ -69,47 +70,5 @@ class TriangleRenderer: MyOpenGLRendererDelegate {
 
         glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
         glBindVertexArray(0)
-    }
-    
-    func createProgram(_ vshSource: String, _ fshSource: String) -> GLuint {
-        let vertexShader = self.createShader(vshSource, GLenum(GL_VERTEX_SHADER))
-        let fragmentShader = self.createShader(fshSource, GLenum(GL_FRAGMENT_SHADER))
-
-        defer {
-            glDeleteShader(fragmentShader)
-            glDeleteShader(vertexShader)
-        }
-
-        let shaderProgram = glCreateProgram()
-        glAttachShader(shaderProgram, vertexShader)
-        glAttachShader(shaderProgram, fragmentShader)
-        glLinkProgram(shaderProgram)
-
-        var sucess: GLint = 0
-        glGetProgramiv(shaderProgram, GLenum(GL_LINK_STATUS), &sucess)
-        if (sucess == 0) {
-            var log = [CChar](repeating: CChar(0), count: 512)
-            glGetProgramInfoLog(shaderProgram, 512, nil, &log)
-            print("program link error:\n" + String(utf8String: log)!)
-        }
-
-        return shaderProgram
-    }
-    
-    func createShader(_ shaderSource: String, _ programType: GLenum) -> GLuint {
-        var rawSourceRef = UnsafePointer<GLchar>? (shaderSource.cString(using: String.Encoding.ascii)!)
-        let shader = glCreateShader(GLenum(programType))
-        glShaderSource(shader, 1, &rawSourceRef, nil)
-        glCompileShader(shader)
-
-        var sucess: GLint = 0
-        glGetShaderiv(shader, GLenum(GL_COMPILE_STATUS), &sucess)
-        if (sucess == 0) {
-            var log = [CChar](repeating: CChar(0), count: 512)
-            glGetShaderInfoLog(shader, 512, nil, &log)
-            print("shader compile error:\n" + String(utf8String: log)!)
-        }
-
-        return shader
     }
 }
