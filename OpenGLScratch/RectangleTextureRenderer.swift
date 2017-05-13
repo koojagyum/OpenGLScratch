@@ -9,7 +9,8 @@
 import OpenGL.GL3
 
 class RectangleTextureRenderer: RectangleRenderer {
-    var texture: MyOpenGLTexture?
+    var texture1: MyOpenGLTexture?
+    var texture2: MyOpenGLTexture?
 
     override func prepare() {
         let vshSource =
@@ -31,10 +32,11 @@ class RectangleTextureRenderer: RectangleRenderer {
             "in vec3 ourColor;" + "\n" +
             "in vec2 TexCoord;" + "\n" +
             "out vec4 color;" + "\n" +
-            "uniform sampler2D ourTexture;" + "\n" +
+            "uniform sampler2D ourTexture1;" + "\n" +
+            "uniform sampler2D ourTexture2;" + "\n" +
             "void main()" + "\n" +
             "{" + "\n" +
-            "color = texture(ourTexture, TexCoord);" + "\n" +
+            "color = mix(texture(ourTexture1, TexCoord), texture(ourTexture2, TexCoord), 0.2);" + "\n" +
             "}" + "\n"
 
         self.shaderProgram = MyOpenGLProgram(vshSource: vshSource, fshSource: fshSource)
@@ -44,10 +46,10 @@ class RectangleTextureRenderer: RectangleRenderer {
 
     override func prepareVertices() {
         let vertices: [GLfloat] = [
-            -0.5, -0.5, +0.0, 1.0, 0.0, 0.0, 0.0, 0.0,
-            +0.5, -0.5, +0.0, 0.0, 1.0, 0.0, 1.0, 0.0,
-            +0.5, +0.5, +0.0, 0.0, 0.0, 1.0, 1.0, 1.0,
-            -0.5, +0.5, +0.0, 1.0, 1.0, 0.0, 0.0, 1.0,
+            -0.5, -0.5, +0.0, 1.0, 0.0, 0.0, 0.0, 1.0,
+            +0.5, -0.5, +0.0, 0.0, 1.0, 0.0, 1.0, 1.0,
+            +0.5, +0.5, +0.0, 0.0, 0.0, 1.0, 1.0, 0.0,
+            -0.5, +0.5, +0.0, 1.0, 1.0, 0.0, 0.0, 0.0,
         ]
         let indices: [GLuint] = [
             0, 1, 2,
@@ -78,20 +80,31 @@ class RectangleTextureRenderer: RectangleRenderer {
 
     override func render() {
         if let program = self.shaderProgram, program.useProgram() {
+            glActiveTexture(GLenum(GL_TEXTURE0))
+            glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture1?.textureId)!)
+            glUniform1i(glGetUniformLocation(program.program, "ourTexture1"), 0)
+            glActiveTexture(GLenum(GL_TEXTURE1))
+            glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture2?.textureId)!)
+            glUniform1i(glGetUniformLocation(program.program, "ourTexture2"), 1)
+
             glBindVertexArray(self.vao)
-            glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture?.textureId)!)
             glDrawElements(GLenum(GL_TRIANGLES), 6, GLenum(GL_UNSIGNED_INT), nil)
-            glBindTexture(GLenum(GL_TEXTURE_2D), 0)
             glBindVertexArray(0)
+
+            glBindTexture(GLenum(GL_TEXTURE_2D), 0)
+            glActiveTexture(GLenum(GL_TEXTURE0))
+            glBindTexture(GLenum(GL_TEXTURE_2D), 0)
         }
     }
 
     override func dispose() {
         super.dispose()
-        self.texture = nil
+        self.texture1 = nil
+        self.texture2 = nil
     }
 
     func prepareTextures() {
-        self.texture = MyOpenGLTexture(imageName: "container")
+        self.texture1 = MyOpenGLTexture(imageName: "container")
+        self.texture2 = MyOpenGLTexture(imageName: "awesomeface")
     }
 }
