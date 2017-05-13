@@ -27,7 +27,7 @@ class ViewController: NSViewController {
         SceneType.Triangle: TriangleRenderer(),
         SceneType.Rectangle: RectangleRenderer(),
         SceneType.TriangleTexture: TriangleTextureRenderer(),
-        SceneType.RectangleTexture: nil
+        SceneType.RectangleTexture: RectangleTextureRenderer(),
     ]
 
     override func viewDidLoad() {
