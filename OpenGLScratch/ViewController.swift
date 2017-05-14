@@ -10,7 +10,7 @@ import Cocoa
 
 // Move these into the proper module
 enum SceneType: String {
-    case Triangle, Rectangle, TriangleTexture, RectangleTexture
+    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation
 }
 
 enum PolygonMode: String {
@@ -28,14 +28,14 @@ class ViewController: NSViewController {
         SceneType.Rectangle: RectangleRenderer(),
         SceneType.TriangleTexture: TriangleTextureRenderer(),
         SceneType.RectangleTexture: RectangleTextureRenderer(),
+        SceneType.RectangleRotation: RectangleRotationRenderer(),
     ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let availableScenes = [SceneType.Triangle, SceneType.Rectangle, SceneType.TriangleTexture, SceneType.RectangleTexture]
-        for i in availableScenes {
+        for i in self.renderers.keys {
             rendererSelector.addItem(withTitle: i.rawValue)
         }
 

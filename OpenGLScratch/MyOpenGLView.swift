@@ -7,15 +7,18 @@
 //
 
 import Cocoa
+import Foundation.NSTimer
 import OpenGL.GL
 
 protocol MyOpenGLRendererDelegate {
+    var renderInterval: Double { get }
     func prepare()
     func render()
     func dispose()
 }
 
 class MyOpenGLView : NSOpenGLView {
+    private weak var currentTimer: Timer?
     private var _renderer: MyOpenGLRendererDelegate?
     var renderer: MyOpenGLRendererDelegate? {
         get {
@@ -29,6 +32,24 @@ class MyOpenGLView : NSOpenGLView {
             _renderer?.dispose()
             _renderer = newValue
             _renderer?.prepare()
+
+            if let interval = _renderer?.renderInterval, interval > 0 {
+                let view = self
+                self.currentTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) {
+                    timer in
+                    if timer != self.currentTimer {
+                        timer.invalidate()
+                    }
+                    else if let currentInterval = self.renderer?.renderInterval {
+                        if currentInterval > 0 {
+                            view.needsDisplay = true
+                        }
+                        else {
+                            timer.invalidate()
+                        }
+                    }
+                }
+            }
         }
     }
     var polygonMode: String = "FILL"

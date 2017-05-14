@@ -9,6 +9,10 @@
 import OpenGL.GL3
 
 class TriangleRenderer: MyOpenGLRendererDelegate {
+    var renderInterval: Double {
+        return 0.0
+    }
+
     var vao: GLuint = 0
     var vbo: GLuint = 0
     var shaderProgram: MyOpenGLProgram?
