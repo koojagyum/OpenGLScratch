@@ -12,6 +12,7 @@
 		189042BD1EC1E99C0083B094 /* RectangleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189042BC1EC1E99C0083B094 /* RectangleRenderer.swift */; };
 		189578E81ED18B670025196E /* RectanglePerspectiveRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189578E71ED18B670025196E /* RectanglePerspectiveRenderer.swift */; };
 		189578EA1ED19A340025196E /* CubeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189578E91ED19A340025196E /* CubeRenderer.swift */; };
+		189578EC1ED1C6DD0025196E /* NCubesRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189578EB1ED1C6DD0025196E /* NCubesRenderer.swift */; };
 		18B52D561EC5EF6D00BCB1EA /* MyOpenGLTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52D551EC5EF6D00BCB1EA /* MyOpenGLTexture.swift */; };
 		18B52D581EC6FC9800BCB1EA /* TriangleTextureRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52D571EC6FC9800BCB1EA /* TriangleTextureRenderer.swift */; };
 		18B52D5F1EC7096300BCB1EA /* RectangleTextureRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52D5E1EC7096300BCB1EA /* RectangleTextureRenderer.swift */; };
@@ -29,6 +30,7 @@
 		189042BC1EC1E99C0083B094 /* RectangleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleRenderer.swift; sourceTree = "<group>"; };
 		189578E71ED18B670025196E /* RectanglePerspectiveRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectanglePerspectiveRenderer.swift; sourceTree = "<group>"; };
 		189578E91ED19A340025196E /* CubeRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CubeRenderer.swift; sourceTree = "<group>"; };
+		189578EB1ED1C6DD0025196E /* NCubesRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NCubesRenderer.swift; sourceTree = "<group>"; };
 		18B52D551EC5EF6D00BCB1EA /* MyOpenGLTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLTexture.swift; sourceTree = "<group>"; };
 		18B52D571EC6FC9800BCB1EA /* TriangleTextureRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleTextureRenderer.swift; sourceTree = "<group>"; };
 		18B52D5E1EC7096300BCB1EA /* RectangleTextureRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleTextureRenderer.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				18B52D601EC832F000BCB1EA /* RectangleRotationRenderer.swift */,
 				189578E71ED18B670025196E /* RectanglePerspectiveRenderer.swift */,
 				189578E91ED19A340025196E /* CubeRenderer.swift */,
+				189578EB1ED1C6DD0025196E /* NCubesRenderer.swift */,
 			);
 			path = OpenGLScratch;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				189042BD1EC1E99C0083B094 /* RectangleRenderer.swift in Sources */,
 				189578EA1ED19A340025196E /* CubeRenderer.swift in Sources */,
 				D15650111E647504008B5428 /* AppDelegate.swift in Sources */,
+				189578EC1ED1C6DD0025196E /* NCubesRenderer.swift in Sources */,
 				18B52D611EC832F000BCB1EA /* RectangleRotationRenderer.swift in Sources */,
 				18B52D5F1EC7096300BCB1EA /* RectangleTextureRenderer.swift in Sources */,
 				18B52D561EC5EF6D00BCB1EA /* MyOpenGLTexture.swift in Sources */,
