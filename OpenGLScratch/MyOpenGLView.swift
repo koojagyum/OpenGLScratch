@@ -61,7 +61,7 @@ class MyOpenGLView : NSOpenGLView {
         context.makeCurrentContext()
 
         glClearColor(0.0, 0.0, 0.0, 1.0)
-        glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
+        glClear(GLbitfield(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT))
 
         if let renderer = self.renderer {
             self.setupPolygonMode()
@@ -76,6 +76,7 @@ class MyOpenGLView : NSOpenGLView {
             NSOpenGLPixelFormatAttribute(NSOpenGLPFADoubleBuffer),
             NSOpenGLPixelFormatAttribute(NSOpenGLPFAOpenGLProfile),
             NSOpenGLPixelFormatAttribute(NSOpenGLProfileVersion4_1Core),
+            NSOpenGLPixelFormatAttribute(NSOpenGLPFADepthSize), 24,
             0
         ]
 
