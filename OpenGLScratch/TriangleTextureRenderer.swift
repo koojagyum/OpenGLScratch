@@ -42,14 +42,12 @@ class TriangleTextureRenderer: TriangleRenderer {
         self.prepareTextures()
     }
 
-    override func render() {
-        if let program = self.shaderProgram, program.useProgram() {
-            glBindVertexArray(self.vao)
-            glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture?.textureId)!)
-            glDrawArrays(GLenum(GL_TRIANGLES), 0, 3)
-            glBindTexture(GLenum(GL_TEXTURE_2D), 0)
-            glBindVertexArray(0)
-        }
+    override func renderInProgram() {
+        glBindVertexArray(self.vao)
+        glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture?.textureId)!)
+        glDrawArrays(GLenum(GL_TRIANGLES), 0, 3)
+        glBindTexture(GLenum(GL_TEXTURE_2D), 0)
+        glBindVertexArray(0)
     }
 
     override func dispose() {

@@ -41,21 +41,25 @@ class TriangleRenderer: MyOpenGLRendererDelegate {
         self.shaderProgram = MyOpenGLProgram(vshSource: vshSource, fshSource: fshSource)
         self.prepareVertices()
     }
-    
+
     func render() {
         if let program = self.shaderProgram, program.useProgram() {
-            glBindVertexArray(self.vao)
-            glDrawArrays(GLenum(GL_TRIANGLES), 0, 3)
-            glBindVertexArray(0)
+            self.renderInProgram()
         }
     }
-    
+
+    internal func renderInProgram() {
+        glBindVertexArray(self.vao)
+        glDrawArrays(GLenum(GL_TRIANGLES), 0, 3)
+        glBindVertexArray(0)
+    }
+
     func dispose() {
         glDeleteVertexArrays(1, &self.vao)
         glDeleteBuffers(1, &self.vbo)
         self.shaderProgram = nil
     }
-    
+
     func prepareVertices() {
         let vertices: [GLfloat] = [
             -0.5, -0.5, +0.0, 1.0, 0.0, 0.0,

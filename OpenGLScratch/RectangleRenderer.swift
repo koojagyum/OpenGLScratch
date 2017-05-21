@@ -44,12 +44,10 @@ class RectangleRenderer: TriangleRenderer {
         glBindVertexArray(0)
     }
 
-    override func render() {
-        if let program = self.shaderProgram, program.useProgram() {
-            glBindVertexArray(self.vao)
-            glDrawElements(GLenum(GL_TRIANGLES), 6, GLenum(GL_UNSIGNED_INT), nil)
-            glBindVertexArray(0)
-        }
+    override func renderInProgram() {
+        glBindVertexArray(self.vao)
+        glDrawElements(GLenum(GL_TRIANGLES), 6, GLenum(GL_UNSIGNED_INT), nil)
+        glBindVertexArray(0)
     }
 
     override func dispose() {
