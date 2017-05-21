@@ -6,6 +6,7 @@
 //  Copyright © 2017 Jagyum Koo. All rights reserved.
 //
 
+import Foundation
 import OpenGL.GL3
 
 class RectangleTextureRenderer: RectangleRenderer {
@@ -78,7 +79,7 @@ class RectangleTextureRenderer: RectangleRenderer {
         glBindVertexArray(0)
     }
 
-    override func render() {
+    override func render(_ bounds: NSRect) {
         if let program = self.shaderProgram, program.useProgram() {
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture1?.textureId)!)

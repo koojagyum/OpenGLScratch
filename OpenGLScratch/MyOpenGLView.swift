@@ -13,7 +13,7 @@ import OpenGL.GL
 protocol MyOpenGLRendererDelegate {
     var renderInterval: Double { get }
     func prepare()
-    func render()
+    func render(_ bounds:NSRect)
     func dispose()
 }
 
@@ -65,7 +65,7 @@ class MyOpenGLView : NSOpenGLView {
 
         if let renderer = self.renderer {
             self.setupPolygonMode()
-            renderer.render()
+            renderer.render(self.bounds)
         }
 
         context.flushBuffer()

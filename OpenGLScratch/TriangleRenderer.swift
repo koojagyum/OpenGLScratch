@@ -6,6 +6,7 @@
 //  Copyright © 2017 Jagyum Koo. All rights reserved.
 //
 
+import Foundation
 import OpenGL.GL3
 
 class TriangleRenderer: MyOpenGLRendererDelegate {
@@ -42,7 +43,7 @@ class TriangleRenderer: MyOpenGLRendererDelegate {
         self.prepareVertices()
     }
 
-    func render() {
+    func render(_ bounds: NSRect) {
         if let program = self.shaderProgram, program.useProgram() {
             self.renderInProgram()
         }

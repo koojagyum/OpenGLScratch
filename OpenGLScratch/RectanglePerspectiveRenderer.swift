@@ -1,8 +1,8 @@
 //
-//  RectangleRotationRenderer.swift
+//  RectanglePerspectiveRenderer.swift
 //  OpenGLScratch
 //
-//  Created by Jagyum Koo on 14/05/2017.
+//  Created by Jagyum Koo on 21/05/2017.
 //  Copyright © 2017 Jagyum Koo. All rights reserved.
 //
 
@@ -10,32 +10,28 @@ import Foundation
 import GLKit
 import OpenGL.GL3
 
-class RectangleRotationRenderer: RectangleTextureRenderer {
-    override var renderInterval: Double {
-        return 1.0 / 60.0
-    }
-    var transformLoc: GLint = 0
-    var rotation: Float = 0.0
+class RectanglePerspectiveRenderer: RectangleTextureRenderer {
+    var modelLoc: GLint = 0
+    var viewLoc: GLint = 0
+    var projLoc: GLint = 0
 
     override func prepare() {
         let vshSource =
             "#version 330 core" + "\n" +
             "layout (location = 0) in vec3 position;" + "\n" +
-            "layout (location = 1) in vec3 color;" + "\n" +
             "layout (location = 2) in vec2 texCoord;" + "\n" +
-            "out vec3 ourColor;" + "\n" +
             "out vec2 TexCoord;" + "\n" +
-            "uniform mat4 transform;" + "\n" +
+            "uniform mat4 model;" + "\n" +
+            "uniform mat4 view;" + "\n" +
+            "uniform mat4 projection;" + "\n" +
             "void main()" + "\n" +
             "{" + "\n" +
-            "gl_Position = transform * vec4(position, 1.0);" + "\n" +
-            "ourColor = color;" + "\n" +
+            "gl_Position = projection * view * model * vec4(position, 1.0);" + "\n" +
             "TexCoord = texCoord;" + "\n" +
             "}" + "\n"
 
         let fshSource =
             "#version 330 core" + "\n" +
-            "in vec3 ourColor;" + "\n" +
             "in vec2 TexCoord;" + "\n" +
             "out vec4 color;" + "\n" +
             "uniform sampler2D ourTexture1;" + "\n" +
@@ -48,25 +44,20 @@ class RectangleRotationRenderer: RectangleTextureRenderer {
         self.shaderProgram = MyOpenGLProgram(vshSource: vshSource, fshSource: fshSource)
         self.prepareVertices()
         self.prepareTextures()
-        self.transformLoc = glGetUniformLocation((self.shaderProgram?.program)!, "transform")
+        self.modelLoc = glGetUniformLocation((self.shaderProgram?.program)!, "model")
+        self.viewLoc = glGetUniformLocation((self.shaderProgram?.program)!, "view")
+        self.projLoc = glGetUniformLocation((self.shaderProgram?.program)!, "projection")
     }
-
+    
     override func render(_ bounds: NSRect) {
         if let program = self.shaderProgram, program.useProgram() {
-            var trans: GLKMatrix4 = GLKMatrix4Identity
+            var model = GLKMatrix4MakeXRotation(self.DEGREE2RADIAN(-55.0))
+            var view = GLKMatrix4MakeTranslation(0.0, 0.0, -3.0)
+            var projection = GLKMatrix4MakePerspective(self.DEGREE2RADIAN(45.0), (Float(bounds.size.width / bounds.size.height)), 1.0, 100.0)
 
-            self.rotation += 1.0
-            trans = GLKMatrix4RotateWithVector3(trans, DEGREE2RADIAN(self.rotation), GLKVector3Make(0.0, 0.0, 1.0))
-
-            // let m = UnsafeMutablePointer(&trans.m)
-            // let p = UnsafeRawPointer(m).bindMemory(to: Float.self, capacity: 16)
-            // glUniformMatrix4fv(self.transformLoc, 1, GLboolean(GL_FALSE), p)
-
-            withUnsafePointer(to: &trans.m) {
-                $0.withMemoryRebound(to: Float.self, capacity: 16) {
-                    glUniformMatrix4fv(self.transformLoc, 1, GLboolean(GL_FALSE), $0)
-                }
-            }
+            self.uniformMatrix4fv(self.modelLoc, 1, GLboolean(GL_FALSE), &model)
+            self.uniformMatrix4fv(self.viewLoc, 1, GLboolean(GL_FALSE), &view)
+            self.uniformMatrix4fv(self.projLoc, 1, GLboolean(GL_FALSE), &projection)
 
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture1?.textureId)!)
@@ -82,6 +73,14 @@ class RectangleRotationRenderer: RectangleTextureRenderer {
             glBindTexture(GLenum(GL_TEXTURE_2D), 0)
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), 0)
+        }
+    }
+
+    func uniformMatrix4fv(_ location: GLint, _ count: GLsizei, _ transpose: GLboolean, _ value: inout GLKMatrix4) {
+        withUnsafePointer(to: &value.m) {
+            $0.withMemoryRebound(to: Float.self, capacity: 16) {
+                glUniformMatrix4fv(location, count, transpose, $0)
+            }
         }
     }
 
