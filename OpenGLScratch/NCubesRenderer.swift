@@ -30,8 +30,13 @@ class NCubesRenderer: CubeRenderer {
 
             self.rotation += 1.0
 
-            var view = GLKMatrix4MakeTranslation(0.0, 0.0, -3.0)
+            // var view = GLKMatrix4MakeTranslation(0.0, 0.0, -3.0)
             var projection = GLKMatrix4MakePerspective(self.DEGREE2RADIAN(45.0), (Float(bounds.size.width / bounds.size.height)), 1.0, 100.0)
+
+            let radius: GLfloat = 8.0
+            let camX: GLfloat = sinf(self.DEGREE2RADIAN(self.rotation)) * radius
+            let camZ: GLfloat = cosf(self.DEGREE2RADIAN(self.rotation)) * radius
+            var view = GLKMatrix4MakeLookAt(camX, 0.0, camZ, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
 
             self.uniformMatrix4fv(self.viewLoc, 1, GLboolean(GL_FALSE), &view)
             self.uniformMatrix4fv(self.projLoc, 1, GLboolean(GL_FALSE), &projection)
