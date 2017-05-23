@@ -69,7 +69,7 @@ class CubeRenderer: RectanglePerspectiveRenderer {
         glBufferData(GLenum(GL_ARRAY_BUFFER), MemoryLayout<GLfloat>.stride * vertices.count, vertices, GLenum(GL_STATIC_DRAW))
 
         glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(5 * MemoryLayout<GLfloat>.stride), nil)
-        glVertexAttribPointer(2, 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(5 * MemoryLayout<GLfloat>.stride), BUFFER_OFFSET(MemoryLayout<GLfloat>.stride * 3))
+        glVertexAttribPointer(2, 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(5 * MemoryLayout<GLfloat>.stride), MyOpenGLUtils.BUFFER_OFFSET(MemoryLayout<GLfloat>.stride * 3))
         glEnableVertexAttribArray(0)
         glEnableVertexAttribArray(2)
 
@@ -81,9 +81,9 @@ class CubeRenderer: RectanglePerspectiveRenderer {
         if let program = self.shaderProgram, program.useProgram() {
             glEnable(GLenum(GL_DEPTH_TEST))
             self.rotation += 1.0
-            var model = GLKMatrix4MakeRotation(self.DEGREE2RADIAN(self.rotation), 0.5, 1.0, 0.0)
+            var model = GLKMatrix4MakeRotation(MyOpenGLUtils.DEGREE2RADIAN(self.rotation), 0.5, 1.0, 0.0)
             var view = GLKMatrix4MakeTranslation(0.0, 0.0, -3.0)
-            var projection = GLKMatrix4MakePerspective(self.DEGREE2RADIAN(45.0), (Float(bounds.size.width / bounds.size.height)), 1.0, 100.0)
+            var projection = GLKMatrix4MakePerspective(MyOpenGLUtils.DEGREE2RADIAN(45.0), (Float(bounds.size.width / bounds.size.height)), 1.0, 100.0)
 
             self.uniformMatrix4fv(self.modelLoc, 1, GLboolean(GL_FALSE), &model)
             self.uniformMatrix4fv(self.viewLoc, 1, GLboolean(GL_FALSE), &view)

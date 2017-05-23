@@ -56,7 +56,7 @@ class RectangleRotationRenderer: RectangleTextureRenderer {
             var trans: GLKMatrix4 = GLKMatrix4Identity
 
             self.rotation += 1.0
-            trans = GLKMatrix4RotateWithVector3(trans, DEGREE2RADIAN(self.rotation), GLKVector3Make(0.0, 0.0, 1.0))
+            trans = GLKMatrix4RotateWithVector3(trans, MyOpenGLUtils.DEGREE2RADIAN(self.rotation), GLKVector3Make(0.0, 0.0, 1.0))
 
             // let m = UnsafeMutablePointer(&trans.m)
             // let p = UnsafeRawPointer(m).bindMemory(to: Float.self, capacity: 16)
@@ -83,9 +83,5 @@ class RectangleRotationRenderer: RectangleTextureRenderer {
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), 0)
         }
-    }
-
-    func DEGREE2RADIAN(_ degree: Float) -> Float {
-        return degree * Float.pi / 180.0
     }
 }

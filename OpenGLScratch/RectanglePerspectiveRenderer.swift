@@ -51,9 +51,9 @@ class RectanglePerspectiveRenderer: RectangleTextureRenderer {
     
     override func render(_ bounds: NSRect) {
         if let program = self.shaderProgram, program.useProgram() {
-            var model = GLKMatrix4MakeXRotation(self.DEGREE2RADIAN(-55.0))
+            var model = GLKMatrix4MakeXRotation(MyOpenGLUtils.DEGREE2RADIAN(-55.0))
             var view = GLKMatrix4MakeTranslation(0.0, 0.0, -3.0)
-            var projection = GLKMatrix4MakePerspective(self.DEGREE2RADIAN(45.0), (Float(bounds.size.width / bounds.size.height)), 1.0, 100.0)
+            var projection = GLKMatrix4MakePerspective(MyOpenGLUtils.DEGREE2RADIAN(45.0), (Float(bounds.size.width / bounds.size.height)), 1.0, 100.0)
 
             self.uniformMatrix4fv(self.modelLoc, 1, GLboolean(GL_FALSE), &model)
             self.uniformMatrix4fv(self.viewLoc, 1, GLboolean(GL_FALSE), &view)
@@ -82,9 +82,5 @@ class RectanglePerspectiveRenderer: RectangleTextureRenderer {
                 glUniformMatrix4fv(location, count, transpose, $0)
             }
         }
-    }
-
-    func DEGREE2RADIAN(_ degree: Float) -> Float {
-        return degree * Float.pi / 180.0
     }
 }
