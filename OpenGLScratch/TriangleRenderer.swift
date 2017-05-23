@@ -10,6 +10,7 @@ import Foundation
 import OpenGL.GL3
 
 class TriangleRenderer: MyOpenGLRendererDelegate {
+    var camera: MyOpenGLCamera?
     var renderInterval: Double {
         return 0.0
     }

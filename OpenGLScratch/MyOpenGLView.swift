@@ -8,10 +8,12 @@
 
 import Cocoa
 import Foundation.NSTimer
+import GLKit
 import OpenGL.GL
 
 protocol MyOpenGLRendererDelegate {
     var renderInterval: Double { get }
+    var camera: MyOpenGLCamera? { get set }
     func prepare()
     func render(_ bounds:NSRect)
     func dispose()
@@ -20,6 +22,7 @@ protocol MyOpenGLRendererDelegate {
 class MyOpenGLView : NSOpenGLView {
     private weak var currentTimer: Timer?
     private var _renderer: MyOpenGLRendererDelegate?
+    let camera = MyOpenGLCamera(position: GLKVector3Make(0.0, 0.0, 3.0), worldUp: GLKVector3Make(0.0, 1.0, 0.0))
     var renderer: MyOpenGLRendererDelegate? {
         get {
             return self._renderer
@@ -32,6 +35,7 @@ class MyOpenGLView : NSOpenGLView {
             _renderer?.dispose()
             _renderer = newValue
             _renderer?.prepare()
+            _renderer?.camera = camera
 
             if let interval = _renderer?.renderInterval, interval > 0 {
                 let view = self
@@ -106,5 +110,26 @@ class MyOpenGLView : NSOpenGLView {
             mode = GL_FILL
         }
         glPolygonMode(GLenum(GL_FRONT_AND_BACK), GLenum(mode))
+    }
+
+    override func keyDown(with event: NSEvent) {
+        camera.processKeyboard(self.keyCodeToMovement(keyCode: event.keyCode), 0.1)
+    }
+
+    override var acceptsFirstResponder: Bool { return true }
+
+    func keyCodeToMovement(keyCode: UInt16) -> MyOpenGLCameraMovement {
+        switch keyCode {
+        case 0: // a
+            return .LEFT
+        case 1: // s
+            return .BACKWARD
+        case 2: // d
+            return .RIGHT
+        case 13: // w
+            return .FORWARD
+        default:
+            return .NONE
+        }
     }
 }

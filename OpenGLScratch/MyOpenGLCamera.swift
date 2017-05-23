@@ -16,7 +16,7 @@ let SENSITIVITY: GLfloat = 0.25
 let ZOOM: GLfloat = 45.0
 
 enum MyOpenGLCameraMovement {
-    case FORWARD, BACKWARD, LEFT, RIGHT
+    case FORWARD, BACKWARD, LEFT, RIGHT, NONE
 }
 
 extension GLKVector3 {
@@ -40,7 +40,7 @@ extension GLfloat {
     var radian: GLfloat { return MyOpenGLUtils.DEGREE2RADIAN(self) }
 }
 
-struct MyOpenGLCamera {
+class MyOpenGLCamera {
     // Camera Attributes
     var position: GLKVector3
     var worldUp: GLKVector3
@@ -73,7 +73,7 @@ struct MyOpenGLCamera {
             self.up.x, self.up.y, self.up.z)
     }
 
-    mutating func processKeyboard(_ direction: MyOpenGLCameraMovement, _ deltaTime: GLfloat) {
+    func processKeyboard(_ direction: MyOpenGLCameraMovement, _ deltaTime: GLfloat) {
         let velocity = self.movementSpeed * deltaTime
         switch direction {
         case .FORWARD:
@@ -84,10 +84,12 @@ struct MyOpenGLCamera {
             self.position -= self.right * velocity
         case .RIGHT:
             self.position += self.right * velocity
+        default:
+            break
         }
     }
 
-    mutating func processMouseMovement(_ xoffset: GLfloat, _ yoffset: GLfloat, _ constrainPitch: Bool) {
+    func processMouseMovement(_ xoffset: GLfloat, _ yoffset: GLfloat, _ constrainPitch: Bool) {
         self.yaw += self.mouseSensitivity * xoffset
         self.pitch += self.mouseSensitivity * yoffset
 
@@ -102,7 +104,7 @@ struct MyOpenGLCamera {
         }
     }
 
-    mutating func processMouseScroll(_ yoffset: GLfloat) {
+    func processMouseScroll(_ yoffset: GLfloat) {
         if self.zoom >= 1.0 && self.zoom <= 45.0 {
             self.zoom -= yoffset
         }
@@ -112,5 +114,10 @@ struct MyOpenGLCamera {
         if self.zoom >= 45.0 {
             self.zoom = 45.0
         }
+    }
+
+    init(position: GLKVector3, worldUp: GLKVector3) {
+        self.position = position
+        self.worldUp = worldUp
     }
 }
