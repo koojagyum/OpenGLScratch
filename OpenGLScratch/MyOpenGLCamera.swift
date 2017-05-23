@@ -61,8 +61,8 @@ class MyOpenGLCamera {
     var pitch: GLfloat = PITCH
 
     // Camera options
-    var movementSpeed: GLfloat = SPEED
-    var mouseSensitivity: GLfloat = SENSITIVITY
+    let movementSpeed: GLfloat = SPEED
+    let mouseSensitivity: GLfloat = SENSITIVITY
     var zoom: GLfloat = ZOOM
 
     var viewMatrix: GLKMatrix4 {
@@ -114,6 +114,14 @@ class MyOpenGLCamera {
         if self.zoom >= 45.0 {
             self.zoom = 45.0
         }
+    }
+
+    func reset(position: GLKVector3, worldUp: GLKVector3) {
+        self.position = position
+        self.worldUp = worldUp
+        self.pitch = PITCH
+        self.yaw = YAW
+        self.zoom = ZOOM
     }
 
     init(position: GLKVector3, worldUp: GLKVector3) {

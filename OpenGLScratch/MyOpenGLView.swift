@@ -35,7 +35,8 @@ class MyOpenGLView : NSOpenGLView {
             _renderer?.dispose()
             _renderer = newValue
             _renderer?.prepare()
-            _renderer?.camera = camera
+            self.camera.reset(position: GLKVector3Make(0.0, 0.0, 3.0), worldUp: GLKVector3Make(0.0, 1.0, 0.0))
+            _renderer?.camera = self.camera
 
             if let interval = _renderer?.renderInterval, interval > 0 {
                 let view = self
@@ -114,6 +115,10 @@ class MyOpenGLView : NSOpenGLView {
 
     override func keyDown(with event: NSEvent) {
         camera.processKeyboard(MyOpenGLUtils.keyCodeToMovement(keyCode: event.keyCode), 0.1)
+    }
+
+    override func mouseDragged(with event: NSEvent) {
+        camera.processMouseMovement(GLfloat(event.deltaX), GLfloat(event.deltaY), true)
     }
 
     override var acceptsFirstResponder: Bool { return true }
