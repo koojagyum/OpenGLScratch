@@ -113,23 +113,8 @@ class MyOpenGLView : NSOpenGLView {
     }
 
     override func keyDown(with event: NSEvent) {
-        camera.processKeyboard(self.keyCodeToMovement(keyCode: event.keyCode), 0.1)
+        camera.processKeyboard(MyOpenGLUtils.keyCodeToMovement(keyCode: event.keyCode), 0.1)
     }
 
     override var acceptsFirstResponder: Bool { return true }
-
-    func keyCodeToMovement(keyCode: UInt16) -> MyOpenGLCameraMovement {
-        switch keyCode {
-        case 0: // a
-            return .LEFT
-        case 1: // s
-            return .BACKWARD
-        case 2: // d
-            return .RIGHT
-        case 13: // w
-            return .FORWARD
-        default:
-            return .NONE
-        }
-    }
 }

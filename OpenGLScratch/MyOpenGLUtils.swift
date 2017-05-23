@@ -16,4 +16,19 @@ class MyOpenGLUtils {
     static func BUFFER_OFFSET(_ i: Int) -> UnsafeRawPointer? {
         return UnsafeRawPointer(bitPattern: i)
     }
+
+    static func keyCodeToMovement(keyCode: UInt16) -> MyOpenGLCameraMovement {
+        switch keyCode {
+        case 0: // a
+            return .LEFT
+        case 1: // s
+            return .BACKWARD
+        case 2: // d
+            return .RIGHT
+        case 13: // w
+            return .FORWARD
+        default:
+            return .NONE
+        }
+    }
 }
