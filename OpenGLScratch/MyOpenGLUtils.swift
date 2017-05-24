@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import GLKit
+import OpenGL.GL3
 
 class MyOpenGLUtils {
     static func DEGREE2RADIAN(_ degree: Float) -> Float {
@@ -29,6 +31,14 @@ class MyOpenGLUtils {
             return .FORWARD
         default:
             return .NONE
+        }
+    }
+
+    static func uniformMatrix4fv(_ location: GLint, _ count: GLsizei, _ transpose: GLboolean, _ value: inout GLKMatrix4) {
+        withUnsafePointer(to: &value.m) {
+            $0.withMemoryRebound(to: Float.self, capacity: 16) {
+                glUniformMatrix4fv(location, count, transpose, $0)
+            }
         }
     }
 }

@@ -115,11 +115,19 @@ class MyOpenGLView : NSOpenGLView {
 
     override func keyDown(with event: NSEvent) {
         camera.processKeyboard(MyOpenGLUtils.keyCodeToMovement(keyCode: event.keyCode), 0.1)
+        self.redraw()
     }
 
     override func mouseDragged(with event: NSEvent) {
         camera.processMouseMovement(GLfloat(event.deltaX), GLfloat(event.deltaY), true)
+        self.redraw()
     }
 
     override var acceptsFirstResponder: Bool { return true }
+
+    func redraw() {
+        if let interval = _renderer?.renderInterval, interval == 0 {
+            self.needsDisplay = true
+        }
+    }
 }
