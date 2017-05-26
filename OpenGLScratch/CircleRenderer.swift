@@ -21,7 +21,7 @@ class CircleRenderer: RectangleRenderer {
             "{" + "\n" +
             "gl_Position = vec4(position.x, position.y, position.z, 1.0);" + "\n" +
             "ourColor = color;" + "\n" +
-            "float ratio = 1.5;" + "\n" +
+            "float ratio = 3.0 / 2.0;" + "\n" +
             "ourPosition = vec3(position.x * ratio, position.y, position.z);" + "\n" +
             "}" + "\n"
 
