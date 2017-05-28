@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		180CD3191EDB1BEC00AD5364 /* SpinningLampRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180CD3181EDB1BEC00AD5364 /* SpinningLampRenderer.swift */; };
 		185492E41E81FE14009773AE /* TriangleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185492E31E81FE14009773AE /* TriangleRenderer.swift */; };
 		189042BB1EC179AD0083B094 /* MyOpenGLProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189042BA1EC179AD0083B094 /* MyOpenGLProgram.swift */; };
 		189042BD1EC1E99C0083B094 /* RectangleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189042BC1EC1E99C0083B094 /* RectangleRenderer.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		180CD3181EDB1BEC00AD5364 /* SpinningLampRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinningLampRenderer.swift; sourceTree = "<group>"; };
 		185492E31E81FE14009773AE /* TriangleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleRenderer.swift; sourceTree = "<group>"; };
 		189042BA1EC179AD0083B094 /* MyOpenGLProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLProgram.swift; sourceTree = "<group>"; };
 		189042BC1EC1E99C0083B094 /* RectangleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleRenderer.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				189578F31ED429FE0025196E /* NCubesWithCameraRenderer.swift */,
 				189578F51ED470330025196E /* LightingAndLampRenderer.swift */,
 				189578F71ED865980025196E /* CircleRenderer.swift */,
+				180CD3181EDB1BEC00AD5364 /* SpinningLampRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				189578F41ED429FE0025196E /* NCubesWithCameraRenderer.swift in Sources */,
 				189578F21ED3DAA20025196E /* MyOpenGLCamera.swift in Sources */,
 				189578EC1ED1C6DD0025196E /* NCubesRenderer.swift in Sources */,
+				180CD3191EDB1BEC00AD5364 /* SpinningLampRenderer.swift in Sources */,
 				18B52D611EC832F000BCB1EA /* RectangleRotationRenderer.swift in Sources */,
 				18B52D5F1EC7096300BCB1EA /* RectangleTextureRenderer.swift in Sources */,
 				18B52D561EC5EF6D00BCB1EA /* MyOpenGLTexture.swift in Sources */,

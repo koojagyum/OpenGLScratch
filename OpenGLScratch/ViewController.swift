@@ -10,7 +10,7 @@ import Cocoa
 
 // Move these into the proper module
 enum SceneType: String {
-    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle
+    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp
 }
 
 enum PolygonMode: String {
@@ -23,7 +23,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var polygonModeSelector: NSPopUpButtonCell!
     @IBOutlet weak var openGLView: MyOpenGLView!
 
-    let renderers: [SceneType : MyOpenGLRendererDelegate] = [
+    let renderers: [SceneType : MyOpenGLRendererDelegate?] = [
         SceneType.Triangle: TriangleRenderer(),
         SceneType.Rectangle: RectangleRenderer(),
         SceneType.RectangleRotation: RectangleRotationRenderer(),
@@ -31,6 +31,7 @@ class ViewController: NSViewController {
         SceneType.NCubesWithCamera: NCubesWithCameraRenderer(),
         SceneType.LightingAndLamp: LightingAndLampRenderer(),
         SceneType.Circle: CircleRenderer(),
+        SceneType.SpinningLamp: SpinningLampRenderer(),
     ]
 
     override func viewDidLoad() {
