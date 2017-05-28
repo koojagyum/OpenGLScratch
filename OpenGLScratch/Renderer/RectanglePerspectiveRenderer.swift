@@ -16,32 +16,10 @@ class RectanglePerspectiveRenderer: RectangleTextureRenderer {
     var projLoc: GLint = 0
 
     override func prepare() {
-        let vshSource =
-            "#version 330 core" + "\n" +
-            "layout (location = 0) in vec3 position;" + "\n" +
-            "layout (location = 2) in vec2 texCoord;" + "\n" +
-            "out vec2 TexCoord;" + "\n" +
-            "uniform mat4 model;" + "\n" +
-            "uniform mat4 view;" + "\n" +
-            "uniform mat4 projection;" + "\n" +
-            "void main()" + "\n" +
-            "{" + "\n" +
-            "gl_Position = projection * view * model * vec4(position, 1.0);" + "\n" +
-            "TexCoord = texCoord;" + "\n" +
-            "}" + "\n"
+        let vshSource = MyOpenGLUtils.loadStringFromResource(name: "RectanglePerspective", type: "vsh")
+        let fshSource = MyOpenGLUtils.loadStringFromResource(name: "RectanglePerspective", type: "fsh")
 
-        let fshSource =
-            "#version 330 core" + "\n" +
-            "in vec2 TexCoord;" + "\n" +
-            "out vec4 color;" + "\n" +
-            "uniform sampler2D ourTexture1;" + "\n" +
-            "uniform sampler2D ourTexture2;" + "\n" +
-            "void main()" + "\n" +
-            "{" + "\n" +
-            "color = mix(texture(ourTexture1, TexCoord), texture(ourTexture2, TexCoord), 0.2);" + "\n" +
-            "}" + "\n"
-
-        self.shaderProgram = MyOpenGLProgram(vshSource: vshSource, fshSource: fshSource)
+        self.shaderProgram = MyOpenGLProgram(vshSource: vshSource!, fshSource: fshSource!)
         self.prepareVertices()
         self.prepareTextures()
         self.modelLoc = glGetUniformLocation((self.shaderProgram?.program)!, "model")

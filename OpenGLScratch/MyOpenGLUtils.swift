@@ -41,4 +41,14 @@ class MyOpenGLUtils {
             }
         }
     }
+
+    static func loadStringFromResource(name: String, type: String) -> String? {
+        do {
+            let string = try String(contentsOfFile: Bundle.main.path(forResource: name, ofType: type)!)
+            return string
+        }
+        catch {
+            return nil
+        }
+    }
 }

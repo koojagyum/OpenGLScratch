@@ -24,59 +24,19 @@ class LightingAndLampRenderer: MyOpenGLRendererDelegate {
     var vbo: GLuint = 0
 
     func prepare() {
-        let NL = "\n"
-        let vshLight =
-        "#version 330 core" + NL +
-        "layout (location = 0) in vec3 position;" + NL +
-        "layout (location = 1) in vec3 normal;" + NL +
-        "out vec3 FragPos;" + NL +
-        "out vec3 Normal;" + NL +
-        "uniform mat4 model;" + NL +
-        "uniform mat4 view;" + NL +
-        "uniform mat4 projection;" + NL +
-        "void main()" + NL +
-        "{" + NL +
-        "   gl_Position = projection * view * model * vec4(position, 1.0f);" + NL +
-        "   FragPos = vec3(model * vec4(position, 1.0f));" + NL +
-        // "   Normal = normal;" + NL +
-        "   Normal = mat3(transpose(inverse(model))) * normal;" + NL +
-        "}"
-        let fshLight =
-        "#version 330 core" + NL +
-        "in vec3 FragPos;" + NL +
-        "in vec3 Normal;" + NL +
-        "out vec4 color;" + NL +
-        "uniform vec3 objectColor;" + NL +
-        "uniform vec3 lightColor;" + NL +
-        "uniform vec3 lightPos;" + NL +
-        "void main()" + NL +
-        "{" + NL +
-        "   vec3 norm = normalize(Normal);" + NL +
-        "   vec3 lightDir = normalize(lightPos - FragPos);" + NL +
-        "   float diff = max(dot(norm, lightDir), 0.0);" + NL +
-        "   vec3 diffuse = diff * lightColor;" + NL +
-        "   float ambientStrength = 0.1f;" + NL +
-        "   vec3 ambient = ambientStrength * lightColor;" + NL +
-        "   vec3 result = (ambient + diffuse) * objectColor;" + NL +
-        "   color = vec4(result, 1.0f);" + NL +
-        "}"
-        let vshLamp = vshLight
-        let fshLamp =
-        "#version 330 core" + NL +
-        "out vec4 color;" + NL +
-        "void main()" + NL +
-        "{" + NL +
-        "   color = vec4(1.0f);" + NL + // Set alle 4 vector values to 1.0f
-        "}"
+        let vshLight = MyOpenGLUtils.loadStringFromResource(name: "Lighting", type: "vsh")
+        let fshLight = MyOpenGLUtils.loadStringFromResource(name: "Lighting", type: "fsh")
+        let vshLamp = MyOpenGLUtils.loadStringFromResource(name: "Lamp", type: "vsh")
+        let fshLamp = MyOpenGLUtils.loadStringFromResource(name: "Lamp", type: "fsh")
 
-        self.lightingProgram = MyOpenGLProgram(vshSource: vshLight, fshSource: fshLight)
-        self.lampProgram = MyOpenGLProgram(vshSource: vshLamp, fshSource: fshLamp)
+        self.lightingProgram = MyOpenGLProgram(vshSource: vshLight!, fshSource: fshLight!)
+        self.lampProgram = MyOpenGLProgram(vshSource: vshLamp!, fshSource: fshLamp!)
         self.prepareVertices()
     }
 
     func render(_ bounds: NSRect) {
         glEnable(GLenum(GL_DEPTH_TEST))
-        let lightPos = GLKVector3Make(1.2, 1.0, 2.0)
+        let lightPos = GLKVector3Make(0.2, 0.0, 1.0)
         if let program = self.lightingProgram, program.useProgram() {
             let modelLoc = glGetUniformLocation(program.program, "model")
             let viewLoc = glGetUniformLocation(program.program, "view")
@@ -84,10 +44,13 @@ class LightingAndLampRenderer: MyOpenGLRendererDelegate {
             let lightPosLoc = glGetUniformLocation(program.program, "lightPos")
             let objectColorLoc = glGetUniformLocation(program.program, "objectColor")
             let lightColorLoc = glGetUniformLocation(program.program, "lightColor")
+            let viewPosLoc = glGetUniformLocation(program.program, "viewPos")
 
             glUniform3f(objectColorLoc, 1.0, 0.5, 0.31)
-            glUniform3f(lightColorLoc, 1.0, 0.5, 1.0)
+            glUniform3f(lightColorLoc, 1.0, 1.0, 1.0)
             glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z)
+            glUniform3f(viewPosLoc, (camera?.position.x)!, (camera?.position.y)!, (camera?.position.z)!)
+            print("camera: \((camera?.position.x)!), \((camera?.position.y)!), \((camera?.position.z)!)")
 
             var model = GLKMatrix4Identity
             var projection = GLKMatrix4MakePerspective((camera?.zoom.radian)!, (Float(bounds.size.width / bounds.size.height)), 0.1, 100.0)

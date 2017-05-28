@@ -20,27 +20,10 @@ class TriangleRenderer: MyOpenGLRendererDelegate {
     var shaderProgram: MyOpenGLProgram?
 
     func prepare() {
-        let vshSource =
-        "#version 330 core" + "\n" +
-        "layout (location = 0) in vec3 position;" + "\n" +
-        "layout (location = 1) in vec3 color;" + "\n" +
-        "out vec3 ourColor;" + "\n" +
-        "void main()" + "\n" +
-        "{" + "\n" +
-        "gl_Position = vec4(position.x, position.y, position.z, 1.0);" + "\n" +
-        "ourColor = color;" + "\n" +
-        "}" + "\n"
+        let vshSource = MyOpenGLUtils.loadStringFromResource(name: "Triangle", type: "vsh")
+        let fshSource = MyOpenGLUtils.loadStringFromResource(name: "Triangle", type: "fsh")
 
-        let fshSource =
-        "#version 330 core" + "\n" +
-        "in vec3 ourColor;" + "\n" +
-        "out vec4 color;" + "\n" +
-        "void main()" + "\n" +
-        "{" + "\n" +
-        "color = vec4(ourColor, 1.0);" + "\n" +
-        "}" + "\n"
-
-        self.shaderProgram = MyOpenGLProgram(vshSource: vshSource, fshSource: fshSource)
+        self.shaderProgram = MyOpenGLProgram(vshSource: vshSource!, fshSource: fshSource!)
         self.prepareVertices()
     }
 
