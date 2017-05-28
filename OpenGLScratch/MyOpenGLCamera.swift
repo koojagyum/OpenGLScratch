@@ -19,27 +19,6 @@ enum MyOpenGLCameraMovement {
     case FORWARD, BACKWARD, LEFT, RIGHT, NONE
 }
 
-extension GLKVector3 {
-    static func * (left: GLKVector3, right: Float) -> GLKVector3 {
-        return GLKVector3Make(left.x * right, left.y * right, left.z * right)
-    }
-    @discardableResult
-    static func += (left: inout GLKVector3, right: GLKVector3) -> GLKVector3 {
-        left = GLKVector3Add(left, right)
-        return left
-    }
-    @discardableResult
-    static func -= (left: inout GLKVector3, right: GLKVector3) -> GLKVector3 {
-        left = GLKVector3Subtract(left, right)
-        return left
-    }
-}
-
-extension GLfloat {
-    var degree: GLfloat { return self }
-    var radian: GLfloat { return MyOpenGLUtils.DEGREE2RADIAN(self) }
-}
-
 class MyOpenGLCamera {
     // Camera Attributes
     var position: GLKVector3
