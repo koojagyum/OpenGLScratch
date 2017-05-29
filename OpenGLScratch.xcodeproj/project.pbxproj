@@ -38,6 +38,8 @@
 		18D0EFCA1EDBB0EE00EEECAC /* LightingWithMaps.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFC91EDBB0EE00EEECAC /* LightingWithMaps.fsh */; };
 		18D0EFCC1EDBB26800EEECAC /* LightingWithMaps.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFCB1EDBB26800EEECAC /* LightingWithMaps.vsh */; };
 		18D0EFCE1EDBB31400EEECAC /* LightingWithMapsRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFCD1EDBB31400EEECAC /* LightingWithMapsRenderer.swift */; };
+		18D0EFD01EDC3D0C00EEECAC /* DirectionalLightRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFCF1EDC3D0C00EEECAC /* DirectionalLightRenderer.swift */; };
+		18D0EFD21EDC3DFC00EEECAC /* DirectionalLight.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFD11EDC3DFC00EEECAC /* DirectionalLight.fsh */; };
 		D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1088F111E704C6200C060FF /* MyOpenGLView.swift */; };
 		D15650111E647504008B5428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650101E647504008B5428 /* AppDelegate.swift */; };
 		D15650131E647504008B5428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650121E647504008B5428 /* ViewController.swift */; };
@@ -77,6 +79,8 @@
 		18D0EFC91EDBB0EE00EEECAC /* LightingWithMaps.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = LightingWithMaps.fsh; sourceTree = "<group>"; };
 		18D0EFCB1EDBB26800EEECAC /* LightingWithMaps.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = LightingWithMaps.vsh; sourceTree = "<group>"; };
 		18D0EFCD1EDBB31400EEECAC /* LightingWithMapsRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightingWithMapsRenderer.swift; sourceTree = "<group>"; };
+		18D0EFCF1EDC3D0C00EEECAC /* DirectionalLightRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionalLightRenderer.swift; sourceTree = "<group>"; };
+		18D0EFD11EDC3DFC00EEECAC /* DirectionalLight.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DirectionalLight.fsh; sourceTree = "<group>"; };
 		D1088F111E704C6200C060FF /* MyOpenGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLView.swift; sourceTree = "<group>"; };
 		D156500D1E647504008B5428 /* OpenGLScratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLScratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15650101E647504008B5428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 				180CD31C1EDB2C7400AD5364 /* LightingWithMaterial.fsh */,
 				18D0EFC91EDBB0EE00EEECAC /* LightingWithMaps.fsh */,
 				18D0EFCB1EDBB26800EEECAC /* LightingWithMaps.vsh */,
+				18D0EFD11EDC3DFC00EEECAC /* DirectionalLight.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -135,6 +140,7 @@
 				180CD3181EDB1BEC00AD5364 /* SpinningLampRenderer.swift */,
 				180CD31A1EDB2BFA00AD5364 /* LightingWithMaterialRenderer.swift */,
 				18D0EFCD1EDBB31400EEECAC /* LightingWithMapsRenderer.swift */,
+				18D0EFCF1EDC3D0C00EEECAC /* DirectionalLightRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -243,6 +249,7 @@
 				189579051EDAAAF10025196E /* Lamp.fsh in Resources */,
 				189578FF1EDAA9580025196E /* Triangle.vsh in Resources */,
 				D15650151E647505008B5428 /* Assets.xcassets in Resources */,
+				18D0EFD21EDC3DFC00EEECAC /* DirectionalLight.fsh in Resources */,
 				18D0EFCA1EDBB0EE00EEECAC /* LightingWithMaps.fsh in Resources */,
 				189579011EDAA9AD0025196E /* Triangle.fsh in Resources */,
 				189578FC1EDAA4130025196E /* Lighting.fsh in Resources */,
@@ -267,6 +274,7 @@
 				180CD31B1EDB2BFA00AD5364 /* LightingWithMaterialRenderer.swift in Sources */,
 				D15650111E647504008B5428 /* AppDelegate.swift in Sources */,
 				189578F41ED429FE0025196E /* NCubesWithCameraRenderer.swift in Sources */,
+				18D0EFD01EDC3D0C00EEECAC /* DirectionalLightRenderer.swift in Sources */,
 				189578F21ED3DAA20025196E /* MyOpenGLCamera.swift in Sources */,
 				189578EC1ED1C6DD0025196E /* NCubesRenderer.swift in Sources */,
 				180CD3191EDB1BEC00AD5364 /* SpinningLampRenderer.swift in Sources */,
