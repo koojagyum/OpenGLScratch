@@ -42,6 +42,8 @@
 		18D0EFD21EDC3DFC00EEECAC /* DirectionalLight.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFD11EDC3DFC00EEECAC /* DirectionalLight.fsh */; };
 		18D0EFD41EDC47CB00EEECAC /* PointLight.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFD31EDC47CB00EEECAC /* PointLight.fsh */; };
 		18D0EFD61EDC488100EEECAC /* PointLightRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFD51EDC488100EEECAC /* PointLightRenderer.swift */; };
+		18D0EFD81EDC4F9D00EEECAC /* SpotLightRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFD71EDC4F9D00EEECAC /* SpotLightRenderer.swift */; };
+		18D0EFDA1EDC4FE900EEECAC /* SpotLight.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFD91EDC4FE900EEECAC /* SpotLight.fsh */; };
 		D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1088F111E704C6200C060FF /* MyOpenGLView.swift */; };
 		D15650111E647504008B5428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650101E647504008B5428 /* AppDelegate.swift */; };
 		D15650131E647504008B5428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650121E647504008B5428 /* ViewController.swift */; };
@@ -85,6 +87,8 @@
 		18D0EFD11EDC3DFC00EEECAC /* DirectionalLight.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DirectionalLight.fsh; sourceTree = "<group>"; };
 		18D0EFD31EDC47CB00EEECAC /* PointLight.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PointLight.fsh; sourceTree = "<group>"; };
 		18D0EFD51EDC488100EEECAC /* PointLightRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointLightRenderer.swift; sourceTree = "<group>"; };
+		18D0EFD71EDC4F9D00EEECAC /* SpotLightRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotLightRenderer.swift; sourceTree = "<group>"; };
+		18D0EFD91EDC4FE900EEECAC /* SpotLight.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SpotLight.fsh; sourceTree = "<group>"; };
 		D1088F111E704C6200C060FF /* MyOpenGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLView.swift; sourceTree = "<group>"; };
 		D156500D1E647504008B5428 /* OpenGLScratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLScratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15650101E647504008B5428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 				18D0EFCB1EDBB26800EEECAC /* LightingWithMaps.vsh */,
 				18D0EFD11EDC3DFC00EEECAC /* DirectionalLight.fsh */,
 				18D0EFD31EDC47CB00EEECAC /* PointLight.fsh */,
+				18D0EFD91EDC4FE900EEECAC /* SpotLight.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -147,6 +152,7 @@
 				18D0EFCD1EDBB31400EEECAC /* LightingWithMapsRenderer.swift */,
 				18D0EFCF1EDC3D0C00EEECAC /* DirectionalLightRenderer.swift */,
 				18D0EFD51EDC488100EEECAC /* PointLightRenderer.swift */,
+				18D0EFD71EDC4F9D00EEECAC /* SpotLightRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -246,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D0EFDA1EDC4FE900EEECAC /* SpotLight.fsh in Resources */,
 				18D0EFCC1EDBB26800EEECAC /* LightingWithMaps.vsh in Resources */,
 				189578FA1EDAA3B70025196E /* Lighting.vsh in Resources */,
 				18AE58451EDB16570029BEAF /* Circle.vsh in Resources */,
@@ -280,6 +287,7 @@
 				189578EA1ED19A340025196E /* CubeRenderer.swift in Sources */,
 				180CD31B1EDB2BFA00AD5364 /* LightingWithMaterialRenderer.swift in Sources */,
 				D15650111E647504008B5428 /* AppDelegate.swift in Sources */,
+				18D0EFD81EDC4F9D00EEECAC /* SpotLightRenderer.swift in Sources */,
 				189578F41ED429FE0025196E /* NCubesWithCameraRenderer.swift in Sources */,
 				18D0EFD01EDC3D0C00EEECAC /* DirectionalLightRenderer.swift in Sources */,
 				18D0EFD61EDC488100EEECAC /* PointLightRenderer.swift in Sources */,
