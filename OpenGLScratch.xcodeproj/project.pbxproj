@@ -35,6 +35,9 @@
 		18B52D581EC6FC9800BCB1EA /* TriangleTextureRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52D571EC6FC9800BCB1EA /* TriangleTextureRenderer.swift */; };
 		18B52D5F1EC7096300BCB1EA /* RectangleTextureRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52D5E1EC7096300BCB1EA /* RectangleTextureRenderer.swift */; };
 		18B52D611EC832F000BCB1EA /* RectangleRotationRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52D601EC832F000BCB1EA /* RectangleRotationRenderer.swift */; };
+		18D0EFCA1EDBB0EE00EEECAC /* LightingWithMaps.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFC91EDBB0EE00EEECAC /* LightingWithMaps.fsh */; };
+		18D0EFCC1EDBB26800EEECAC /* LightingWithMaps.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFCB1EDBB26800EEECAC /* LightingWithMaps.vsh */; };
+		18D0EFCE1EDBB31400EEECAC /* LightingWithMapsRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFCD1EDBB31400EEECAC /* LightingWithMapsRenderer.swift */; };
 		D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1088F111E704C6200C060FF /* MyOpenGLView.swift */; };
 		D15650111E647504008B5428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650101E647504008B5428 /* AppDelegate.swift */; };
 		D15650131E647504008B5428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650121E647504008B5428 /* ViewController.swift */; };
@@ -71,6 +74,9 @@
 		18B52D571EC6FC9800BCB1EA /* TriangleTextureRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleTextureRenderer.swift; sourceTree = "<group>"; };
 		18B52D5E1EC7096300BCB1EA /* RectangleTextureRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleTextureRenderer.swift; sourceTree = "<group>"; };
 		18B52D601EC832F000BCB1EA /* RectangleRotationRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleRotationRenderer.swift; sourceTree = "<group>"; };
+		18D0EFC91EDBB0EE00EEECAC /* LightingWithMaps.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = LightingWithMaps.fsh; sourceTree = "<group>"; };
+		18D0EFCB1EDBB26800EEECAC /* LightingWithMaps.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = LightingWithMaps.vsh; sourceTree = "<group>"; };
+		18D0EFCD1EDBB31400EEECAC /* LightingWithMapsRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightingWithMapsRenderer.swift; sourceTree = "<group>"; };
 		D1088F111E704C6200C060FF /* MyOpenGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLView.swift; sourceTree = "<group>"; };
 		D156500D1E647504008B5428 /* OpenGLScratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLScratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15650101E647504008B5428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +111,8 @@
 				18AE58461EDB16F80029BEAF /* RectanglePerspective.vsh */,
 				18AE58481EDB17060029BEAF /* RectanglePerspective.fsh */,
 				180CD31C1EDB2C7400AD5364 /* LightingWithMaterial.fsh */,
+				18D0EFC91EDBB0EE00EEECAC /* LightingWithMaps.fsh */,
+				18D0EFCB1EDBB26800EEECAC /* LightingWithMaps.vsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -126,6 +134,7 @@
 				189578F71ED865980025196E /* CircleRenderer.swift */,
 				180CD3181EDB1BEC00AD5364 /* SpinningLampRenderer.swift */,
 				180CD31A1EDB2BFA00AD5364 /* LightingWithMaterialRenderer.swift */,
+				18D0EFCD1EDBB31400EEECAC /* LightingWithMapsRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -225,6 +234,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D0EFCC1EDBB26800EEECAC /* LightingWithMaps.vsh in Resources */,
 				189578FA1EDAA3B70025196E /* Lighting.vsh in Resources */,
 				18AE58451EDB16570029BEAF /* Circle.vsh in Resources */,
 				180CD31D1EDB2C7400AD5364 /* LightingWithMaterial.fsh in Resources */,
@@ -233,6 +243,7 @@
 				189579051EDAAAF10025196E /* Lamp.fsh in Resources */,
 				189578FF1EDAA9580025196E /* Triangle.vsh in Resources */,
 				D15650151E647505008B5428 /* Assets.xcassets in Resources */,
+				18D0EFCA1EDBB0EE00EEECAC /* LightingWithMaps.fsh in Resources */,
 				189579011EDAA9AD0025196E /* Triangle.fsh in Resources */,
 				189578FC1EDAA4130025196E /* Lighting.fsh in Resources */,
 				18AE58471EDB16F80029BEAF /* RectanglePerspective.vsh in Resources */,
@@ -265,6 +276,7 @@
 				185492E41E81FE14009773AE /* TriangleRenderer.swift in Sources */,
 				18B52D581EC6FC9800BCB1EA /* TriangleTextureRenderer.swift in Sources */,
 				189578F61ED470330025196E /* LightingAndLampRenderer.swift in Sources */,
+				18D0EFCE1EDBB31400EEECAC /* LightingWithMapsRenderer.swift in Sources */,
 				D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */,
 				189578F01ED3D8F00025196E /* MyOpenGLUtils.swift in Sources */,
 				189578E81ED18B670025196E /* RectanglePerspectiveRenderer.swift in Sources */,
