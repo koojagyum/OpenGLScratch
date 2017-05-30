@@ -39,12 +39,14 @@ class SpotLightRenderer: LightingWithMapsRenderer {
             let projLoc = glGetUniformLocation(program.program, "projection")
             let lightPosLoc = glGetUniformLocation(program.program, "light.position")
             let lightSpotdirLoc = glGetUniformLocation(program.program, "light.direction")
-            let lightCutOffLoc = glGetUniformLocation(program.program, "light.cutOff")
+            let lightSpotCutOffLoc = glGetUniformLocation(program.program, "light.cutOff")
+            let lightSpotOuterCutOffLoc = glGetUniformLocation(program.program, "light.outerCutOff")
             let viewPosLoc = glGetUniformLocation(program.program, "viewPos")
 
             glUniform3f(lightPosLoc, (camera?.position.x)!, (camera?.position.y)!, (camera?.position.z)!)
             glUniform3f(lightSpotdirLoc, (camera?.front.x)!, (camera?.front.y)!, (camera?.front.z)!)
-            glUniform1f(lightCutOffLoc, cosf(GLfloat(12.5).radian))
+            glUniform1f(lightSpotCutOffLoc, cosf(GLfloat(12.5).radian))
+            glUniform1f(lightSpotOuterCutOffLoc, cosf(GLfloat(17.5).radian))
 
             glUniform3f(viewPosLoc, (camera?.position.x)!, (camera?.position.y)!, (camera?.position.z)!)
 

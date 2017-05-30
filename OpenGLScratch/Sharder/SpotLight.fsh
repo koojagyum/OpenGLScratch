@@ -19,6 +19,7 @@ struct Light {
     vec3 position;
     vec3 direction;
     float cutOff;
+    float outerCutOff;
 
     vec3 ambient;
     vec3 diffuse;
@@ -55,13 +56,12 @@ void main()
     diffuse *= attenuation;
     specular *= attenuation;
 
+    // Spotlight (soft edge)
     float theta = dot(lightDir, normalize(-light.direction));
-    if (theta > light.cutOff)
-    {
-        color = vec4(ambient + diffuse + specular, 1.0f);
-    }
-    else
-    {
-        color = vec4(ambient, 1.0);
-    }
+    float epsilon = (light.cutOff - light.outerCutOff);
+    float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
+    diffuse *= intensity;
+    specular *= intensity;
+
+    color = vec4(ambient + diffuse + specular, 1.0f);
 }
