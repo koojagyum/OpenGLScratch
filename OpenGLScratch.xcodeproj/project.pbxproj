@@ -44,6 +44,8 @@
 		18D0EFD61EDC488100EEECAC /* PointLightRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFD51EDC488100EEECAC /* PointLightRenderer.swift */; };
 		18D0EFD81EDC4F9D00EEECAC /* SpotLightRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFD71EDC4F9D00EEECAC /* SpotLightRenderer.swift */; };
 		18D0EFDA1EDC4FE900EEECAC /* SpotLight.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFD91EDC4FE900EEECAC /* SpotLight.fsh */; };
+		18D0EFDC1EDD924200EEECAC /* MultipleLightsRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFDB1EDD924200EEECAC /* MultipleLightsRenderer.swift */; };
+		18D0EFDE1EDD930900EEECAC /* MultipleLights.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFDD1EDD930900EEECAC /* MultipleLights.fsh */; };
 		D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1088F111E704C6200C060FF /* MyOpenGLView.swift */; };
 		D15650111E647504008B5428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650101E647504008B5428 /* AppDelegate.swift */; };
 		D15650131E647504008B5428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650121E647504008B5428 /* ViewController.swift */; };
@@ -89,6 +91,8 @@
 		18D0EFD51EDC488100EEECAC /* PointLightRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointLightRenderer.swift; sourceTree = "<group>"; };
 		18D0EFD71EDC4F9D00EEECAC /* SpotLightRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotLightRenderer.swift; sourceTree = "<group>"; };
 		18D0EFD91EDC4FE900EEECAC /* SpotLight.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SpotLight.fsh; sourceTree = "<group>"; };
+		18D0EFDB1EDD924200EEECAC /* MultipleLightsRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleLightsRenderer.swift; sourceTree = "<group>"; };
+		18D0EFDD1EDD930900EEECAC /* MultipleLights.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MultipleLights.fsh; sourceTree = "<group>"; };
 		D1088F111E704C6200C060FF /* MyOpenGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLView.swift; sourceTree = "<group>"; };
 		D156500D1E647504008B5428 /* OpenGLScratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLScratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15650101E647504008B5428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				18D0EFD11EDC3DFC00EEECAC /* DirectionalLight.fsh */,
 				18D0EFD31EDC47CB00EEECAC /* PointLight.fsh */,
 				18D0EFD91EDC4FE900EEECAC /* SpotLight.fsh */,
+				18D0EFDD1EDD930900EEECAC /* MultipleLights.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -153,6 +158,7 @@
 				18D0EFCF1EDC3D0C00EEECAC /* DirectionalLightRenderer.swift */,
 				18D0EFD51EDC488100EEECAC /* PointLightRenderer.swift */,
 				18D0EFD71EDC4F9D00EEECAC /* SpotLightRenderer.swift */,
+				18D0EFDB1EDD924200EEECAC /* MultipleLightsRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -261,6 +267,7 @@
 				18AE58431EDB16370029BEAF /* Circle.fsh in Resources */,
 				18D0EFD41EDC47CB00EEECAC /* PointLight.fsh in Resources */,
 				189579051EDAAAF10025196E /* Lamp.fsh in Resources */,
+				18D0EFDE1EDD930900EEECAC /* MultipleLights.fsh in Resources */,
 				189578FF1EDAA9580025196E /* Triangle.vsh in Resources */,
 				D15650151E647505008B5428 /* Assets.xcassets in Resources */,
 				18D0EFD21EDC3DFC00EEECAC /* DirectionalLight.fsh in Resources */,
@@ -285,6 +292,7 @@
 				189042BB1EC179AD0083B094 /* MyOpenGLProgram.swift in Sources */,
 				189042BD1EC1E99C0083B094 /* RectangleRenderer.swift in Sources */,
 				189578EA1ED19A340025196E /* CubeRenderer.swift in Sources */,
+				18D0EFDC1EDD924200EEECAC /* MultipleLightsRenderer.swift in Sources */,
 				180CD31B1EDB2BFA00AD5364 /* LightingWithMaterialRenderer.swift in Sources */,
 				D15650111E647504008B5428 /* AppDelegate.swift in Sources */,
 				18D0EFD81EDC4F9D00EEECAC /* SpotLightRenderer.swift in Sources */,
