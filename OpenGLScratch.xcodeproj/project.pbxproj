@@ -46,6 +46,7 @@
 		18D0EFDA1EDC4FE900EEECAC /* SpotLight.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFD91EDC4FE900EEECAC /* SpotLight.fsh */; };
 		18D0EFDC1EDD924200EEECAC /* MultipleLightsRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFDB1EDD924200EEECAC /* MultipleLightsRenderer.swift */; };
 		18D0EFDE1EDD930900EEECAC /* MultipleLights.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFDD1EDD930900EEECAC /* MultipleLights.fsh */; };
+		18D0EFE01EDFC93A00EEECAC /* MyOpenGLMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFDF1EDFC93A00EEECAC /* MyOpenGLMesh.swift */; };
 		D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1088F111E704C6200C060FF /* MyOpenGLView.swift */; };
 		D15650111E647504008B5428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650101E647504008B5428 /* AppDelegate.swift */; };
 		D15650131E647504008B5428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650121E647504008B5428 /* ViewController.swift */; };
@@ -93,6 +94,7 @@
 		18D0EFD91EDC4FE900EEECAC /* SpotLight.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SpotLight.fsh; sourceTree = "<group>"; };
 		18D0EFDB1EDD924200EEECAC /* MultipleLightsRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleLightsRenderer.swift; sourceTree = "<group>"; };
 		18D0EFDD1EDD930900EEECAC /* MultipleLights.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MultipleLights.fsh; sourceTree = "<group>"; };
+		18D0EFDF1EDFC93A00EEECAC /* MyOpenGLMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLMesh.swift; sourceTree = "<group>"; };
 		D1088F111E704C6200C060FF /* MyOpenGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLView.swift; sourceTree = "<group>"; };
 		D156500D1E647504008B5428 /* OpenGLScratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLScratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15650101E647504008B5428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				18B52D551EC5EF6D00BCB1EA /* MyOpenGLTexture.swift */,
 				189578EF1ED3D8F00025196E /* MyOpenGLUtils.swift */,
 				189578F11ED3DAA20025196E /* MyOpenGLCamera.swift */,
+				18D0EFDF1EDFC93A00EEECAC /* MyOpenGLMesh.swift */,
 			);
 			path = OpenGLScratch;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				189578F81ED865980025196E /* CircleRenderer.swift in Sources */,
+				18D0EFE01EDFC93A00EEECAC /* MyOpenGLMesh.swift in Sources */,
 				D15650131E647504008B5428 /* ViewController.swift in Sources */,
 				189042BB1EC179AD0083B094 /* MyOpenGLProgram.swift in Sources */,
 				189042BD1EC1E99C0083B094 /* RectangleRenderer.swift in Sources */,

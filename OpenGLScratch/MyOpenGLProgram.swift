@@ -81,6 +81,14 @@ class MyOpenGLProgram {
         return shader
     }
 
+    func setInt(name: String, value: GLint) {
+        glUniform1i(glGetUniformLocation(self.program, name), value)
+    }
+
+    func setFloat(name: String, value: GLfloat) {
+        glUniform1f(glGetUniformLocation(self.program, name), value)
+    }
+
     deinit {
         if (self.available) {
             glDeleteProgram(self.program)
