@@ -92,4 +92,8 @@ class MyOpenGLMesh {
 
         glBindVertexArray(0)
     }
+
+    func checkGlError(_ message: String) {
+        print("\(message): \(glGetError())")
+    }
 }

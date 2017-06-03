@@ -47,6 +47,24 @@
 		18D0EFDC1EDD924200EEECAC /* MultipleLightsRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFDB1EDD924200EEECAC /* MultipleLightsRenderer.swift */; };
 		18D0EFDE1EDD930900EEECAC /* MultipleLights.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFDD1EDD930900EEECAC /* MultipleLights.fsh */; };
 		18D0EFE01EDFC93A00EEECAC /* MyOpenGLMesh.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFDF1EDFC93A00EEECAC /* MyOpenGLMesh.swift */; };
+		18D0EFEE1EE1B19200EEECAC /* MyOpenGLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFED1EE1B19200EEECAC /* MyOpenGLModel.swift */; };
+		18D0EFF11EE1B2AD00EEECAC /* MyAssimpLoader.mm in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFF01EE1B2AD00EEECAC /* MyAssimpLoader.mm */; };
+		18D0F02E1EE1B31400EEECAC /* .editorconfig in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFF51EE1B31400EEECAC /* .editorconfig */; };
+		18D0F02F1EE1B31400EEECAC /* color4.inl in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFFD1EE1B31400EEECAC /* color4.inl */; };
+		18D0F0301EE1B31400EEECAC /* config.h.in in Resources */ = {isa = PBXBuildFile; fileRef = 18D0F0031EE1B31400EEECAC /* config.h.in */; };
+		18D0F0311EE1B31400EEECAC /* material.inl in Resources */ = {isa = PBXBuildFile; fileRef = 18D0F0121EE1B31400EEECAC /* material.inl */; };
+		18D0F0321EE1B31400EEECAC /* matrix3x3.inl in Resources */ = {isa = PBXBuildFile; fileRef = 18D0F0141EE1B31400EEECAC /* matrix3x3.inl */; };
+		18D0F0331EE1B31400EEECAC /* matrix4x4.inl in Resources */ = {isa = PBXBuildFile; fileRef = 18D0F0161EE1B31400EEECAC /* matrix4x4.inl */; };
+		18D0F0341EE1B31400EEECAC /* quaternion.inl in Resources */ = {isa = PBXBuildFile; fileRef = 18D0F0201EE1B31400EEECAC /* quaternion.inl */; };
+		18D0F0351EE1B31400EEECAC /* vector2.inl in Resources */ = {isa = PBXBuildFile; fileRef = 18D0F0251EE1B31400EEECAC /* vector2.inl */; };
+		18D0F0361EE1B31400EEECAC /* vector3.inl in Resources */ = {isa = PBXBuildFile; fileRef = 18D0F0271EE1B31400EEECAC /* vector3.inl */; };
+		18D0F0371EE1B31400EEECAC /* libassimp.3.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D0F02A1EE1B31400EEECAC /* libassimp.3.3.1.dylib */; };
+		18D0F0381EE1B31400EEECAC /* libassimp.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D0F02B1EE1B31400EEECAC /* libassimp.3.dylib */; };
+		18D0F0391EE1B31400EEECAC /* libassimp.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D0F02C1EE1B31400EEECAC /* libassimp.dylib */; };
+		18D0F03A1EE1B31400EEECAC /* libIrrXML.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D0F02D1EE1B31400EEECAC /* libIrrXML.a */; };
+		18D0F0421EE4D6F200EEECAC /* ModelRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0F0411EE4D6F200EEECAC /* ModelRenderer.swift */; };
+		18D0F0441EE4D7CC00EEECAC /* BasicModel.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0F0431EE4D7CC00EEECAC /* BasicModel.vsh */; };
+		18D0F0461EE4D7E400EEECAC /* BasicModel.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0F0451EE4D7E400EEECAC /* BasicModel.fsh */; };
 		D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1088F111E704C6200C060FF /* MyOpenGLView.swift */; };
 		D15650111E647504008B5428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650101E647504008B5428 /* AppDelegate.swift */; };
 		D15650131E647504008B5428 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650121E647504008B5428 /* ViewController.swift */; };
@@ -95,6 +113,66 @@
 		18D0EFDB1EDD924200EEECAC /* MultipleLightsRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleLightsRenderer.swift; sourceTree = "<group>"; };
 		18D0EFDD1EDD930900EEECAC /* MultipleLights.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MultipleLights.fsh; sourceTree = "<group>"; };
 		18D0EFDF1EDFC93A00EEECAC /* MyOpenGLMesh.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLMesh.swift; sourceTree = "<group>"; };
+		18D0EFED1EE1B19200EEECAC /* MyOpenGLModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLModel.swift; sourceTree = "<group>"; };
+		18D0EFEF1EE1B2AD00EEECAC /* OpenGLScratch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OpenGLScratch-Bridging-Header.h"; sourceTree = "<group>"; };
+		18D0EFF01EE1B2AD00EEECAC /* MyAssimpLoader.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyAssimpLoader.mm; sourceTree = "<group>"; };
+		18D0EFF51EE1B31400EEECAC /* .editorconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .editorconfig; sourceTree = "<group>"; };
+		18D0EFF61EE1B31400EEECAC /* ai_assert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ai_assert.h; sourceTree = "<group>"; };
+		18D0EFF71EE1B31400EEECAC /* anim.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = anim.h; sourceTree = "<group>"; };
+		18D0EFF81EE1B31400EEECAC /* camera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = camera.h; sourceTree = "<group>"; };
+		18D0EFF91EE1B31400EEECAC /* cexport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cexport.h; sourceTree = "<group>"; };
+		18D0EFFA1EE1B31400EEECAC /* cfileio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cfileio.h; sourceTree = "<group>"; };
+		18D0EFFB1EE1B31400EEECAC /* cimport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cimport.h; sourceTree = "<group>"; };
+		18D0EFFC1EE1B31400EEECAC /* color4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = color4.h; sourceTree = "<group>"; };
+		18D0EFFD1EE1B31400EEECAC /* color4.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = color4.inl; sourceTree = "<group>"; };
+		18D0EFFF1EE1B31400EEECAC /* poppack1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = poppack1.h; sourceTree = "<group>"; };
+		18D0F0001EE1B31400EEECAC /* pstdint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pstdint.h; sourceTree = "<group>"; };
+		18D0F0011EE1B31400EEECAC /* pushpack1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pushpack1.h; sourceTree = "<group>"; };
+		18D0F0021EE1B31400EEECAC /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		18D0F0031EE1B31400EEECAC /* config.h.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = config.h.in; sourceTree = "<group>"; };
+		18D0F0041EE1B31400EEECAC /* DefaultIOStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultIOStream.h; sourceTree = "<group>"; };
+		18D0F0051EE1B31400EEECAC /* DefaultIOSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultIOSystem.h; sourceTree = "<group>"; };
+		18D0F0061EE1B31400EEECAC /* DefaultLogger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DefaultLogger.hpp; sourceTree = "<group>"; };
+		18D0F0071EE1B31400EEECAC /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Defines.h; sourceTree = "<group>"; };
+		18D0F0081EE1B31400EEECAC /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
+		18D0F0091EE1B31400EEECAC /* Exporter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Exporter.hpp; sourceTree = "<group>"; };
+		18D0F00A1EE1B31400EEECAC /* Importer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Importer.hpp; sourceTree = "<group>"; };
+		18D0F00B1EE1B31400EEECAC /* importerdesc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = importerdesc.h; sourceTree = "<group>"; };
+		18D0F00C1EE1B31400EEECAC /* IOStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOStream.hpp; sourceTree = "<group>"; };
+		18D0F00D1EE1B31400EEECAC /* IOSystem.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IOSystem.hpp; sourceTree = "<group>"; };
+		18D0F00E1EE1B31400EEECAC /* light.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = light.h; sourceTree = "<group>"; };
+		18D0F00F1EE1B31400EEECAC /* Logger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Logger.hpp; sourceTree = "<group>"; };
+		18D0F0101EE1B31400EEECAC /* LogStream.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LogStream.hpp; sourceTree = "<group>"; };
+		18D0F0111EE1B31400EEECAC /* material.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = material.h; sourceTree = "<group>"; };
+		18D0F0121EE1B31400EEECAC /* material.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = material.inl; sourceTree = "<group>"; };
+		18D0F0131EE1B31400EEECAC /* matrix3x3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix3x3.h; sourceTree = "<group>"; };
+		18D0F0141EE1B31400EEECAC /* matrix3x3.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = matrix3x3.inl; sourceTree = "<group>"; };
+		18D0F0151EE1B31400EEECAC /* matrix4x4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix4x4.h; sourceTree = "<group>"; };
+		18D0F0161EE1B31400EEECAC /* matrix4x4.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = matrix4x4.inl; sourceTree = "<group>"; };
+		18D0F0171EE1B31400EEECAC /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mesh.h; sourceTree = "<group>"; };
+		18D0F0181EE1B31400EEECAC /* metadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metadata.h; sourceTree = "<group>"; };
+		18D0F0191EE1B31400EEECAC /* NullLogger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NullLogger.hpp; sourceTree = "<group>"; };
+		18D0F01C1EE1B31400EEECAC /* AndroidJNIIOSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AndroidJNIIOSystem.h; sourceTree = "<group>"; };
+		18D0F01D1EE1B31400EEECAC /* postprocess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = postprocess.h; sourceTree = "<group>"; };
+		18D0F01E1EE1B31400EEECAC /* ProgressHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ProgressHandler.hpp; sourceTree = "<group>"; };
+		18D0F01F1EE1B31400EEECAC /* quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quaternion.h; sourceTree = "<group>"; };
+		18D0F0201EE1B31400EEECAC /* quaternion.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = quaternion.inl; sourceTree = "<group>"; };
+		18D0F0211EE1B31400EEECAC /* scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scene.h; sourceTree = "<group>"; };
+		18D0F0221EE1B31400EEECAC /* texture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = texture.h; sourceTree = "<group>"; };
+		18D0F0231EE1B31400EEECAC /* types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = types.h; sourceTree = "<group>"; };
+		18D0F0241EE1B31400EEECAC /* vector2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector2.h; sourceTree = "<group>"; };
+		18D0F0251EE1B31400EEECAC /* vector2.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vector2.inl; sourceTree = "<group>"; };
+		18D0F0261EE1B31400EEECAC /* vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vector3.h; sourceTree = "<group>"; };
+		18D0F0271EE1B31400EEECAC /* vector3.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vector3.inl; sourceTree = "<group>"; };
+		18D0F0281EE1B31400EEECAC /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
+		18D0F02A1EE1B31400EEECAC /* libassimp.3.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libassimp.3.3.1.dylib; sourceTree = "<group>"; };
+		18D0F02B1EE1B31400EEECAC /* libassimp.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libassimp.3.dylib; sourceTree = "<group>"; };
+		18D0F02C1EE1B31400EEECAC /* libassimp.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libassimp.dylib; sourceTree = "<group>"; };
+		18D0F02D1EE1B31400EEECAC /* libIrrXML.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libIrrXML.a; sourceTree = "<group>"; };
+		18D0F03B1EE1BC9700EEECAC /* MyAssimpLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAssimpLoader.h; sourceTree = "<group>"; };
+		18D0F0411EE4D6F200EEECAC /* ModelRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelRenderer.swift; sourceTree = "<group>"; };
+		18D0F0431EE4D7CC00EEECAC /* BasicModel.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicModel.vsh; sourceTree = "<group>"; };
+		18D0F0451EE4D7E400EEECAC /* BasicModel.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicModel.fsh; sourceTree = "<group>"; };
 		D1088F111E704C6200C060FF /* MyOpenGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLView.swift; sourceTree = "<group>"; };
 		D156500D1E647504008B5428 /* OpenGLScratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLScratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D15650101E647504008B5428 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +187,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D0F0391EE1B31400EEECAC /* libassimp.dylib in Frameworks */,
+				18D0F0381EE1B31400EEECAC /* libassimp.3.dylib in Frameworks */,
+				18D0F0371EE1B31400EEECAC /* libassimp.3.3.1.dylib in Frameworks */,
+				18D0F03A1EE1B31400EEECAC /* libIrrXML.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +217,8 @@
 				18D0EFD31EDC47CB00EEECAC /* PointLight.fsh */,
 				18D0EFD91EDC4FE900EEECAC /* SpotLight.fsh */,
 				18D0EFDD1EDD930900EEECAC /* MultipleLights.fsh */,
+				18D0F0431EE4D7CC00EEECAC /* BasicModel.vsh */,
+				18D0F0451EE4D7E400EEECAC /* BasicModel.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -161,8 +245,117 @@
 				18D0EFD51EDC488100EEECAC /* PointLightRenderer.swift */,
 				18D0EFD71EDC4F9D00EEECAC /* SpotLightRenderer.swift */,
 				18D0EFDB1EDD924200EEECAC /* MultipleLightsRenderer.swift */,
+				18D0F0411EE4D6F200EEECAC /* ModelRenderer.swift */,
 			);
 			path = Renderer;
+			sourceTree = "<group>";
+		};
+		18D0EFF21EE1B31400EEECAC /* assimp */ = {
+			isa = PBXGroup;
+			children = (
+				18D0EFF31EE1B31400EEECAC /* include */,
+				18D0F0291EE1B31400EEECAC /* lib */,
+			);
+			path = assimp;
+			sourceTree = "<group>";
+		};
+		18D0EFF31EE1B31400EEECAC /* include */ = {
+			isa = PBXGroup;
+			children = (
+				18D0EFF41EE1B31400EEECAC /* assimp */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		18D0EFF41EE1B31400EEECAC /* assimp */ = {
+			isa = PBXGroup;
+			children = (
+				18D0EFF51EE1B31400EEECAC /* .editorconfig */,
+				18D0EFF61EE1B31400EEECAC /* ai_assert.h */,
+				18D0EFF71EE1B31400EEECAC /* anim.h */,
+				18D0EFF81EE1B31400EEECAC /* camera.h */,
+				18D0EFF91EE1B31400EEECAC /* cexport.h */,
+				18D0EFFA1EE1B31400EEECAC /* cfileio.h */,
+				18D0EFFB1EE1B31400EEECAC /* cimport.h */,
+				18D0EFFC1EE1B31400EEECAC /* color4.h */,
+				18D0EFFD1EE1B31400EEECAC /* color4.inl */,
+				18D0EFFE1EE1B31400EEECAC /* Compiler */,
+				18D0F0021EE1B31400EEECAC /* config.h */,
+				18D0F0031EE1B31400EEECAC /* config.h.in */,
+				18D0F0041EE1B31400EEECAC /* DefaultIOStream.h */,
+				18D0F0051EE1B31400EEECAC /* DefaultIOSystem.h */,
+				18D0F0061EE1B31400EEECAC /* DefaultLogger.hpp */,
+				18D0F0071EE1B31400EEECAC /* Defines.h */,
+				18D0F0081EE1B31400EEECAC /* defs.h */,
+				18D0F0091EE1B31400EEECAC /* Exporter.hpp */,
+				18D0F00A1EE1B31400EEECAC /* Importer.hpp */,
+				18D0F00B1EE1B31400EEECAC /* importerdesc.h */,
+				18D0F00C1EE1B31400EEECAC /* IOStream.hpp */,
+				18D0F00D1EE1B31400EEECAC /* IOSystem.hpp */,
+				18D0F00E1EE1B31400EEECAC /* light.h */,
+				18D0F00F1EE1B31400EEECAC /* Logger.hpp */,
+				18D0F0101EE1B31400EEECAC /* LogStream.hpp */,
+				18D0F0111EE1B31400EEECAC /* material.h */,
+				18D0F0121EE1B31400EEECAC /* material.inl */,
+				18D0F0131EE1B31400EEECAC /* matrix3x3.h */,
+				18D0F0141EE1B31400EEECAC /* matrix3x3.inl */,
+				18D0F0151EE1B31400EEECAC /* matrix4x4.h */,
+				18D0F0161EE1B31400EEECAC /* matrix4x4.inl */,
+				18D0F0171EE1B31400EEECAC /* mesh.h */,
+				18D0F0181EE1B31400EEECAC /* metadata.h */,
+				18D0F0191EE1B31400EEECAC /* NullLogger.hpp */,
+				18D0F01A1EE1B31400EEECAC /* port */,
+				18D0F01D1EE1B31400EEECAC /* postprocess.h */,
+				18D0F01E1EE1B31400EEECAC /* ProgressHandler.hpp */,
+				18D0F01F1EE1B31400EEECAC /* quaternion.h */,
+				18D0F0201EE1B31400EEECAC /* quaternion.inl */,
+				18D0F0211EE1B31400EEECAC /* scene.h */,
+				18D0F0221EE1B31400EEECAC /* texture.h */,
+				18D0F0231EE1B31400EEECAC /* types.h */,
+				18D0F0241EE1B31400EEECAC /* vector2.h */,
+				18D0F0251EE1B31400EEECAC /* vector2.inl */,
+				18D0F0261EE1B31400EEECAC /* vector3.h */,
+				18D0F0271EE1B31400EEECAC /* vector3.inl */,
+				18D0F0281EE1B31400EEECAC /* version.h */,
+			);
+			path = assimp;
+			sourceTree = "<group>";
+		};
+		18D0EFFE1EE1B31400EEECAC /* Compiler */ = {
+			isa = PBXGroup;
+			children = (
+				18D0EFFF1EE1B31400EEECAC /* poppack1.h */,
+				18D0F0001EE1B31400EEECAC /* pstdint.h */,
+				18D0F0011EE1B31400EEECAC /* pushpack1.h */,
+			);
+			path = Compiler;
+			sourceTree = "<group>";
+		};
+		18D0F01A1EE1B31400EEECAC /* port */ = {
+			isa = PBXGroup;
+			children = (
+				18D0F01B1EE1B31400EEECAC /* AndroidJNI */,
+			);
+			path = port;
+			sourceTree = "<group>";
+		};
+		18D0F01B1EE1B31400EEECAC /* AndroidJNI */ = {
+			isa = PBXGroup;
+			children = (
+				18D0F01C1EE1B31400EEECAC /* AndroidJNIIOSystem.h */,
+			);
+			path = AndroidJNI;
+			sourceTree = "<group>";
+		};
+		18D0F0291EE1B31400EEECAC /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				18D0F02A1EE1B31400EEECAC /* libassimp.3.3.1.dylib */,
+				18D0F02B1EE1B31400EEECAC /* libassimp.3.dylib */,
+				18D0F02C1EE1B31400EEECAC /* libassimp.dylib */,
+				18D0F02D1EE1B31400EEECAC /* libIrrXML.a */,
+			);
+			path = lib;
 			sourceTree = "<group>";
 		};
 		D15650041E647503008B5428 = {
@@ -170,6 +363,7 @@
 			children = (
 				D156500F1E647504008B5428 /* OpenGLScratch */,
 				D156500E1E647504008B5428 /* Products */,
+				18D0EFF21EE1B31400EEECAC /* assimp */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,6 +391,10 @@
 				189578EF1ED3D8F00025196E /* MyOpenGLUtils.swift */,
 				189578F11ED3DAA20025196E /* MyOpenGLCamera.swift */,
 				18D0EFDF1EDFC93A00EEECAC /* MyOpenGLMesh.swift */,
+				18D0EFED1EE1B19200EEECAC /* MyOpenGLModel.swift */,
+				18D0EFEF1EE1B2AD00EEECAC /* OpenGLScratch-Bridging-Header.h */,
+				18D0EFF01EE1B2AD00EEECAC /* MyAssimpLoader.mm */,
+				18D0F03B1EE1BC9700EEECAC /* MyAssimpLoader.h */,
 			);
 			path = OpenGLScratch;
 			sourceTree = "<group>";
@@ -261,7 +459,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D0F0311EE1B31400EEECAC /* material.inl in Resources */,
+				18D0F0321EE1B31400EEECAC /* matrix3x3.inl in Resources */,
 				18D0EFDA1EDC4FE900EEECAC /* SpotLight.fsh in Resources */,
+				18D0F0441EE4D7CC00EEECAC /* BasicModel.vsh in Resources */,
 				18D0EFCC1EDBB26800EEECAC /* LightingWithMaps.vsh in Resources */,
 				189578FA1EDAA3B70025196E /* Lighting.vsh in Resources */,
 				18AE58451EDB16570029BEAF /* Circle.vsh in Resources */,
@@ -269,14 +470,22 @@
 				18AE58491EDB17060029BEAF /* RectanglePerspective.fsh in Resources */,
 				18AE58431EDB16370029BEAF /* Circle.fsh in Resources */,
 				18D0EFD41EDC47CB00EEECAC /* PointLight.fsh in Resources */,
+				18D0F02F1EE1B31400EEECAC /* color4.inl in Resources */,
+				18D0F0341EE1B31400EEECAC /* quaternion.inl in Resources */,
+				18D0F02E1EE1B31400EEECAC /* .editorconfig in Resources */,
 				189579051EDAAAF10025196E /* Lamp.fsh in Resources */,
 				18D0EFDE1EDD930900EEECAC /* MultipleLights.fsh in Resources */,
 				189578FF1EDAA9580025196E /* Triangle.vsh in Resources */,
 				D15650151E647505008B5428 /* Assets.xcassets in Resources */,
+				18D0F0461EE4D7E400EEECAC /* BasicModel.fsh in Resources */,
 				18D0EFD21EDC3DFC00EEECAC /* DirectionalLight.fsh in Resources */,
 				18D0EFCA1EDBB0EE00EEECAC /* LightingWithMaps.fsh in Resources */,
 				189579011EDAA9AD0025196E /* Triangle.fsh in Resources */,
 				189578FC1EDAA4130025196E /* Lighting.fsh in Resources */,
+				18D0F0331EE1B31400EEECAC /* matrix4x4.inl in Resources */,
+				18D0F0361EE1B31400EEECAC /* vector3.inl in Resources */,
+				18D0F0351EE1B31400EEECAC /* vector2.inl in Resources */,
+				18D0F0301EE1B31400EEECAC /* config.h.in in Resources */,
 				18AE58471EDB16F80029BEAF /* RectanglePerspective.vsh in Resources */,
 				D15650181E647505008B5428 /* Main.storyboard in Resources */,
 				189579031EDAAACD0025196E /* Lamp.vsh in Resources */,
@@ -300,6 +509,7 @@
 				180CD31B1EDB2BFA00AD5364 /* LightingWithMaterialRenderer.swift in Sources */,
 				D15650111E647504008B5428 /* AppDelegate.swift in Sources */,
 				18D0EFD81EDC4F9D00EEECAC /* SpotLightRenderer.swift in Sources */,
+				18D0EFEE1EE1B19200EEECAC /* MyOpenGLModel.swift in Sources */,
 				189578F41ED429FE0025196E /* NCubesWithCameraRenderer.swift in Sources */,
 				18D0EFD01EDC3D0C00EEECAC /* DirectionalLightRenderer.swift in Sources */,
 				18D0EFD61EDC488100EEECAC /* PointLightRenderer.swift in Sources */,
@@ -308,10 +518,12 @@
 				180CD3191EDB1BEC00AD5364 /* SpinningLampRenderer.swift in Sources */,
 				18B52D611EC832F000BCB1EA /* RectangleRotationRenderer.swift in Sources */,
 				18B52D5F1EC7096300BCB1EA /* RectangleTextureRenderer.swift in Sources */,
+				18D0F0421EE4D6F200EEECAC /* ModelRenderer.swift in Sources */,
 				18B52D561EC5EF6D00BCB1EA /* MyOpenGLTexture.swift in Sources */,
 				185492E41E81FE14009773AE /* TriangleRenderer.swift in Sources */,
 				18B52D581EC6FC9800BCB1EA /* TriangleTextureRenderer.swift in Sources */,
 				189578F61ED470330025196E /* LightingAndLampRenderer.swift in Sources */,
+				18D0EFF11EE1B2AD00EEECAC /* MyAssimpLoader.mm in Sources */,
 				18D0EFCE1EDBB31400EEECAC /* LightingWithMapsRenderer.swift in Sources */,
 				D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */,
 				189578F01ED3D8F00025196E /* MyOpenGLUtils.swift in Sources */,
@@ -427,12 +639,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 8ATG7PD23Z;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/assimp/include";
 				INFOPLIST_FILE = OpenGLScratch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/assimp/lib",
+				);
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.koodev.OpenGLScratch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OpenGLScratch/OpenGLScratch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -441,12 +662,21 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 8ATG7PD23Z;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/assimp/include";
 				INFOPLIST_FILE = OpenGLScratch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/assimp/lib",
+				);
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.koodev.OpenGLScratch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "OpenGLScratch/OpenGLScratch-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
