@@ -13,8 +13,9 @@ import OpenGL.GL3
 class ModelRenderer: MyOpenGLRendererDelegate {
     var camera: MyOpenGLCamera?
     var renderInterval: Double {
-        return 0.0
+        return 1.0/60.0
     }
+    var rotation: Float = 0.0
 
     var shaderProgram: MyOpenGLProgram?
     var model: MyOpenGLModel?
@@ -47,9 +48,31 @@ class ModelRenderer: MyOpenGLRendererDelegate {
             model = GLKMatrix4Scale(model, 0.2, 0.2, 0.2)
             MyOpenGLUtils.uniformMatrix4fv(self.modelLoc, 1, GLboolean(GL_FALSE), &model)
 
+            let ambientColor = GLKVector3Make(0.2, 0.2, 0.2)
+            let diffuseColor = GLKVector3Make(0.5, 0.5, 0.5)
+            let lightColor = GLKVector3Make(1.0, 1.0, 1.0)
+            
+            let lightAmbientLoc  = glGetUniformLocation(program.program, "light.ambient");
+            let lightDiffuseLoc  = glGetUniformLocation(program.program, "light.diffuse");
+            let lightSpecularLoc = glGetUniformLocation(program.program, "light.specular");
+            let lightPosLoc = glGetUniformLocation(program.program, "light.position");
+
+            glUniform3f(lightAmbientLoc, ambientColor.x, ambientColor.y, ambientColor.z);
+            glUniform3f(lightDiffuseLoc, diffuseColor.x, diffuseColor.y, diffuseColor.z);
+            glUniform3f(lightSpecularLoc, lightColor.x, lightColor.y, lightColor.z);
+
+            let radius: GLfloat = 3.0
+            let lightX: GLfloat = sinf(MyOpenGLUtils.DEGREE2RADIAN(self.rotation)) * radius
+            let lightY: GLfloat = 0.0
+            let lightZ: GLfloat = cosf(MyOpenGLUtils.DEGREE2RADIAN(self.rotation)) * radius
+            let lightPos = GLKVector3Make(lightX, lightY, lightZ)
+
+            glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z)
+
             m.draw(program: program)
             glDisable(GLenum(GL_DEPTH_TEST))
         }
+        self.rotation += 1.0
     }
 
     func dispose() {
