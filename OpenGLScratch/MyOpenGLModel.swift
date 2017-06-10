@@ -8,6 +8,19 @@
 
 import Foundation
 
+extension MyAssimpTextureType {
+    var typeString: String {
+        switch (self) {
+        case MyAssimpTextureType_Specular:
+            return "texture_specular"
+        case MyAssimpTextureType_Diffuse:
+            return "texture_diffuse"
+        default: break
+        }
+        return ""
+    }
+}
+
 class MyOpenGLModel {
     var meshes: [MyOpenGLMesh] = []
     var directory: String = ""
@@ -26,22 +39,20 @@ class MyOpenGLModel {
         let loader = MyAssimpLoader()
         loader.loadModel(path)
 
+        let directory = (path as NSString).deletingLastPathComponent
         for assimpMesh in (loader.meshes.map { $0 as! MyAssimpMesh }) {
-//            var vertices: [Vertex] = []
-//            let assimpVertices = assimpMesh.vertices.map { $0.myAssimpVertexValue }
-//
-//            for assimpVertex in assimpVertices {
-//                let vertex = Vertex(position: assimpVertex.position, normal: assimpVertex.normal, texCoords: assimpVertex.texCoords)
-//                vertices.append(vertex)
-//            }
-
             let vertices = (assimpMesh.vertices.map { $0.myAssimpVertexValue }).map {
                 (assimpVertx) -> Vertex in
                 return Vertex(position: assimpVertx.position, normal: assimpVertx.normal, texCoords: assimpVertx.texCoords)
             }
             let indices = (assimpMesh.indices.map { $0 as! NSNumber }).map { $0.uint32Value }
+            let textures = assimpMesh.textures.map {
+                (assimpTextureInfo) -> Texture in
+                let texturePath = directory + "/" + assimpTextureInfo.filename
+                return Texture(type: assimpTextureInfo.type.typeString, texture: MyOpenGLTexture(path: texturePath))
+            }
 
-            self.meshes.append(MyOpenGLMesh(vertices: vertices, indices: indices, textures: []))
+            self.meshes.append(MyOpenGLMesh(vertices: vertices, indices: indices, textures: textures))
         }
     }
 }

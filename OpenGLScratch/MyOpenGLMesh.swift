@@ -16,8 +16,13 @@ struct Vertex {
 }
 
 struct Texture {
-    var id: GLint
+    var id: GLuint {
+        get {
+            return texture.textureId
+        }
+    }
     var type: String
+    var texture: MyOpenGLTexture
 }
 
 class MyOpenGLMesh {

@@ -26,7 +26,7 @@ class ModelRenderer: MyOpenGLRendererDelegate {
     func prepare() {
         let vshSource = MyOpenGLUtils.loadStringFromResource(name: "BasicModel", type: "vsh")
         let fshSource = MyOpenGLUtils.loadStringFromResource(name: "BasicModel", type: "fsh")
-        
+
         self.shaderProgram = MyOpenGLProgram(vshSource: vshSource!, fshSource: fshSource!)
         self.modelLoc = glGetUniformLocation((self.shaderProgram?.program)!, "model")
         self.viewLoc = glGetUniformLocation((self.shaderProgram?.program)!, "view")
@@ -36,6 +36,7 @@ class ModelRenderer: MyOpenGLRendererDelegate {
 
     func render(_ bounds: NSRect) {
         if let m = self.model, let program = self.shaderProgram, program.useProgram() {
+            glEnable(GLenum(GL_DEPTH_TEST))
             if var view = self.camera?.viewMatrix {
                 MyOpenGLUtils.uniformMatrix4fv(self.viewLoc, 1, GLboolean(GL_FALSE), &view)
             }
@@ -47,6 +48,7 @@ class ModelRenderer: MyOpenGLRendererDelegate {
             MyOpenGLUtils.uniformMatrix4fv(self.modelLoc, 1, GLboolean(GL_FALSE), &model)
 
             m.draw(program: program)
+            glDisable(GLenum(GL_DEPTH_TEST))
         }
     }
 

@@ -50,6 +50,13 @@ class MyOpenGLTexture {
         self.init(image: image)
     }
 
+    public convenience init(path: String) {
+        guard let image = NSImage(contentsOfFile: path) else {
+            fatalError("No such image in path: \(path)")
+        }
+        self.init(image: image)
+    }
+
     deinit {
         var textureIdToDelete = self.textureId
         glDeleteTextures(1, &textureIdToDelete);

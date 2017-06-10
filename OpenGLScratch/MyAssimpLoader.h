@@ -13,6 +13,8 @@
 #import <GLKit/GLKit.h>
 
 typedef enum {
+    MyAssimpTextureType_Diffuse,
+    MyAssimpTextureType_Specular,
     MyAssimpTextureType_Count,
 } MyAssimpTextureType;
 
@@ -24,16 +26,18 @@ typedef struct {
     GLKVector3 bitangent;
 } MyAssimpVertex;
 
-typedef struct {
-    GLint textureId;
-    MyAssimpTextureType type;
-} MyAssimpTexture;
+@interface MyAssimpTextureInfo : NSObject
+
+@property (nonatomic, readwrite) NSString *filename;
+@property (nonatomic, readwrite) MyAssimpTextureType type;
+
+@end
 
 @interface MyAssimpMesh : NSObject
 
 @property (nonatomic, readwrite) NSArray<NSValue *> *vertices;
 @property (nonatomic, readwrite) NSArray<NSValue *> *indices;
-@property (nonatomic, readwrite) NSArray<NSValue *> *textures;
+@property (nonatomic, readwrite) NSArray<MyAssimpTextureInfo *> *textures;
 
 @end
 

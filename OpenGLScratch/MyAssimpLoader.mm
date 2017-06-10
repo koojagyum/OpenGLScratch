@@ -32,7 +32,9 @@
 @end
 
 @implementation MyAssimpMesh
+@end
 
+@implementation MyAssimpTextureInfo
 @end
 
 @implementation MyAssimpLoader
@@ -91,7 +93,7 @@
     MyAssimpMesh *myMesh = [[MyAssimpMesh alloc] init];
     NSMutableArray *vertices = [[NSMutableArray alloc] init];
     NSMutableArray *indices = [[NSMutableArray alloc] init];
-    NSMutableArray *textures = [[NSMutableArray alloc] init];
+    NSMutableArray<MyAssimpTextureInfo *> *textures = [[NSMutableArray alloc] init];
 
     // Walk through each of the meshs vertices
     for (unsigned int i = 0; i < mesh->mNumVertices; i++) {
@@ -142,18 +144,33 @@
         // normal: texture_normalN
 
         // 1. diffuse maps
+        NSArray *diffuseTextures = [self loadMaterialTextures:material withTextureType:aiTextureType_DIFFUSE asMyAssimpTextureType:MyAssimpTextureType_Diffuse];
+        [textures addObjectsFromArray:diffuseTextures];
+        // 2. specular maps
+        NSArray *specularTextures = [self loadMaterialTextures:material withTextureType:aiTextureType_SPECULAR asMyAssimpTextureType:MyAssimpTextureType_Specular];
+        [textures addObjectsFromArray:specularTextures];
         
     }
     myMesh.vertices = vertices;
     myMesh.indices = indices;
+    myMesh.textures = textures;
 
     return myMesh;
 }
 
-//- (NSArray *)loadMaterialTextures:(aiMaterial *)mat withTextureType:(aiTextureType)withType asMyAssimpTextureType:(MyAssimpTextureType)asType
-//{
-//    
-//}
+- (NSArray *)loadMaterialTextures:(aiMaterial *)mat withTextureType:(aiTextureType)withType asMyAssimpTextureType:(MyAssimpTextureType)asType
+{
+    NSMutableArray *textures = [[NSMutableArray alloc] init];
+    for (unsigned int i = 0; i < mat->GetTextureCount(withType); i++) {
+        aiString str;
+        mat->GetTexture(withType, i, &str);
+        MyAssimpTextureInfo *texture = [[MyAssimpTextureInfo alloc] init];
+        texture.filename = [NSString stringWithCString:str.C_Str() encoding:NSASCIIStringEncoding];
+        texture.type = asType;
+        [textures addObject:texture];
+    }
+    return textures;
+}
 
     
 @end
