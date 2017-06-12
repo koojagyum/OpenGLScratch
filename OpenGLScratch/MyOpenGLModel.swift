@@ -48,7 +48,7 @@ class MyOpenGLModel {
             let indices = (assimpMesh.indices.map { $0 as! NSNumber }).map { $0.uint32Value }
             let textures = assimpMesh.textures.map {
                 (assimpTextureInfo) -> Texture in
-                let texturePath = directory + "/" + assimpTextureInfo.filename
+                let texturePath = (directory + "/" + assimpTextureInfo.filename).replacingOccurrences(of: "\\", with: "/")
                 return Texture(type: assimpTextureInfo.type.typeString, texture: MyOpenGLTexture(path: texturePath))
             }
 
