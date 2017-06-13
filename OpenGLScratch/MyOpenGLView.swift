@@ -82,6 +82,7 @@ class MyOpenGLView : NSOpenGLView {
             NSOpenGLPixelFormatAttribute(NSOpenGLPFAOpenGLProfile),
             NSOpenGLPixelFormatAttribute(NSOpenGLProfileVersion4_1Core),
             NSOpenGLPixelFormatAttribute(NSOpenGLPFADepthSize), 24,
+            NSOpenGLPixelFormatAttribute(NSOpenGLPFAStencilSize), 8,
             0
         ]
 

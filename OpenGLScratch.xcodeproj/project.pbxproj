@@ -10,6 +10,8 @@
 		180056C71EEE478800446954 /* DepthTestRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180056C61EEE478800446954 /* DepthTestRenderer.swift */; };
 		180056C91EEE4D9C00446954 /* DepthTest.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 180056C81EEE4D9C00446954 /* DepthTest.vsh */; };
 		180056CB1EEE4DB300446954 /* DepthTest.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 180056CA1EEE4DB300446954 /* DepthTest.fsh */; };
+		180056CD1EEFA36C00446954 /* StencilOutlineRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180056CC1EEFA36C00446954 /* StencilOutlineRenderer.swift */; };
+		180056CF1EEFA41600446954 /* StencilTestSingleColor.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 180056CE1EEFA41600446954 /* StencilTestSingleColor.fsh */; };
 		180CD3191EDB1BEC00AD5364 /* SpinningLampRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180CD3181EDB1BEC00AD5364 /* SpinningLampRenderer.swift */; };
 		180CD31B1EDB2BFA00AD5364 /* LightingWithMaterialRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 180CD31A1EDB2BFA00AD5364 /* LightingWithMaterialRenderer.swift */; };
 		180CD31D1EDB2C7400AD5364 /* LightingWithMaterial.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 180CD31C1EDB2C7400AD5364 /* LightingWithMaterial.fsh */; };
@@ -79,6 +81,8 @@
 		180056C61EEE478800446954 /* DepthTestRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DepthTestRenderer.swift; sourceTree = "<group>"; };
 		180056C81EEE4D9C00446954 /* DepthTest.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DepthTest.vsh; sourceTree = "<group>"; };
 		180056CA1EEE4DB300446954 /* DepthTest.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DepthTest.fsh; sourceTree = "<group>"; };
+		180056CC1EEFA36C00446954 /* StencilOutlineRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StencilOutlineRenderer.swift; sourceTree = "<group>"; };
+		180056CE1EEFA41600446954 /* StencilTestSingleColor.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = StencilTestSingleColor.fsh; sourceTree = "<group>"; };
 		180CD3181EDB1BEC00AD5364 /* SpinningLampRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinningLampRenderer.swift; sourceTree = "<group>"; };
 		180CD31A1EDB2BFA00AD5364 /* LightingWithMaterialRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightingWithMaterialRenderer.swift; sourceTree = "<group>"; };
 		180CD31C1EDB2C7400AD5364 /* LightingWithMaterial.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = LightingWithMaterial.fsh; sourceTree = "<group>"; };
@@ -227,6 +231,7 @@
 				18D0F0451EE4D7E400EEECAC /* BasicModel.fsh */,
 				180056C81EEE4D9C00446954 /* DepthTest.vsh */,
 				180056CA1EEE4DB300446954 /* DepthTest.fsh */,
+				180056CE1EEFA41600446954 /* StencilTestSingleColor.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -255,6 +260,7 @@
 				18D0EFDB1EDD924200EEECAC /* MultipleLightsRenderer.swift */,
 				18D0F0411EE4D6F200EEECAC /* ModelRenderer.swift */,
 				180056C61EEE478800446954 /* DepthTestRenderer.swift */,
+				180056CC1EEFA36C00446954 /* StencilOutlineRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -485,6 +491,7 @@
 				189579051EDAAAF10025196E /* Lamp.fsh in Resources */,
 				18D0EFDE1EDD930900EEECAC /* MultipleLights.fsh in Resources */,
 				189578FF1EDAA9580025196E /* Triangle.vsh in Resources */,
+				180056CF1EEFA41600446954 /* StencilTestSingleColor.fsh in Resources */,
 				180056CB1EEE4DB300446954 /* DepthTest.fsh in Resources */,
 				D15650151E647505008B5428 /* Assets.xcassets in Resources */,
 				18D0F0461EE4D7E400EEECAC /* BasicModel.fsh in Resources */,
@@ -518,6 +525,7 @@
 				189578EA1ED19A340025196E /* CubeRenderer.swift in Sources */,
 				18D0EFDC1EDD924200EEECAC /* MultipleLightsRenderer.swift in Sources */,
 				180CD31B1EDB2BFA00AD5364 /* LightingWithMaterialRenderer.swift in Sources */,
+				180056CD1EEFA36C00446954 /* StencilOutlineRenderer.swift in Sources */,
 				D15650111E647504008B5428 /* AppDelegate.swift in Sources */,
 				18D0EFD81EDC4F9D00EEECAC /* SpotLightRenderer.swift in Sources */,
 				18D0EFEE1EE1B19200EEECAC /* MyOpenGLModel.swift in Sources */,
