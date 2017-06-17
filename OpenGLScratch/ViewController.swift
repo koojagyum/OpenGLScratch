@@ -10,7 +10,7 @@ import Cocoa
 
 // Move these into the proper module
 enum SceneType: String {
-    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline
+    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend
 }
 
 enum PolygonMode: String {
@@ -26,18 +26,13 @@ class ViewController: NSViewController {
     let renderers: [SceneType : MyOpenGLRendererDelegate?] = [
         SceneType.Triangle: TriangleRenderer(),
         SceneType.Rectangle: RectangleRenderer(),
-        // SceneType.NCubesWithCamera: NCubesWithCameraRenderer(),
-        // SceneType.LightingAndLamp: LightingAndLampRenderer(),
         SceneType.Circle: CircleRenderer(),
         SceneType.SpinningLamp: SpinningLampRenderer(),
-        // SceneType.LightingWithMaterial: LightingWithMaterialRenderer(),
-        // SceneType.LightingWithMaps: LightingWithMapsRenderer(),
-        // SceneType.PointLight: PointLightRenderer(),
-        // SceneType.SpotLight: SpotLightRenderer(),
         SceneType.MultipleLights: MultipleLightsRenderer(),
         SceneType.Model: ModelRenderer(),
         SceneType.DepthTest: DepthTestRenderer(),
         SceneType.StencilOutline: StencilOutlineRenderer(),
+        SceneType.GrassBlend: GrassBlendRenderer(),
     ]
 
     override func viewDidLoad() {
