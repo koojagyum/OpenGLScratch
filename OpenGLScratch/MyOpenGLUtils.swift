@@ -57,6 +57,9 @@ extension GLKVector3 {
     static func * (left: GLKVector3, right: Float) -> GLKVector3 {
         return GLKVector3Make(left.x * right, left.y * right, left.z * right)
     }
+    static func - (left: GLKVector3, right: GLKVector3) -> GLKVector3 {
+        return GLKVector3Subtract(left, right)
+    }
     @discardableResult
     static func += (left: inout GLKVector3, right: GLKVector3) -> GLKVector3 {
         left = GLKVector3Add(left, right)

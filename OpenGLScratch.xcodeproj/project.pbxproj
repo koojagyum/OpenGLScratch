@@ -18,6 +18,7 @@
 		180CD31D1EDB2C7400AD5364 /* LightingWithMaterial.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 180CD31C1EDB2C7400AD5364 /* LightingWithMaterial.fsh */; };
 		181E25B61EF57B95007CF90A /* Blending.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 181E25B51EF57B95007CF90A /* Blending.fsh */; };
 		181E25B81EF64CA3007CF90A /* MyOpenGLTextureCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E25B71EF64CA3007CF90A /* MyOpenGLTextureCache.swift */; };
+		181E25BA1EF664AE007CF90A /* WindowBlendRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E25B91EF664AE007CF90A /* WindowBlendRenderer.swift */; };
 		185492E41E81FE14009773AE /* TriangleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185492E31E81FE14009773AE /* TriangleRenderer.swift */; };
 		189042BB1EC179AD0083B094 /* MyOpenGLProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189042BA1EC179AD0083B094 /* MyOpenGLProgram.swift */; };
 		189042BD1EC1E99C0083B094 /* RectangleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189042BC1EC1E99C0083B094 /* RectangleRenderer.swift */; };
@@ -93,6 +94,7 @@
 		180CD31C1EDB2C7400AD5364 /* LightingWithMaterial.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = LightingWithMaterial.fsh; sourceTree = "<group>"; };
 		181E25B51EF57B95007CF90A /* Blending.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Blending.fsh; sourceTree = "<group>"; };
 		181E25B71EF64CA3007CF90A /* MyOpenGLTextureCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLTextureCache.swift; sourceTree = "<group>"; };
+		181E25B91EF664AE007CF90A /* WindowBlendRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowBlendRenderer.swift; sourceTree = "<group>"; };
 		185492E31E81FE14009773AE /* TriangleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleRenderer.swift; sourceTree = "<group>"; };
 		189042BA1EC179AD0083B094 /* MyOpenGLProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLProgram.swift; sourceTree = "<group>"; };
 		189042BC1EC1E99C0083B094 /* RectangleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleRenderer.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				180056C61EEE478800446954 /* DepthTestRenderer.swift */,
 				180056CC1EEFA36C00446954 /* StencilOutlineRenderer.swift */,
 				180056D01EF4F32300446954 /* GrassBlendRenderer.swift */,
+				181E25B91EF664AE007CF90A /* WindowBlendRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				18B52D561EC5EF6D00BCB1EA /* MyOpenGLTexture.swift in Sources */,
 				185492E41E81FE14009773AE /* TriangleRenderer.swift in Sources */,
 				18B52D581EC6FC9800BCB1EA /* TriangleTextureRenderer.swift in Sources */,
+				181E25BA1EF664AE007CF90A /* WindowBlendRenderer.swift in Sources */,
 				189578F61ED470330025196E /* LightingAndLampRenderer.swift in Sources */,
 				18D0EFF11EE1B2AD00EEECAC /* MyAssimpLoader.mm in Sources */,
 				18D0EFCE1EDBB31400EEECAC /* LightingWithMapsRenderer.swift in Sources */,

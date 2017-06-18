@@ -28,12 +28,15 @@ class DepthTestRenderer: MyOpenGLRendererDelegate {
     var texture2: MyOpenGLTexture?
 
     func prepare() {
-        let vshSource = MyOpenGLUtils.loadStringFromResource(name: "DepthTest", type: "vsh")
-        let fshSource = MyOpenGLUtils.loadStringFromResource(name: "DepthTest", type: "fsh")
-
-        self.shaderProgram = MyOpenGLProgram(vshSource: vshSource!, fshSource: fshSource!)
+        self.prepareProgram()
         self.prepareVertices()
         self.prepareTextures()
+    }
+
+    func prepareProgram() {
+        let vshSource = MyOpenGLUtils.loadStringFromResource(name: "DepthTest", type: "vsh")
+        let fshSource = MyOpenGLUtils.loadStringFromResource(name: "DepthTest", type: "fsh")
+        self.shaderProgram = MyOpenGLProgram(vshSource: vshSource!, fshSource: fshSource!)
     }
 
     func prepareVertices() {

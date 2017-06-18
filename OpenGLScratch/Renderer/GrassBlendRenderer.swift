@@ -11,9 +11,6 @@ import GLKit
 import OpenGL.GL3
 
 class GrassBlendRenderer: DepthTestRenderer {
-    var transparentVao: GLuint = 0
-    var transparentVbo: GLuint = 0
-
     var vegetationProgram: MyOpenGLProgram?
     var texture3: MyOpenGLTexture?
     var transparentVertex: MyOpenGLVertexObject?
@@ -79,20 +76,18 @@ class GrassBlendRenderer: DepthTestRenderer {
         self.texture3 = MyOpenGLTexture(imageName: "grass")
     }
 
-    func prepareProgram() {
+    override func prepareProgram() {
+        super.prepareProgram()
+
         let vshSource = MyOpenGLUtils.loadStringFromResource(name: "DepthTest", type: "vsh")
         let fshSource = MyOpenGLUtils.loadStringFromResource(name: "Blending", type: "fsh")
         self.vegetationProgram = MyOpenGLProgram(vshSource: vshSource!, fshSource: fshSource!)
-    }
-
-    override func prepare() {
-        super.prepare()
-        self.prepareProgram()
     }
 
     override func dispose() {
         super.dispose()
         self.texture3 = nil
         self.transparentVertex = nil
+        self.vegetationProgram = nil
     }
 }
