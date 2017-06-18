@@ -18,11 +18,11 @@ struct Vertex {
 struct Texture {
     var id: GLuint {
         get {
-            return texture.textureId
+            return texture!.textureId
         }
     }
     var type: String
-    var texture: MyOpenGLTexture
+    var texture: MyOpenGLTexture?
 }
 
 class MyOpenGLMesh {

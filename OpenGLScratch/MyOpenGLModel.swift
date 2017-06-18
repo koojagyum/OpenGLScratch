@@ -49,10 +49,15 @@ class MyOpenGLModel {
             let textures = assimpMesh.textures.map {
                 (assimpTextureInfo) -> Texture in
                 let texturePath = (directory + "/" + assimpTextureInfo.filename).replacingOccurrences(of: "\\", with: "/")
-                return Texture(type: assimpTextureInfo.type.typeString, texture: MyOpenGLTexture(path: texturePath))
+                // return Texture(type: assimpTextureInfo.type.typeString, texture: MyOpenGLTexture(path: texturePath))
+                return Texture(type: assimpTextureInfo.type.typeString, texture: MyOpenGLTextureCache.textureAt(path: texturePath))
             }
 
             self.meshes.append(MyOpenGLMesh(vertices: vertices, indices: indices, textures: textures))
         }
+    }
+
+    deinit {
+        self.meshes.removeAll()
     }
 }
