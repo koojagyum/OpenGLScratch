@@ -106,5 +106,8 @@ class StencilOutlineRenderer: DepthTestRenderer {
             glStencilMask(0xFF);
             glEnable(GLenum(GL_DEPTH_TEST));
         }
+
+        glDisable(GLenum(GL_DEPTH_TEST));
+        glDisable(GLenum(GL_STENCIL_TEST));
     }
 }
