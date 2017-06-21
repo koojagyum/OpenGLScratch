@@ -52,6 +52,12 @@ class MyOpenGLVertexObject {
         glBindVertexArray(self.vao)
     }
 
+    func useVertexObject(withBlock: () -> ()) {
+        glBindVertexArray(self.vao)
+        withBlock()
+        glBindVertexArray(0)
+    }
+
     deinit {
         glDeleteBuffers(1, &self.vao)
         glDeleteBuffers(1, &self.vbo)
