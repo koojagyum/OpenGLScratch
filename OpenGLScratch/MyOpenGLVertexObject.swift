@@ -52,9 +52,9 @@ class MyOpenGLVertexObject {
         glBindVertexArray(self.vao)
     }
 
-    func useVertexObject(withBlock: () -> ()) {
+    func useVertexObjectWith(block: () -> ()) {
         glBindVertexArray(self.vao)
-        withBlock()
+        block()
         glBindVertexArray(0)
     }
 

@@ -64,7 +64,7 @@ class FramebufferRenderer: DepthTestRenderer {
         if let program = self.screenProgram, program.useProgram() {
             glClearColor(1.0, 1.0, 1.0, 1.0)
             glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
-            self.quadVertex?.useVertexObject {
+            self.quadVertex?.useVertexObjectWith {
                 glBindTexture(GLenum(GL_TEXTURE_2D), tex!)
                 glDrawArrays(GLenum(GL_TRIANGLES), 0, 6)
             }

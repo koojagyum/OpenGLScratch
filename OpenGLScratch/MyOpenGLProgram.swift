@@ -34,6 +34,12 @@ class MyOpenGLProgram {
         return self.available
     }
 
+    open func useProgramWith(block: (MyOpenGLProgram) -> ()) {
+        if self.useProgram() {
+            block(self)
+        }
+    }
+
     private func createProgram(_ vshSource: String, _ fshSource: String) -> GLuint {
         let vertexShader = self.createShader(vshSource, GLenum(GL_VERTEX_SHADER))
         let fragmentShader = self.createShader(fshSource, GLenum(GL_FRAGMENT_SHADER))
@@ -87,6 +93,18 @@ class MyOpenGLProgram {
 
     func setFloat(name: String, value: GLfloat) {
         glUniform1f(glGetUniformLocation(self.program, name), value)
+    }
+
+    func setMat4(name: String, value: GLKMatrix4) {
+        let location = glGetUniformLocation(self.program, name)
+        var v = value
+        MyOpenGLUtils.uniformMatrix4fv(location, 1, GLboolean(GL_FALSE), &v)
+    }
+
+    func setMat3(name: String, value: GLKMatrix3) {
+        let location = glGetUniformLocation(self.program, name)
+        var v = value
+        MyOpenGLUtils.uniformMatrix3fv(location, 1, GLboolean(GL_FALSE), &v)
     }
 
     deinit {

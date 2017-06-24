@@ -78,6 +78,10 @@
 		18EF47AA1EFAAC4300A79D09 /* FramebufferScreen.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EF47A91EFAAC4300A79D09 /* FramebufferScreen.vsh */; };
 		18EF47AC1EFAACCA00A79D09 /* FramebufferScreen.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EF47AB1EFAACCA00A79D09 /* FramebufferScreen.fsh */; };
 		18EF47AE1EFAB3FD00A79D09 /* MyOpenGLFramebuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF47AD1EFAB3FD00A79D09 /* MyOpenGLFramebuffer.swift */; };
+		18EF47B01EFCD36E00A79D09 /* Skybox.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EF47AF1EFCD36E00A79D09 /* Skybox.vsh */; };
+		18EF47B21EFCD3EC00A79D09 /* Skybox.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EF47B11EFCD3EC00A79D09 /* Skybox.fsh */; };
+		18EF47B41EFD634B00A79D09 /* SkyboxRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF47B31EFD634B00A79D09 /* SkyboxRenderer.swift */; };
+		18EF47B61EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF47B51EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift */; };
 		18F1CCA71EF4F8F400F03C68 /* MyOpenGLVertexObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1CCA61EF4F8F400F03C68 /* MyOpenGLVertexObject.swift */; };
 		D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1088F111E704C6200C060FF /* MyOpenGLView.swift */; };
 		D15650111E647504008B5428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650101E647504008B5428 /* AppDelegate.swift */; };
@@ -200,6 +204,10 @@
 		18EF47A91EFAAC4300A79D09 /* FramebufferScreen.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FramebufferScreen.vsh; sourceTree = "<group>"; };
 		18EF47AB1EFAACCA00A79D09 /* FramebufferScreen.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FramebufferScreen.fsh; sourceTree = "<group>"; };
 		18EF47AD1EFAB3FD00A79D09 /* MyOpenGLFramebuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLFramebuffer.swift; sourceTree = "<group>"; };
+		18EF47AF1EFCD36E00A79D09 /* Skybox.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Skybox.vsh; sourceTree = "<group>"; };
+		18EF47B11EFCD3EC00A79D09 /* Skybox.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Skybox.fsh; sourceTree = "<group>"; };
+		18EF47B31EFD634B00A79D09 /* SkyboxRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyboxRenderer.swift; sourceTree = "<group>"; };
+		18EF47B51EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLCubemapTexture.swift; sourceTree = "<group>"; };
 		18F1CCA61EF4F8F400F03C68 /* MyOpenGLVertexObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLVertexObject.swift; sourceTree = "<group>"; };
 		D1088F111E704C6200C060FF /* MyOpenGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLView.swift; sourceTree = "<group>"; };
 		D156500D1E647504008B5428 /* OpenGLScratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLScratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -253,6 +261,8 @@
 				181E25B51EF57B95007CF90A /* Blending.fsh */,
 				18EF47A91EFAAC4300A79D09 /* FramebufferScreen.vsh */,
 				18EF47AB1EFAACCA00A79D09 /* FramebufferScreen.fsh */,
+				18EF47AF1EFCD36E00A79D09 /* Skybox.vsh */,
+				18EF47B11EFCD3EC00A79D09 /* Skybox.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -285,6 +295,7 @@
 				180056D01EF4F32300446954 /* GrassBlendRenderer.swift */,
 				181E25B91EF664AE007CF90A /* WindowBlendRenderer.swift */,
 				18EF47A71EFAAA5200A79D09 /* FramebufferRenderer.swift */,
+				18EF47B31EFD634B00A79D09 /* SkyboxRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -437,6 +448,7 @@
 				18F1CCA61EF4F8F400F03C68 /* MyOpenGLVertexObject.swift */,
 				181E25B71EF64CA3007CF90A /* MyOpenGLTextureCache.swift */,
 				18EF47AD1EFAB3FD00A79D09 /* MyOpenGLFramebuffer.swift */,
+				18EF47B51EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift */,
 			);
 			path = OpenGLScratch;
 			sourceTree = "<group>";
@@ -529,12 +541,14 @@
 				189578FC1EDAA4130025196E /* Lighting.fsh in Resources */,
 				18D0F0331EE1B31400EEECAC /* matrix4x4.inl in Resources */,
 				18D0F0361EE1B31400EEECAC /* vector3.inl in Resources */,
+				18EF47B01EFCD36E00A79D09 /* Skybox.vsh in Resources */,
 				18D0F0351EE1B31400EEECAC /* vector2.inl in Resources */,
 				18D0F0301EE1B31400EEECAC /* config.h.in in Resources */,
 				18EF47AA1EFAAC4300A79D09 /* FramebufferScreen.vsh in Resources */,
 				181E25B61EF57B95007CF90A /* Blending.fsh in Resources */,
 				18AE58471EDB16F80029BEAF /* RectanglePerspective.vsh in Resources */,
 				18EF47AC1EFAACCA00A79D09 /* FramebufferScreen.fsh in Resources */,
+				18EF47B21EFCD3EC00A79D09 /* Skybox.fsh in Resources */,
 				D15650181E647505008B5428 /* Main.storyboard in Resources */,
 				189579031EDAAACD0025196E /* Lamp.vsh in Resources */,
 			);
@@ -551,6 +565,7 @@
 				18D0EFE01EDFC93A00EEECAC /* MyOpenGLMesh.swift in Sources */,
 				18F1CCA71EF4F8F400F03C68 /* MyOpenGLVertexObject.swift in Sources */,
 				D15650131E647504008B5428 /* ViewController.swift in Sources */,
+				18EF47B41EFD634B00A79D09 /* SkyboxRenderer.swift in Sources */,
 				189042BB1EC179AD0083B094 /* MyOpenGLProgram.swift in Sources */,
 				18EF47AE1EFAB3FD00A79D09 /* MyOpenGLFramebuffer.swift in Sources */,
 				189042BD1EC1E99C0083B094 /* RectangleRenderer.swift in Sources */,
@@ -580,6 +595,7 @@
 				189578F61ED470330025196E /* LightingAndLampRenderer.swift in Sources */,
 				18D0EFF11EE1B2AD00EEECAC /* MyAssimpLoader.mm in Sources */,
 				18D0EFCE1EDBB31400EEECAC /* LightingWithMapsRenderer.swift in Sources */,
+				18EF47B61EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift in Sources */,
 				D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */,
 				189578F01ED3D8F00025196E /* MyOpenGLUtils.swift in Sources */,
 				189578E81ED18B670025196E /* RectanglePerspectiveRenderer.swift in Sources */,

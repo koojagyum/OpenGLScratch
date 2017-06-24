@@ -81,7 +81,7 @@ class WindowBlendRenderer: DepthTestRenderer {
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture3?.textureId)!)
 
-            self.windowVertex?.useVertexObject {
+            self.windowVertex?.useVertexObjectWith {
                 for window in sortedWindows {
                     var model = GLKMatrix4TranslateWithVector3(GLKMatrix4Identity, window.value)
                     MyOpenGLUtils.uniformMatrix4fv(modelLoc, 1, GLboolean(GL_FALSE), &model)

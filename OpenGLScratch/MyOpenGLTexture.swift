@@ -12,47 +12,58 @@ import OpenGL.GL3
 
 class MyOpenGLTexture {
     let textureId: GLuint
+    let textureTarget: Int32
 
-    public init(image: CGImage) {
+    init(textureTarget: Int32) {
+        var texture: GLuint = 0
+        glGenTextures(1, &texture)
+
+        self.textureId = texture
+        self.textureTarget = textureTarget
+    }
+
+    convenience init?(image: CGImage, textureTarget: Int32) {
         let width = image.width
         let height = image.height
 
         guard((width > 0) && (height > 0)) else {
             fatalError("Tried to pass in a zero-sized image")
+            return nil
         }
 
         var dataFromImageDataProvider:CFData!
-        var imageData:UnsafeMutablePointer<GLubyte>!
         let format = GL_RGBA
 
         dataFromImageDataProvider = image.dataProvider?.data
-        imageData = UnsafeMutablePointer<GLubyte>(mutating:CFDataGetBytePtr(dataFromImageDataProvider)!)
+        let imageData = UnsafeMutablePointer<GLubyte>(mutating:CFDataGetBytePtr(dataFromImageDataProvider)!)
 
-        var texture: GLuint = 0
-        glGenTextures(1, &texture)
-        glBindTexture(GLenum(GL_TEXTURE_2D), texture)
-
-        glTexImage2D(GLenum(GL_TEXTURE_2D), 0, GL_RGBA, GLsizei(width), GLsizei(height), 0, GLenum(format), GLenum(GL_UNSIGNED_BYTE), imageData)
-        glGenerateMipmap(GLenum(GL_TEXTURE_2D))
-
-        glBindTexture(GLenum(GL_TEXTURE_2D), 0)
-        self.textureId = texture
+        self.init(textureTarget: textureTarget)
+        self.useTextureWith {
+            glTexImage2D(GLenum(textureTarget), 0, GL_RGBA, GLsizei(width), GLsizei(height), 0, GLenum(format), GLenum(GL_UNSIGNED_BYTE), imageData)
+            glGenerateMipmap(GLenum(textureTarget))
+        }
     }
 
-    public convenience init(image: NSImage) {
+    public convenience init?(image: CGImage) {
+        self.init(image: image, textureTarget: GL_TEXTURE_2D)
+    }
+
+    public convenience init?(image: NSImage) {
         self.init(image: image.cgImage(forProposedRect: nil, context: nil, hints: nil)!)
     }
 
-    public convenience init(imageName: String) {
+    public convenience init?(imageName: String) {
         guard let image = NSImage(named:imageName) else {
             fatalError("No such image named: \(imageName) in your application bundle")
+            return nil
         }
         self.init(image: image)
     }
 
-    public convenience init(path: String) {
+    public convenience init?(path: String) {
         guard let image = NSImage(contentsOfFile: path) else {
             fatalError("No such image in path: \(path)")
+            return nil
         }
         self.init(image: image)
     }
@@ -60,5 +71,11 @@ class MyOpenGLTexture {
     deinit {
         var textureIdToDelete = self.textureId
         glDeleteTextures(1, &textureIdToDelete);
+    }
+
+    func useTextureWith(block: () -> ()) {
+        glBindTexture(GLenum(self.textureTarget), self.textureId)
+        block()
+        glBindTexture(GLenum(self.textureTarget), 0)
     }
 }

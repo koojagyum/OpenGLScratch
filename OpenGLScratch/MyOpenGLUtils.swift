@@ -42,6 +42,14 @@ class MyOpenGLUtils {
         }
     }
 
+    static func uniformMatrix3fv(_ location: GLint, _ count: GLsizei, _ transpose: GLboolean, _ value: inout GLKMatrix3) {
+        withUnsafePointer(to: &value.m) {
+            $0.withMemoryRebound(to: Float.self, capacity: 12) {
+                glUniformMatrix3fv(location, count, transpose, $0)
+            }
+        }
+    }
+
     static func loadStringFromResource(name: String, type: String) -> String? {
         do {
             let string = try String(contentsOfFile: Bundle.main.path(forResource: name, ofType: type)!)

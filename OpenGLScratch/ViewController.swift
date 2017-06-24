@@ -10,7 +10,7 @@ import Cocoa
 
 // Move these into the proper module
 enum SceneType: String {
-    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer
+    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer, Skybox
 }
 
 enum PolygonMode: String {
@@ -24,10 +24,7 @@ class ViewController: NSViewController {
     @IBOutlet weak var openGLView: MyOpenGLView!
 
     let renderers: [SceneType : MyOpenGLRendererDelegate?] = [
-        SceneType.Triangle: TriangleRenderer(),
-        SceneType.Rectangle: RectangleRenderer(),
         SceneType.Circle: CircleRenderer(),
-        SceneType.SpinningLamp: SpinningLampRenderer(),
         SceneType.MultipleLights: MultipleLightsRenderer(),
         SceneType.Model: ModelRenderer(),
         SceneType.DepthTest: DepthTestRenderer(),
@@ -35,6 +32,7 @@ class ViewController: NSViewController {
         SceneType.GrassBlend: GrassBlendRenderer(),
         SceneType.WindowBlend: WindowBlendRenderer(),
         SceneType.Framebuffer: FramebufferRenderer(),
+        SceneType.Skybox: SkyboxRenderer(),
     ]
 
     override func viewDidLoad() {
