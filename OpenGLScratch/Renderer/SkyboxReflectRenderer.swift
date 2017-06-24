@@ -11,6 +11,13 @@ import GLKit
 import OpenGL.GL3
 
 class SkyboxReflectRenderer: SkyboxRenderer {
+    var model: MyOpenGLModel?
+
+    override func prepare() {
+        super.prepare()
+        self.model = MyOpenGLModel(path: "/Users/koodev/Workspace/Resource/Pikachu/Pikachu.obj")
+    }
+
     override func prepareProgram() {
         super.prepareProgram()
         let cubeVshSource = MyOpenGLUtils.loadStringFromResource(name: "SkyboxReflectCube", type: "vsh")
@@ -87,6 +94,16 @@ class SkyboxReflectRenderer: SkyboxRenderer {
                     glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(self.cubeVertexObject!.count))
                 }
             }
+
+            // Model drawing
+            // Texture indices could be messed up sometimes
+            // since texture index of model is GL_TEXTURE0...
+            program.setMat4(name: "model", value: GLKMatrix4MakeScale(0.4, 0.4, 0.4))
+            if let m = self.model {
+                self.skyboxTexture?.useTextureWith {
+                    m.draw(program: program)
+                }
+            }
         }
 
         glDepthFunc(GLenum(GL_LEQUAL))
@@ -99,7 +116,7 @@ class SkyboxReflectRenderer: SkyboxRenderer {
                                0.0, 0.0, 0.0, 1.0)
             program.setMat4(name: "projection", value: projection)
             program.setMat4(name: "view", value: viewWithoutTrans)
-            
+
             self.skyboxVertexObject?.useVertexObjectWith {
                 self.skyboxTexture?.useTextureWith {
                     glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(self.skyboxVertexObject!.count))
@@ -107,5 +124,10 @@ class SkyboxReflectRenderer: SkyboxRenderer {
             }
         }
         glDisable(GLenum(GL_DEPTH_TEST))
+    }
+
+    override func dispose() {
+        super.dispose()
+        self.model = nil
     }
 }
