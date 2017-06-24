@@ -44,8 +44,16 @@ class MyOpenGLUtils {
 
     static func uniformMatrix3fv(_ location: GLint, _ count: GLsizei, _ transpose: GLboolean, _ value: inout GLKMatrix3) {
         withUnsafePointer(to: &value.m) {
-            $0.withMemoryRebound(to: Float.self, capacity: 12) {
+            $0.withMemoryRebound(to: Float.self, capacity: 9) {
                 glUniformMatrix3fv(location, count, transpose, $0)
+            }
+        }
+    }
+
+    static func uniform3fv(_ location: GLint, _ count: GLsizei, _ value: inout GLKVector3) {
+        withUnsafePointer(to: &value.v) {
+            $0.withMemoryRebound(to: Float.self, capacity: 3) {
+                glUniform3fv(location, count, $0)
             }
         }
     }

@@ -107,6 +107,12 @@ class MyOpenGLProgram {
         MyOpenGLUtils.uniformMatrix3fv(location, 1, GLboolean(GL_FALSE), &v)
     }
 
+    func setVec3(name: String, value: GLKVector3) {
+        let location = glGetUniformLocation(self.program, name)
+        var v = value
+        MyOpenGLUtils.uniform3fv(location, 1, &v)
+    }
+
     deinit {
         if (self.available) {
             glDeleteProgram(self.program)

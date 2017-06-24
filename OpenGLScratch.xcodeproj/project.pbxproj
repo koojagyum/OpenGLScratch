@@ -82,6 +82,9 @@
 		18EF47B21EFCD3EC00A79D09 /* Skybox.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EF47B11EFCD3EC00A79D09 /* Skybox.fsh */; };
 		18EF47B41EFD634B00A79D09 /* SkyboxRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF47B31EFD634B00A79D09 /* SkyboxRenderer.swift */; };
 		18EF47B61EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF47B51EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift */; };
+		18EF47B81EFEB67600A79D09 /* SkyboxReflectRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF47B71EFEB67600A79D09 /* SkyboxReflectRenderer.swift */; };
+		18EF47BA1EFEB73A00A79D09 /* SkyboxReflectCube.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EF47B91EFEB73A00A79D09 /* SkyboxReflectCube.vsh */; };
+		18EF47BC1EFEB74600A79D09 /* SkyboxReflectCube.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EF47BB1EFEB74600A79D09 /* SkyboxReflectCube.fsh */; };
 		18F1CCA71EF4F8F400F03C68 /* MyOpenGLVertexObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1CCA61EF4F8F400F03C68 /* MyOpenGLVertexObject.swift */; };
 		D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1088F111E704C6200C060FF /* MyOpenGLView.swift */; };
 		D15650111E647504008B5428 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D15650101E647504008B5428 /* AppDelegate.swift */; };
@@ -208,6 +211,9 @@
 		18EF47B11EFCD3EC00A79D09 /* Skybox.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Skybox.fsh; sourceTree = "<group>"; };
 		18EF47B31EFD634B00A79D09 /* SkyboxRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyboxRenderer.swift; sourceTree = "<group>"; };
 		18EF47B51EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLCubemapTexture.swift; sourceTree = "<group>"; };
+		18EF47B71EFEB67600A79D09 /* SkyboxReflectRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkyboxReflectRenderer.swift; sourceTree = "<group>"; };
+		18EF47B91EFEB73A00A79D09 /* SkyboxReflectCube.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SkyboxReflectCube.vsh; sourceTree = "<group>"; };
+		18EF47BB1EFEB74600A79D09 /* SkyboxReflectCube.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SkyboxReflectCube.fsh; sourceTree = "<group>"; };
 		18F1CCA61EF4F8F400F03C68 /* MyOpenGLVertexObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLVertexObject.swift; sourceTree = "<group>"; };
 		D1088F111E704C6200C060FF /* MyOpenGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLView.swift; sourceTree = "<group>"; };
 		D156500D1E647504008B5428 /* OpenGLScratch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenGLScratch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -263,6 +269,8 @@
 				18EF47AB1EFAACCA00A79D09 /* FramebufferScreen.fsh */,
 				18EF47AF1EFCD36E00A79D09 /* Skybox.vsh */,
 				18EF47B11EFCD3EC00A79D09 /* Skybox.fsh */,
+				18EF47B91EFEB73A00A79D09 /* SkyboxReflectCube.vsh */,
+				18EF47BB1EFEB74600A79D09 /* SkyboxReflectCube.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -296,6 +304,7 @@
 				181E25B91EF664AE007CF90A /* WindowBlendRenderer.swift */,
 				18EF47A71EFAAA5200A79D09 /* FramebufferRenderer.swift */,
 				18EF47B31EFD634B00A79D09 /* SkyboxRenderer.swift */,
+				18EF47B71EFEB67600A79D09 /* SkyboxReflectRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -518,6 +527,7 @@
 				18D0EFDA1EDC4FE900EEECAC /* SpotLight.fsh in Resources */,
 				18D0F0441EE4D7CC00EEECAC /* BasicModel.vsh in Resources */,
 				18D0EFCC1EDBB26800EEECAC /* LightingWithMaps.vsh in Resources */,
+				18EF47BC1EFEB74600A79D09 /* SkyboxReflectCube.fsh in Resources */,
 				189578FA1EDAA3B70025196E /* Lighting.vsh in Resources */,
 				18AE58451EDB16570029BEAF /* Circle.vsh in Resources */,
 				180CD31D1EDB2C7400AD5364 /* LightingWithMaterial.fsh in Resources */,
@@ -525,6 +535,7 @@
 				18AE58431EDB16370029BEAF /* Circle.fsh in Resources */,
 				18D0EFD41EDC47CB00EEECAC /* PointLight.fsh in Resources */,
 				18D0F02F1EE1B31400EEECAC /* color4.inl in Resources */,
+				18EF47BA1EFEB73A00A79D09 /* SkyboxReflectCube.vsh in Resources */,
 				18D0F0341EE1B31400EEECAC /* quaternion.inl in Resources */,
 				18D0F02E1EE1B31400EEECAC /* .editorconfig in Resources */,
 				189579051EDAAAF10025196E /* Lamp.fsh in Resources */,
@@ -563,6 +574,7 @@
 			files = (
 				189578F81ED865980025196E /* CircleRenderer.swift in Sources */,
 				18D0EFE01EDFC93A00EEECAC /* MyOpenGLMesh.swift in Sources */,
+				18EF47B81EFEB67600A79D09 /* SkyboxReflectRenderer.swift in Sources */,
 				18F1CCA71EF4F8F400F03C68 /* MyOpenGLVertexObject.swift in Sources */,
 				D15650131E647504008B5428 /* ViewController.swift in Sources */,
 				18EF47B41EFD634B00A79D09 /* SkyboxRenderer.swift in Sources */,

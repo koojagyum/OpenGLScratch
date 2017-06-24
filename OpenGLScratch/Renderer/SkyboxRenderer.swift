@@ -192,5 +192,11 @@ class SkyboxRenderer: MyOpenGLRendererDelegate {
     }
 
     func dispose() {
+        self.cubeProgram = nil
+        self.skyboxProgram = nil
+        self.cubeVertexObject = nil
+        self.skyboxVertexObject = nil
+        self.cubeTexture = nil
+        self.skyboxTexture = nil
     }
 }
