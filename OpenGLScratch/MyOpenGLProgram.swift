@@ -20,11 +20,15 @@ class MyOpenGLProgram {
         return (self.state == ProgramState.Available)
     }
 
-    init?(vshSource: String, fshSource: String) {
-        self.program = self.createProgram(vshSource, fshSource)
+    init?(vshSource: String, fshSource: String, gshSource: String?) {
+        self.program = self.createProgram(vshSource, fshSource, gshSource)
         if (!self.available) {
             return nil
         }
+    }
+
+    convenience init?(vshSource: String, fshSource: String) {
+        self.init(vshSource: vshSource, fshSource: fshSource, gshSource: nil)
     }
 
     open func useProgram() -> Bool {
@@ -41,17 +45,28 @@ class MyOpenGLProgram {
     }
 
     private func createProgram(_ vshSource: String, _ fshSource: String) -> GLuint {
+        return self.createProgram(vshSource, fshSource, nil)
+    }
+
+    private func createProgram(_ vshSource: String, _ fshSource: String, _ gshSource: String?) -> GLuint {
         let vertexShader = self.createShader(vshSource, GLenum(GL_VERTEX_SHADER))
         let fragmentShader = self.createShader(fshSource, GLenum(GL_FRAGMENT_SHADER))
+        let geometryShader = self.createShader(gshSource, GLenum(GL_GEOMETRY_SHADER))
 
         defer {
             glDeleteShader(fragmentShader)
             glDeleteShader(vertexShader)
+            if geometryShader != 0 {
+                glDeleteShader(geometryShader)
+            }
         }
 
         let shaderProgram = glCreateProgram()
         glAttachShader(shaderProgram, vertexShader)
         glAttachShader(shaderProgram, fragmentShader)
+        if geometryShader != 0 {
+            glAttachShader(shaderProgram, geometryShader)
+        }
         glLinkProgram(shaderProgram)
 
         var sucess: GLint = 0
@@ -69,8 +84,12 @@ class MyOpenGLProgram {
         return shaderProgram
     }
 
-    private func createShader(_ shaderSource: String, _ programType: GLenum) -> GLuint {
-        var rawSourceRef = UnsafePointer<GLchar>? (shaderSource.cString(using: String.Encoding.ascii)!)
+    private func createShader(_ shaderSource: String?, _ programType: GLenum) -> GLuint {
+        guard let shaderSourceUnwrapped = shaderSource else {
+            return 0
+        }
+
+        var rawSourceRef = UnsafePointer<GLchar>? (shaderSourceUnwrapped.cString(using: String.Encoding.ascii)!)
         let shader = glCreateShader(GLenum(programType))
         glShaderSource(shader, 1, &rawSourceRef, nil)
         glCompileShader(shader)

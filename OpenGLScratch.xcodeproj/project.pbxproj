@@ -42,6 +42,10 @@
 		18A524011F04B4250037BAC4 /* Green.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A524001F04B4250037BAC4 /* Green.fsh */; };
 		18A524031F04B4360037BAC4 /* Blue.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A524021F04B4360037BAC4 /* Blue.fsh */; };
 		18A524051F04B4450037BAC4 /* Yellow.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A524041F04B4450037BAC4 /* Yellow.fsh */; };
+		18A524071F0548DE0037BAC4 /* GeometryShaderRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A524061F0548DE0037BAC4 /* GeometryShaderRenderer.swift */; };
+		18A524091F0549900037BAC4 /* GeometryShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A524081F0549900037BAC4 /* GeometryShader.vsh */; };
+		18A5240B1F0549FE0037BAC4 /* GeometryShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A5240A1F0549FE0037BAC4 /* GeometryShader.fsh */; };
+		18A5240D1F054A360037BAC4 /* GeometryShader.gsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A5240C1F054A360037BAC4 /* GeometryShader.gsh */; };
 		18AE58431EDB16370029BEAF /* Circle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18AE58421EDB16370029BEAF /* Circle.fsh */; };
 		18AE58451EDB16570029BEAF /* Circle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18AE58441EDB16570029BEAF /* Circle.vsh */; };
 		18AE58471EDB16F80029BEAF /* RectanglePerspective.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18AE58461EDB16F80029BEAF /* RectanglePerspective.vsh */; };
@@ -135,6 +139,10 @@
 		18A524001F04B4250037BAC4 /* Green.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Green.fsh; sourceTree = "<group>"; };
 		18A524021F04B4360037BAC4 /* Blue.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Blue.fsh; sourceTree = "<group>"; };
 		18A524041F04B4450037BAC4 /* Yellow.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Yellow.fsh; sourceTree = "<group>"; };
+		18A524061F0548DE0037BAC4 /* GeometryShaderRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryShaderRenderer.swift; sourceTree = "<group>"; };
+		18A524081F0549900037BAC4 /* GeometryShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = GeometryShader.vsh; sourceTree = "<group>"; };
+		18A5240A1F0549FE0037BAC4 /* GeometryShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = GeometryShader.fsh; sourceTree = "<group>"; };
+		18A5240C1F054A360037BAC4 /* GeometryShader.gsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = GeometryShader.gsh; sourceTree = "<group>"; };
 		18AE58421EDB16370029BEAF /* Circle.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.fsh; sourceTree = "<group>"; };
 		18AE58441EDB16570029BEAF /* Circle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.vsh; sourceTree = "<group>"; };
 		18AE58461EDB16F80029BEAF /* RectanglePerspective.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = RectanglePerspective.vsh; sourceTree = "<group>"; };
@@ -288,6 +296,9 @@
 				18A524001F04B4250037BAC4 /* Green.fsh */,
 				18A524021F04B4360037BAC4 /* Blue.fsh */,
 				18A524041F04B4450037BAC4 /* Yellow.fsh */,
+				18A524081F0549900037BAC4 /* GeometryShader.vsh */,
+				18A5240A1F0549FE0037BAC4 /* GeometryShader.fsh */,
+				18A5240C1F054A360037BAC4 /* GeometryShader.gsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -323,6 +334,7 @@
 				18EF47B31EFD634B00A79D09 /* SkyboxRenderer.swift */,
 				18EF47B71EFEB67600A79D09 /* SkyboxReflectRenderer.swift */,
 				18A523FA1F04B1DC0037BAC4 /* UniformBufferObjectRenderer.swift */,
+				18A524061F0548DE0037BAC4 /* GeometryShaderRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -561,11 +573,13 @@
 				18D0F02E1EE1B31400EEECAC /* .editorconfig in Resources */,
 				189579051EDAAAF10025196E /* Lamp.fsh in Resources */,
 				18D0EFDE1EDD930900EEECAC /* MultipleLights.fsh in Resources */,
+				18A5240D1F054A360037BAC4 /* GeometryShader.gsh in Resources */,
 				189578FF1EDAA9580025196E /* Triangle.vsh in Resources */,
 				180056CF1EEFA41600446954 /* StencilTestSingleColor.fsh in Resources */,
 				180056CB1EEE4DB300446954 /* DepthTest.fsh in Resources */,
 				D15650151E647505008B5428 /* Assets.xcassets in Resources */,
 				18D0F0461EE4D7E400EEECAC /* BasicModel.fsh in Resources */,
+				18A5240B1F0549FE0037BAC4 /* GeometryShader.fsh in Resources */,
 				18D0EFD21EDC3DFC00EEECAC /* DirectionalLight.fsh in Resources */,
 				18D0EFCA1EDBB0EE00EEECAC /* LightingWithMaps.fsh in Resources */,
 				180056C91EEE4D9C00446954 /* DepthTest.vsh in Resources */,
@@ -584,6 +598,7 @@
 				18EF47AC1EFAACCA00A79D09 /* FramebufferScreen.fsh in Resources */,
 				18EF47B21EFCD3EC00A79D09 /* Skybox.fsh in Resources */,
 				D15650181E647505008B5428 /* Main.storyboard in Resources */,
+				18A524091F0549900037BAC4 /* GeometryShader.vsh in Resources */,
 				189579031EDAAACD0025196E /* Lamp.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -596,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				189578F81ED865980025196E /* CircleRenderer.swift in Sources */,
+				18A524071F0548DE0037BAC4 /* GeometryShaderRenderer.swift in Sources */,
 				18D0EFE01EDFC93A00EEECAC /* MyOpenGLMesh.swift in Sources */,
 				18EF47B81EFEB67600A79D09 /* SkyboxReflectRenderer.swift in Sources */,
 				18F1CCA71EF4F8F400F03C68 /* MyOpenGLVertexObject.swift in Sources */,
