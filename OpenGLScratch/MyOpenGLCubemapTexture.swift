@@ -21,8 +21,6 @@ class MyOpenGLCubemapTexture: MyOpenGLTexture {
         self.useTextureWith {
             _ = facePaths.enumerated().map {
                 (index, path) in
-                print("Texture loading index: \(index), path: \(path)")
-
                 guard let nsImage = NSImage(contentsOfFile: path), let cgImage = nsImage.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
                     fatalError("Failed to load an image")
                 }
@@ -53,47 +51,5 @@ class MyOpenGLCubemapTexture: MyOpenGLTexture {
     convenience init?(image: CGImage, textureTarget: Int32) {
         // Not allowed to use!
         return nil
-    }
-
-    func imageDataFrom(path: String) -> (UnsafeMutablePointer<GLubyte>?, Int, Int) {
-        guard let nsImage = NSImage(contentsOfFile: path), let cgImage = nsImage.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
-            fatalError("Failed to load an image")
-        }
-
-        let width = cgImage.width
-        let height = cgImage.height
-
-        guard((width > 0) && (height > 0)) else {
-            fatalError("Tried to pass in a zero-sized image")
-        }
-
-        var dataFromImageDataProvider:CFData!
-        var imageData:UnsafeMutablePointer<GLubyte>!
-
-        dataFromImageDataProvider = cgImage.dataProvider?.data
-        imageData = UnsafeMutablePointer<GLubyte>(mutating:CFDataGetBytePtr(dataFromImageDataProvider)!)
-
-        return (imageData, width, height)
-    }
-    
-    func imageDataFrom(image: NSImage) -> (UnsafeMutablePointer<GLubyte>?, Int, Int) {
-        guard let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil) else {
-            fatalError("Failed to load an image")
-        }
-
-        let width = cgImage.width
-        let height = cgImage.height
-
-        guard((width > 0) && (height > 0)) else {
-            fatalError("Tried to pass in a zero-sized image")
-        }
-
-        var dataFromImageDataProvider:CFData!
-        var imageData:UnsafeMutablePointer<GLubyte>!
-
-        dataFromImageDataProvider = cgImage.dataProvider?.data
-        imageData = UnsafeMutablePointer<GLubyte>(mutating:CFDataGetBytePtr(dataFromImageDataProvider)!)
-
-        return (imageData, width, height)
     }
 }
