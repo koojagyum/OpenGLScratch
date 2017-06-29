@@ -43,10 +43,11 @@ class GrassBlendRenderer: DepthTestRenderer {
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture3?.textureId)!)
 
             self.transparentVertex?.useVertexObjectWith {
+                (vertexObject) in
                 for vegetation in vegetations {
                     var model = GLKMatrix4TranslateWithVector3(GLKMatrix4Identity, vegetation)
                     MyOpenGLUtils.uniformMatrix4fv(modelLoc, 1, GLboolean(GL_FALSE), &model)
-                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(self.transparentVertex!.count))
+                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
                 }
             }
 

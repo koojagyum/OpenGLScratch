@@ -121,9 +121,10 @@ class UniformBufferObjectRenderer: MyOpenGLRendererDelegate {
         let drawingBlock: (MyOpenGLProgram, Float, Float) -> () = {
             (program, x, y) in
             self.cubeVertexObject?.useVertexObjectWith {
+                (vertexObject) in
                 let model = GLKMatrix4MakeTranslation(x, y, +0.00)
                 program.setMat4(name: "model", value: model)
-                glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei((self.cubeVertexObject?.count)!))
+                glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
             }
         }
 

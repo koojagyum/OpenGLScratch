@@ -90,8 +90,9 @@ class SkyboxReflectRenderer: SkyboxRenderer {
             program.setVec3(name: "cameraPos", value: (camera?.position)!)
 
             self.cubeVertexObject?.useVertexObjectWith {
+                (vertexObject) in
                 self.skyboxTexture?.useTextureWith {
-                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(self.cubeVertexObject!.count))
+                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
                 }
             }
 
@@ -118,8 +119,9 @@ class SkyboxReflectRenderer: SkyboxRenderer {
             program.setMat4(name: "view", value: viewWithoutTrans)
 
             self.skyboxVertexObject?.useVertexObjectWith {
+                (vertexObject) in
                 self.skyboxTexture?.useTextureWith {
-                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(self.skyboxVertexObject!.count))
+                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
                 }
             }
         }

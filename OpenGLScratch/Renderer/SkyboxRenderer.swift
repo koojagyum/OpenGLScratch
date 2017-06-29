@@ -165,8 +165,9 @@ class SkyboxRenderer: MyOpenGLRendererDelegate {
             program.setMat4(name: "projection", value: projection)
 
             self.cubeVertexObject?.useVertexObjectWith {
+                (vertexObject) in
                 self.cubeTexture?.useTextureWith {
-                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(self.cubeVertexObject!.count))
+                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
                 }
             }
         }
@@ -183,8 +184,9 @@ class SkyboxRenderer: MyOpenGLRendererDelegate {
             program.setMat4(name: "view", value: viewWithoutTrans)
 
             self.skyboxVertexObject?.useVertexObjectWith {
+                (vertexObject) in
                 self.skyboxTexture?.useTextureWith {
-                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(self.skyboxVertexObject!.count))
+                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
                 }
             }
         }

@@ -82,10 +82,11 @@ class WindowBlendRenderer: DepthTestRenderer {
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture3?.textureId)!)
 
             self.windowVertex?.useVertexObjectWith {
+                (vertexObject) in
                 for window in sortedWindows {
                     var model = GLKMatrix4TranslateWithVector3(GLKMatrix4Identity, window.value)
                     MyOpenGLUtils.uniformMatrix4fv(modelLoc, 1, GLboolean(GL_FALSE), &model)
-                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(self.windowVertex!.count))
+                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
                 }
             }
 
