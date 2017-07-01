@@ -14,7 +14,6 @@ class RectangleRotationRenderer: RectangleTextureRenderer {
     override var renderInterval: Double {
         return 1.0 / 60.0
     }
-    var transformLoc: GLint = 0
     var rotation: Float = 0.0
 
     override func prepare() {
@@ -48,26 +47,11 @@ class RectangleRotationRenderer: RectangleTextureRenderer {
         self.shaderProgram = MyOpenGLProgram(vshSource: vshSource, fshSource: fshSource)
         self.prepareVertices()
         self.prepareTextures()
-        self.transformLoc = glGetUniformLocation((self.shaderProgram?.program)!, "transform")
     }
 
     override func render(_ bounds: NSRect) {
-        if let program = self.shaderProgram, program.useProgram() {
-            var trans: GLKMatrix4 = GLKMatrix4Identity
-
-            self.rotation += 1.0
-            trans = GLKMatrix4RotateWithVector3(trans, MyOpenGLUtils.DEGREE2RADIAN(self.rotation), GLKVector3Make(0.0, 0.0, 1.0))
-
-            // let m = UnsafeMutablePointer(&trans.m)
-            // let p = UnsafeRawPointer(m).bindMemory(to: Float.self, capacity: 16)
-            // glUniformMatrix4fv(self.transformLoc, 1, GLboolean(GL_FALSE), p)
-
-            withUnsafePointer(to: &trans.m) {
-                $0.withMemoryRebound(to: Float.self, capacity: 16) {
-                    glUniformMatrix4fv(self.transformLoc, 1, GLboolean(GL_FALSE), $0)
-                }
-            }
-
+        self.shaderProgram?.useProgramWith {
+            (program) in
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture1?.textureId)!)
             glUniform1i(glGetUniformLocation(program.program, "ourTexture1"), 0)
@@ -75,13 +59,14 @@ class RectangleRotationRenderer: RectangleTextureRenderer {
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture2?.textureId)!)
             glUniform1i(glGetUniformLocation(program.program, "ourTexture2"), 1)
 
-            glBindVertexArray(self.vao)
-            glDrawElements(GLenum(GL_TRIANGLES), 6, GLenum(GL_UNSIGNED_INT), nil)
-            glBindVertexArray(0)
+            let trans = GLKMatrix4MakeRotation(self.rotation.radian, 0.0, 0.0, 1.0)
+            program.setMat4(name: "transform", value: trans)
 
-            glBindTexture(GLenum(GL_TEXTURE_2D), 0)
-            glActiveTexture(GLenum(GL_TEXTURE0))
-            glBindTexture(GLenum(GL_TEXTURE_2D), 0)
+            self.vertexObject?.useVertexObjectWith {
+                (vertexObejct) in
+                glDrawElements(GLenum(GL_TRIANGLES), GLsizei(vertexObejct.count), GLenum(GL_UNSIGNED_INT), nil)
+            }
         }
+        self.rotation += 1.0
     }
 }

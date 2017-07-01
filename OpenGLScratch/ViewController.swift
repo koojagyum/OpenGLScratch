@@ -10,7 +10,7 @@ import Cocoa
 
 // Move these into the proper module
 enum SceneType: String {
-    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer, Skybox, SkyboxReflect, UniformBufferObject, GeometryShader, ModelExplode, VisualizeNormal, InstancedArray
+    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer, Skybox, SkyboxReflect, UniformBufferObject, GeometryShader, ModelExplode, VisualizeNormal, InstancedArray, Asteroid
 }
 
 enum PolygonMode: String {
@@ -24,7 +24,6 @@ class ViewController: NSViewController {
     @IBOutlet weak var openGLView: MyOpenGLView!
 
     let renderers: [SceneType : MyOpenGLRendererDelegate?] = [
-        SceneType.Circle: CircleRenderer(),
         SceneType.MultipleLights: MultipleLightsRenderer(),
         SceneType.WindowBlend: WindowBlendRenderer(),
         SceneType.Framebuffer: FramebufferRenderer(),
@@ -32,6 +31,7 @@ class ViewController: NSViewController {
         SceneType.ModelExplode: ModelExplodeRenderer(),
         SceneType.VisualizeNormal: VisualizeNormalRenderer(),
         SceneType.InstancedArray: InstancedArrayRenderer(),
+        SceneType.Asteroid: AsteroidRenderer(),
     ]
 
     override func viewDidLoad() {

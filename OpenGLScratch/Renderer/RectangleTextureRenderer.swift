@@ -56,31 +56,12 @@ class RectangleTextureRenderer: RectangleRenderer {
             0, 1, 2,
             0, 2, 3
         ]
-
-        glGenVertexArrays(1, &self.vao)
-        glBindVertexArray(self.vao)
-
-        glGenBuffers(1, &self.vbo)
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), self.vbo)
-        glBufferData(GLenum(GL_ARRAY_BUFFER), MemoryLayout<GLfloat>.stride * vertices.count, vertices, GLenum(GL_STATIC_DRAW))
-
-        glGenBuffers(1, &self.ebo)
-        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), self.ebo)
-        glBufferData(GLenum(GL_ELEMENT_ARRAY_BUFFER), MemoryLayout<GLuint>.stride * indices.count, indices, GLenum(GL_STATIC_DRAW))
-
-        glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(8 * MemoryLayout<GLfloat>.stride), nil)
-        glVertexAttribPointer(1, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(8 * MemoryLayout<GLfloat>.stride), MyOpenGLUtils.BUFFER_OFFSET(MemoryLayout<GLfloat>.stride * 3))
-        glVertexAttribPointer(2, 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(8 * MemoryLayout<GLfloat>.stride), MyOpenGLUtils.BUFFER_OFFSET(MemoryLayout<GLfloat>.stride * 6))
-        glEnableVertexAttribArray(0)
-        glEnableVertexAttribArray(1)
-        glEnableVertexAttribArray(2)
-
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
-        glBindVertexArray(0)
+        self.vertexObject = MyOpenGLVertexObject(vertices: vertices, alignment: [3, 3, 2], indices: indices)
     }
 
     override func render(_ bounds: NSRect) {
-        if let program = self.shaderProgram, program.useProgram() {
+        self.shaderProgram?.useProgramWith {
+            (program) in
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture1?.textureId)!)
             glUniform1i(glGetUniformLocation(program.program, "ourTexture1"), 0)
@@ -88,9 +69,10 @@ class RectangleTextureRenderer: RectangleRenderer {
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture2?.textureId)!)
             glUniform1i(glGetUniformLocation(program.program, "ourTexture2"), 1)
 
-            glBindVertexArray(self.vao)
-            glDrawElements(GLenum(GL_TRIANGLES), 6, GLenum(GL_UNSIGNED_INT), nil)
-            glBindVertexArray(0)
+            self.vertexObject?.useVertexObjectWith {
+                (vertexObject) in
+                glDrawElements(GLenum(GL_TRIANGLES), GLsizei(vertexObject.count), GLenum(GL_UNSIGNED_INT), nil)
+            }
 
             glBindTexture(GLenum(GL_TEXTURE_2D), 0)
             glActiveTexture(GLenum(GL_TEXTURE0))

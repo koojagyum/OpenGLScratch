@@ -42,12 +42,16 @@ class TriangleTextureRenderer: TriangleRenderer {
         self.prepareTextures()
     }
 
-    override func renderInProgram() {
-        glBindVertexArray(self.vao)
-        glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture?.textureId)!)
-        glDrawArrays(GLenum(GL_TRIANGLES), 0, 3)
-        glBindTexture(GLenum(GL_TEXTURE_2D), 0)
-        glBindVertexArray(0)
+    override func render(_ bounds: NSRect) {
+        self.shaderProgram?.useProgramWith {
+            (program) in
+            self.vertexObject?.useVertexObjectWith {
+                (vertexObject) in
+                self.texture?.useTextureWith {
+                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
+                }
+            }
+        }
     }
 
     override func dispose() {
@@ -61,23 +65,7 @@ class TriangleTextureRenderer: TriangleRenderer {
             +0.5, -0.5, +0.0, 0.0, 1.0, 0.0, 1.0, 0.0,
             +0.0, +0.5, +0.0, 0.0, 0.0, 1.0, 0.5, 1.0,
         ]
-
-        glGenVertexArrays(1, &self.vao)
-        glBindVertexArray(self.vao)
-
-        glGenBuffers(1, &self.vbo)
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), self.vbo)
-        glBufferData(GLenum(GL_ARRAY_BUFFER), MemoryLayout<GLfloat>.stride * vertices.count, vertices, GLenum(GL_STATIC_DRAW))
-
-        glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(8 * MemoryLayout<GLfloat>.stride), nil)
-        glVertexAttribPointer(1, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(8 * MemoryLayout<GLfloat>.stride), MyOpenGLUtils.BUFFER_OFFSET(MemoryLayout<GLfloat>.stride * 3))
-        glVertexAttribPointer(2, 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(8 * MemoryLayout<GLfloat>.stride), MyOpenGLUtils.BUFFER_OFFSET(MemoryLayout<GLfloat>.stride * 6))
-        glEnableVertexAttribArray(0)
-        glEnableVertexAttribArray(1)
-        glEnableVertexAttribArray(2)
-
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
-        glBindVertexArray(0)
+        self.vertexObject = MyOpenGLVertexObject(vertices: vertices, alignment: [3, 3, 2])
     }
 
     func prepareTextures() {

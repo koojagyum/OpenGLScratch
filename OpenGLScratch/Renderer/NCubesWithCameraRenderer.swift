@@ -16,8 +16,15 @@ class NCubesWithCameraRenderer: CubeRenderer {
     }
 
     override func render(_ bounds: NSRect) {
-        if let program = self.shaderProgram, program.useProgram() {
-            glEnable(GLenum(GL_DEPTH_TEST))
+        glEnable(GLenum(GL_DEPTH_TEST))
+        
+        self.shaderProgram?.useProgramWith {
+            (program) in
+            let view = self.camera?.viewMatrix
+            let projection = GLKMatrix4MakePerspective((Float(45.0)).radian, (Float(bounds.size.width / bounds.size.height)), 1.0, 100.0)
+
+            program.setMat4(name: "view", value: view!)
+            program.setMat4(name: "projection", value: projection)
 
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture1?.textureId)!)
@@ -25,16 +32,6 @@ class NCubesWithCameraRenderer: CubeRenderer {
             glActiveTexture(GLenum(GL_TEXTURE1))
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture2?.textureId)!)
             glUniform1i(glGetUniformLocation(program.program, "ourTexture2"), 1)
-
-            glBindVertexArray(self.vao)
-
-            self.rotation += 1.0
-
-            if var view = self.camera?.viewMatrix {
-                self.uniformMatrix4fv(self.viewLoc, 1, GLboolean(GL_FALSE), &view)
-            }
-            var projection = GLKMatrix4MakePerspective(MyOpenGLUtils.DEGREE2RADIAN(45.0), (Float(bounds.size.width / bounds.size.height)), 1.0, 100.0)
-            self.uniformMatrix4fv(self.projLoc, 1, GLboolean(GL_FALSE), &projection)
 
             let cubePositions: [GLKVector3] = [
                 GLKVector3Make(+0.0, +0.0, +0.0),
@@ -49,23 +46,25 @@ class NCubesWithCameraRenderer: CubeRenderer {
                 GLKVector3Make(-1.3, +1.0, -1.5),
             ]
 
-            for i in 0...9 {
-                let angle: GLfloat = 20.0 * Float(i)
-                var model = GLKMatrix4Identity
-                model = GLKMatrix4TranslateWithVector3(model, cubePositions[i])
-                model = GLKMatrix4RotateWithVector3(model, MyOpenGLUtils.DEGREE2RADIAN(angle), GLKVector3Make(1.0, 0.3, 0.5))
-                model = GLKMatrix4RotateWithVector3(model, MyOpenGLUtils.DEGREE2RADIAN(self.rotation), GLKVector3Make(0.5, 1.0, 0.0))
-                self.uniformMatrix4fv(self.modelLoc, 1, GLboolean(GL_FALSE), &model)
-                glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
+            self.vertexObject?.useVertexObjectWith {
+                (vertexObject) in
+                for i in 0...9 {
+                    let angle: GLfloat = 20.0 * Float(i)
+                    var model = GLKMatrix4Identity
+                    model = GLKMatrix4TranslateWithVector3(model, cubePositions[i])
+                    model = GLKMatrix4RotateWithVector3(model, angle.radian, GLKVector3Make(1.0, 0.3, 0.5))
+                    model = GLKMatrix4RotateWithVector3(model, self.rotation.radian, GLKVector3Make(0.5, 1.0, 0.0))
+                    program.setMat4(name: "model", value: model)
+                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
+                }
             }
-
-            glBindVertexArray(0)
-
+            
             glBindTexture(GLenum(GL_TEXTURE_2D), 0)
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), 0)
-
-            glDisable(GLenum(GL_DEPTH_TEST));
         }
+        
+        self.rotation += 1.0
+        glDisable(GLenum(GL_DEPTH_TEST));
     }
 }

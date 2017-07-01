@@ -60,35 +60,14 @@ class CubeRenderer: RectanglePerspectiveRenderer {
             -0.5,  0.5,  0.5,  0.0, 0.0,
             -0.5,  0.5, -0.5,  0.0, 1.0
         ]
-
-        glGenVertexArrays(1, &self.vao)
-        glBindVertexArray(self.vao)
-
-        glGenBuffers(1, &self.vbo)
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), self.vbo)
-        glBufferData(GLenum(GL_ARRAY_BUFFER), MemoryLayout<GLfloat>.stride * vertices.count, vertices, GLenum(GL_STATIC_DRAW))
-
-        glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(5 * MemoryLayout<GLfloat>.stride), nil)
-        glVertexAttribPointer(2, 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(5 * MemoryLayout<GLfloat>.stride), MyOpenGLUtils.BUFFER_OFFSET(MemoryLayout<GLfloat>.stride * 3))
-        glEnableVertexAttribArray(0)
-        glEnableVertexAttribArray(2)
-
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
-        glBindVertexArray(0)
+        self.vertexObject = MyOpenGLVertexObject(vertices: vertices, alignment: [3, 2])
     }
 
     override func render(_ bounds: NSRect) {
-        if let program = self.shaderProgram, program.useProgram() {
-            glEnable(GLenum(GL_DEPTH_TEST))
-            self.rotation += 1.0
-            var model = GLKMatrix4MakeRotation(MyOpenGLUtils.DEGREE2RADIAN(self.rotation), 0.5, 1.0, 0.0)
-            var view = GLKMatrix4MakeTranslation(0.0, 0.0, -3.0)
-            var projection = GLKMatrix4MakePerspective(MyOpenGLUtils.DEGREE2RADIAN(45.0), (Float(bounds.size.width / bounds.size.height)), 1.0, 100.0)
+        glEnable(GLenum(GL_DEPTH_TEST))
 
-            self.uniformMatrix4fv(self.modelLoc, 1, GLboolean(GL_FALSE), &model)
-            self.uniformMatrix4fv(self.viewLoc, 1, GLboolean(GL_FALSE), &view)
-            self.uniformMatrix4fv(self.projLoc, 1, GLboolean(GL_FALSE), &projection)
-
+        self.shaderProgram?.useProgramWith {
+            (program) in
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture1?.textureId)!)
             glUniform1i(glGetUniformLocation(program.program, "ourTexture1"), 0)
@@ -96,15 +75,25 @@ class CubeRenderer: RectanglePerspectiveRenderer {
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture2?.textureId)!)
             glUniform1i(glGetUniformLocation(program.program, "ourTexture2"), 1)
 
-            glBindVertexArray(self.vao)
-            glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
-            glBindVertexArray(0)
+            let model = GLKMatrix4MakeRotation(self.rotation.radian, 0.5, 1.0, 0.0)
+            let view = GLKMatrix4MakeTranslation(0.0, 0.0, -3.0)
+            let projection = GLKMatrix4MakePerspective((Float(45.0)).radian, (Float(bounds.size.width / bounds.size.height)), 1.0, 100.0)
+
+            program.setMat4(name: "model", value: model)
+            program.setMat4(name: "view", value: view)
+            program.setMat4(name: "projection", value: projection)
+
+            self.vertexObject?.useVertexObjectWith {
+                (vertexObject) in
+                glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
+            }
 
             glBindTexture(GLenum(GL_TEXTURE_2D), 0)
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), 0)
-
-            glDisable(GLenum(GL_DEPTH_TEST));
         }
+
+        self.rotation += 1.0
+        glDisable(GLenum(GL_DEPTH_TEST));
     }
 }
