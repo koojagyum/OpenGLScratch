@@ -100,6 +100,17 @@ extension GLKVector3 {
         left = GLKVector3Subtract(left, right)
         return left
     }
+    var array: [Float] {
+        var tmp = self.v
+        return [Float](UnsafeBufferPointer(start: &tmp.0, count: 3))
+    }
+}
+
+extension GLKVector2 {
+    var array: [Float] {
+        var tmp = self.v
+        return [Float](UnsafeBufferPointer(start: &tmp.0, count: 2))
+    }
 }
 
 extension GLfloat {
