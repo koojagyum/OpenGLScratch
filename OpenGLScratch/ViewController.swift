@@ -10,7 +10,7 @@ import Cocoa
 
 // Move these into the proper module
 enum SceneType: String {
-    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer, Skybox, SkyboxReflect, UniformBufferObject, GeometryShader, ModelExplode
+    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer, Skybox, SkyboxReflect, UniformBufferObject, GeometryShader, ModelExplode, VisualizeNormal
 }
 
 enum PolygonMode: String {
@@ -30,8 +30,8 @@ class ViewController: NSViewController {
         SceneType.WindowBlend: WindowBlendRenderer(),
         SceneType.Framebuffer: FramebufferRenderer(),
         SceneType.SkyboxReflect: SkyboxReflectRenderer(),
-        SceneType.GeometryShader: GeometryShaderRenderer(),
         SceneType.ModelExplode: ModelExplodeRenderer(),
+        SceneType.VisualizeNormal: VisualizeNormalRenderer(),
     ]
 
     override func viewDidLoad() {

@@ -50,6 +50,11 @@
 		18A524111F0770570037BAC4 /* ModelExplode.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A524101F0770570037BAC4 /* ModelExplode.vsh */; };
 		18A524131F0771860037BAC4 /* ModelExplode.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A524121F0771860037BAC4 /* ModelExplode.fsh */; };
 		18A524151F0772540037BAC4 /* ModelExplode.gsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A524141F0772540037BAC4 /* ModelExplode.gsh */; };
+		18A524171F0782500037BAC4 /* VisualizeNormalRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A524161F0782500037BAC4 /* VisualizeNormalRenderer.swift */; };
+		18A524191F0783A50037BAC4 /* VisualizeNormal.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A524181F0783A50037BAC4 /* VisualizeNormal.vsh */; };
+		18A5241B1F0784290037BAC4 /* VisualizeNormal.gsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A5241A1F0784290037BAC4 /* VisualizeNormal.gsh */; };
+		18A5241D1F0787E90037BAC4 /* Model.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A5241C1F0787E90037BAC4 /* Model.vsh */; };
+		18A5241F1F0788090037BAC4 /* Model.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A5241E1F0788090037BAC4 /* Model.fsh */; };
 		18AE58431EDB16370029BEAF /* Circle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18AE58421EDB16370029BEAF /* Circle.fsh */; };
 		18AE58451EDB16570029BEAF /* Circle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18AE58441EDB16570029BEAF /* Circle.vsh */; };
 		18AE58471EDB16F80029BEAF /* RectanglePerspective.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18AE58461EDB16F80029BEAF /* RectanglePerspective.vsh */; };
@@ -151,6 +156,11 @@
 		18A524101F0770570037BAC4 /* ModelExplode.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ModelExplode.vsh; sourceTree = "<group>"; };
 		18A524121F0771860037BAC4 /* ModelExplode.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ModelExplode.fsh; sourceTree = "<group>"; };
 		18A524141F0772540037BAC4 /* ModelExplode.gsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ModelExplode.gsh; sourceTree = "<group>"; };
+		18A524161F0782500037BAC4 /* VisualizeNormalRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualizeNormalRenderer.swift; sourceTree = "<group>"; };
+		18A524181F0783A50037BAC4 /* VisualizeNormal.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = VisualizeNormal.vsh; sourceTree = "<group>"; };
+		18A5241A1F0784290037BAC4 /* VisualizeNormal.gsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = VisualizeNormal.gsh; sourceTree = "<group>"; };
+		18A5241C1F0787E90037BAC4 /* Model.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Model.vsh; sourceTree = "<group>"; };
+		18A5241E1F0788090037BAC4 /* Model.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Model.fsh; sourceTree = "<group>"; };
 		18AE58421EDB16370029BEAF /* Circle.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.fsh; sourceTree = "<group>"; };
 		18AE58441EDB16570029BEAF /* Circle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.vsh; sourceTree = "<group>"; };
 		18AE58461EDB16F80029BEAF /* RectanglePerspective.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = RectanglePerspective.vsh; sourceTree = "<group>"; };
@@ -310,6 +320,10 @@
 				18A524101F0770570037BAC4 /* ModelExplode.vsh */,
 				18A524121F0771860037BAC4 /* ModelExplode.fsh */,
 				18A524141F0772540037BAC4 /* ModelExplode.gsh */,
+				18A524181F0783A50037BAC4 /* VisualizeNormal.vsh */,
+				18A5241A1F0784290037BAC4 /* VisualizeNormal.gsh */,
+				18A5241C1F0787E90037BAC4 /* Model.vsh */,
+				18A5241E1F0788090037BAC4 /* Model.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -347,6 +361,7 @@
 				18A523FA1F04B1DC0037BAC4 /* UniformBufferObjectRenderer.swift */,
 				18A524061F0548DE0037BAC4 /* GeometryShaderRenderer.swift */,
 				18A5240E1F076F030037BAC4 /* ModelExplodeRenderer.swift */,
+				18A524161F0782500037BAC4 /* VisualizeNormalRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -571,6 +586,7 @@
 				18D0F0441EE4D7CC00EEECAC /* BasicModel.vsh in Resources */,
 				18D0EFCC1EDBB26800EEECAC /* LightingWithMaps.vsh in Resources */,
 				18EF47BC1EFEB74600A79D09 /* SkyboxReflectCube.fsh in Resources */,
+				18A5241F1F0788090037BAC4 /* Model.fsh in Resources */,
 				189578FA1EDAA3B70025196E /* Lighting.vsh in Resources */,
 				18AE58451EDB16570029BEAF /* Circle.vsh in Resources */,
 				180CD31D1EDB2C7400AD5364 /* LightingWithMaterial.fsh in Resources */,
@@ -580,6 +596,7 @@
 				18D0EFD41EDC47CB00EEECAC /* PointLight.fsh in Resources */,
 				18D0F02F1EE1B31400EEECAC /* color4.inl in Resources */,
 				18A524011F04B4250037BAC4 /* Green.fsh in Resources */,
+				18A5241B1F0784290037BAC4 /* VisualizeNormal.gsh in Resources */,
 				18EF47BA1EFEB73A00A79D09 /* SkyboxReflectCube.vsh in Resources */,
 				18A524051F04B4450037BAC4 /* Yellow.fsh in Resources */,
 				18D0F0341EE1B31400EEECAC /* quaternion.inl in Resources */,
@@ -595,6 +612,7 @@
 				18A5240B1F0549FE0037BAC4 /* GeometryShader.fsh in Resources */,
 				18D0EFD21EDC3DFC00EEECAC /* DirectionalLight.fsh in Resources */,
 				18D0EFCA1EDBB0EE00EEECAC /* LightingWithMaps.fsh in Resources */,
+				18A524191F0783A50037BAC4 /* VisualizeNormal.vsh in Resources */,
 				180056C91EEE4D9C00446954 /* DepthTest.vsh in Resources */,
 				189579011EDAA9AD0025196E /* Triangle.fsh in Resources */,
 				18A524111F0770570037BAC4 /* ModelExplode.vsh in Resources */,
@@ -607,6 +625,7 @@
 				18D0F0301EE1B31400EEECAC /* config.h.in in Resources */,
 				18A523FD1F04B38B0037BAC4 /* UniformBufferObject.vsh in Resources */,
 				18EF47AA1EFAAC4300A79D09 /* FramebufferScreen.vsh in Resources */,
+				18A5241D1F0787E90037BAC4 /* Model.vsh in Resources */,
 				181E25B61EF57B95007CF90A /* Blending.fsh in Resources */,
 				18AE58471EDB16F80029BEAF /* RectanglePerspective.vsh in Resources */,
 				18EF47AC1EFAACCA00A79D09 /* FramebufferScreen.fsh in Resources */,
@@ -653,6 +672,7 @@
 				189578EC1ED1C6DD0025196E /* NCubesRenderer.swift in Sources */,
 				180CD3191EDB1BEC00AD5364 /* SpinningLampRenderer.swift in Sources */,
 				18B52D611EC832F000BCB1EA /* RectangleRotationRenderer.swift in Sources */,
+				18A524171F0782500037BAC4 /* VisualizeNormalRenderer.swift in Sources */,
 				18B52D5F1EC7096300BCB1EA /* RectangleTextureRenderer.swift in Sources */,
 				18D0F0421EE4D6F200EEECAC /* ModelRenderer.swift in Sources */,
 				18B52D561EC5EF6D00BCB1EA /* MyOpenGLTexture.swift in Sources */,
