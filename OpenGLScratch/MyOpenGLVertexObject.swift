@@ -15,6 +15,7 @@ class MyOpenGLVertexObject {
 
     let stride: Int
     let count: Int
+    let attributeCount: Int
 
     init(vertices: [GLfloat], alignment: [UInt]) {
         // Calc stride & count
@@ -24,6 +25,7 @@ class MyOpenGLVertexObject {
         }
         self.stride = sum
         self.count = vertices.count / self.stride
+        self.attributeCount = alignment.count
 
         glGenVertexArrays(1, &self.vao)
         glGenBuffers(1, &self.vbo)
@@ -32,7 +34,7 @@ class MyOpenGLVertexObject {
         glBufferData(GLenum(GL_ARRAY_BUFFER), MemoryLayout<GLfloat>.stride * vertices.count, vertices, GLenum(GL_STATIC_DRAW))
 
         glBindVertexArray(self.vao)
-        for i in 0..<alignment.count {
+        for i in 0..<self.attributeCount {
             glVertexAttribPointer(GLuint(i), GLint(alignment[i]), GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(self.stride * MemoryLayout<GLfloat>.stride), MyOpenGLUtils.BUFFER_OFFSET(self.offsetOf(index: i, alignment: alignment) * MemoryLayout<GLfloat>.stride))
             glEnableVertexAttribArray(GLuint(i))
         }
