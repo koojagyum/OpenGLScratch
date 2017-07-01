@@ -46,6 +46,10 @@
 		18A524091F0549900037BAC4 /* GeometryShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A524081F0549900037BAC4 /* GeometryShader.vsh */; };
 		18A5240B1F0549FE0037BAC4 /* GeometryShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A5240A1F0549FE0037BAC4 /* GeometryShader.fsh */; };
 		18A5240D1F054A360037BAC4 /* GeometryShader.gsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A5240C1F054A360037BAC4 /* GeometryShader.gsh */; };
+		18A5240F1F076F030037BAC4 /* ModelExplodeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A5240E1F076F030037BAC4 /* ModelExplodeRenderer.swift */; };
+		18A524111F0770570037BAC4 /* ModelExplode.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A524101F0770570037BAC4 /* ModelExplode.vsh */; };
+		18A524131F0771860037BAC4 /* ModelExplode.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A524121F0771860037BAC4 /* ModelExplode.fsh */; };
+		18A524151F0772540037BAC4 /* ModelExplode.gsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A524141F0772540037BAC4 /* ModelExplode.gsh */; };
 		18AE58431EDB16370029BEAF /* Circle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18AE58421EDB16370029BEAF /* Circle.fsh */; };
 		18AE58451EDB16570029BEAF /* Circle.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18AE58441EDB16570029BEAF /* Circle.vsh */; };
 		18AE58471EDB16F80029BEAF /* RectanglePerspective.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18AE58461EDB16F80029BEAF /* RectanglePerspective.vsh */; };
@@ -143,6 +147,10 @@
 		18A524081F0549900037BAC4 /* GeometryShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = GeometryShader.vsh; sourceTree = "<group>"; };
 		18A5240A1F0549FE0037BAC4 /* GeometryShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = GeometryShader.fsh; sourceTree = "<group>"; };
 		18A5240C1F054A360037BAC4 /* GeometryShader.gsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = GeometryShader.gsh; sourceTree = "<group>"; };
+		18A5240E1F076F030037BAC4 /* ModelExplodeRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExplodeRenderer.swift; sourceTree = "<group>"; };
+		18A524101F0770570037BAC4 /* ModelExplode.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ModelExplode.vsh; sourceTree = "<group>"; };
+		18A524121F0771860037BAC4 /* ModelExplode.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ModelExplode.fsh; sourceTree = "<group>"; };
+		18A524141F0772540037BAC4 /* ModelExplode.gsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ModelExplode.gsh; sourceTree = "<group>"; };
 		18AE58421EDB16370029BEAF /* Circle.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.fsh; sourceTree = "<group>"; };
 		18AE58441EDB16570029BEAF /* Circle.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Circle.vsh; sourceTree = "<group>"; };
 		18AE58461EDB16F80029BEAF /* RectanglePerspective.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = RectanglePerspective.vsh; sourceTree = "<group>"; };
@@ -299,6 +307,9 @@
 				18A524081F0549900037BAC4 /* GeometryShader.vsh */,
 				18A5240A1F0549FE0037BAC4 /* GeometryShader.fsh */,
 				18A5240C1F054A360037BAC4 /* GeometryShader.gsh */,
+				18A524101F0770570037BAC4 /* ModelExplode.vsh */,
+				18A524121F0771860037BAC4 /* ModelExplode.fsh */,
+				18A524141F0772540037BAC4 /* ModelExplode.gsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -335,6 +346,7 @@
 				18EF47B71EFEB67600A79D09 /* SkyboxReflectRenderer.swift */,
 				18A523FA1F04B1DC0037BAC4 /* UniformBufferObjectRenderer.swift */,
 				18A524061F0548DE0037BAC4 /* GeometryShaderRenderer.swift */,
+				18A5240E1F076F030037BAC4 /* ModelExplodeRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -563,6 +575,7 @@
 				18AE58451EDB16570029BEAF /* Circle.vsh in Resources */,
 				180CD31D1EDB2C7400AD5364 /* LightingWithMaterial.fsh in Resources */,
 				18AE58491EDB17060029BEAF /* RectanglePerspective.fsh in Resources */,
+				18A524131F0771860037BAC4 /* ModelExplode.fsh in Resources */,
 				18AE58431EDB16370029BEAF /* Circle.fsh in Resources */,
 				18D0EFD41EDC47CB00EEECAC /* PointLight.fsh in Resources */,
 				18D0F02F1EE1B31400EEECAC /* color4.inl in Resources */,
@@ -584,6 +597,7 @@
 				18D0EFCA1EDBB0EE00EEECAC /* LightingWithMaps.fsh in Resources */,
 				180056C91EEE4D9C00446954 /* DepthTest.vsh in Resources */,
 				189579011EDAA9AD0025196E /* Triangle.fsh in Resources */,
+				18A524111F0770570037BAC4 /* ModelExplode.vsh in Resources */,
 				18A523FF1F04B3FB0037BAC4 /* Red.fsh in Resources */,
 				189578FC1EDAA4130025196E /* Lighting.fsh in Resources */,
 				18D0F0331EE1B31400EEECAC /* matrix4x4.inl in Resources */,
@@ -599,6 +613,7 @@
 				18EF47B21EFCD3EC00A79D09 /* Skybox.fsh in Resources */,
 				D15650181E647505008B5428 /* Main.storyboard in Resources */,
 				18A524091F0549900037BAC4 /* GeometryShader.vsh in Resources */,
+				18A524151F0772540037BAC4 /* ModelExplode.gsh in Resources */,
 				189579031EDAAACD0025196E /* Lamp.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -619,6 +634,7 @@
 				18EF47B41EFD634B00A79D09 /* SkyboxRenderer.swift in Sources */,
 				189042BB1EC179AD0083B094 /* MyOpenGLProgram.swift in Sources */,
 				18EF47AE1EFAB3FD00A79D09 /* MyOpenGLFramebuffer.swift in Sources */,
+				18A5240F1F076F030037BAC4 /* ModelExplodeRenderer.swift in Sources */,
 				189042BD1EC1E99C0083B094 /* RectangleRenderer.swift in Sources */,
 				189578EA1ED19A340025196E /* CubeRenderer.swift in Sources */,
 				18D0EFDC1EDD924200EEECAC /* MultipleLightsRenderer.swift in Sources */,
