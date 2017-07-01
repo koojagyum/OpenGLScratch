@@ -67,6 +67,20 @@ class MyOpenGLUtils {
             return nil
         }
     }
+
+    static func createProgramWithNames(vshName: String, fshName: String) -> MyOpenGLProgram? {
+        return MyOpenGLUtils.createProgramWithNames(vshName: vshName, fshName: fshName, gshName: nil)
+    }
+
+    static func createProgramWithNames(vshName: String, fshName: String, gshName: String?) -> MyOpenGLProgram? {
+        let vshSource = MyOpenGLUtils.loadStringFromResource(name: vshName, type: "vsh")
+        let fshSource = MyOpenGLUtils.loadStringFromResource(name: fshName, type: "fsh")
+        if let gshNameUnwrapped = gshName {
+            let gshSource = MyOpenGLUtils.loadStringFromResource(name: gshNameUnwrapped, type: "gsh")
+            return MyOpenGLProgram(vshSource: vshSource!, fshSource: fshSource!, gshSource: gshSource)
+        }
+        return MyOpenGLProgram(vshSource: vshSource!, fshSource: fshSource!)
+    }
 }
 
 extension GLKVector3 {
