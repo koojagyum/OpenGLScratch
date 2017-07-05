@@ -68,6 +68,10 @@ class MyOpenGLUtils {
         }
     }
 
+    static func createProgramWithName(name: String) -> MyOpenGLProgram? {
+        return MyOpenGLUtils.createProgramWithNames(vshName: name, fshName: name)
+    }
+
     static func createProgramWithNames(vshName: String, fshName: String) -> MyOpenGLProgram? {
         return MyOpenGLUtils.createProgramWithNames(vshName: vshName, fshName: fshName, gshName: nil)
     }

@@ -19,6 +19,8 @@
 		181E25B61EF57B95007CF90A /* Blending.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 181E25B51EF57B95007CF90A /* Blending.fsh */; };
 		181E25B81EF64CA3007CF90A /* MyOpenGLTextureCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E25B71EF64CA3007CF90A /* MyOpenGLTextureCache.swift */; };
 		181E25BA1EF664AE007CF90A /* WindowBlendRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E25B91EF664AE007CF90A /* WindowBlendRenderer.swift */; };
+		1851B4AE1F0CA81A009049AE /* Asteroid.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1851B4AD1F0CA81A009049AE /* Asteroid.vsh */; };
+		1851B4B01F0CA8B3009049AE /* Asteroid.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1851B4AF1F0CA8B3009049AE /* Asteroid.fsh */; };
 		185492E41E81FE14009773AE /* TriangleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185492E31E81FE14009773AE /* TriangleRenderer.swift */; };
 		1878AE381F07AAF0005F8CCA /* AsteroidRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878AE371F07AAF0005F8CCA /* AsteroidRenderer.swift */; };
 		189042BB1EC179AD0083B094 /* MyOpenGLProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189042BA1EC179AD0083B094 /* MyOpenGLProgram.swift */; };
@@ -129,6 +131,8 @@
 		181E25B51EF57B95007CF90A /* Blending.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Blending.fsh; sourceTree = "<group>"; };
 		181E25B71EF64CA3007CF90A /* MyOpenGLTextureCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLTextureCache.swift; sourceTree = "<group>"; };
 		181E25B91EF664AE007CF90A /* WindowBlendRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowBlendRenderer.swift; sourceTree = "<group>"; };
+		1851B4AD1F0CA81A009049AE /* Asteroid.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Asteroid.vsh; sourceTree = "<group>"; };
+		1851B4AF1F0CA8B3009049AE /* Asteroid.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Asteroid.fsh; sourceTree = "<group>"; };
 		185492E31E81FE14009773AE /* TriangleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleRenderer.swift; sourceTree = "<group>"; };
 		1878AE371F07AAF0005F8CCA /* AsteroidRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsteroidRenderer.swift; sourceTree = "<group>"; };
 		189042BA1EC179AD0083B094 /* MyOpenGLProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLProgram.swift; sourceTree = "<group>"; };
@@ -334,6 +338,8 @@
 				18A5241E1F0788090037BAC4 /* Model.fsh */,
 				18A524221F0796C10037BAC4 /* InstancedArray.vsh */,
 				18A524241F0797160037BAC4 /* InstancedArray.fsh */,
+				1851B4AD1F0CA81A009049AE /* Asteroid.vsh */,
+				1851B4AF1F0CA8B3009049AE /* Asteroid.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -612,6 +618,7 @@
 				18EF47BA1EFEB73A00A79D09 /* SkyboxReflectCube.vsh in Resources */,
 				18A524051F04B4450037BAC4 /* Yellow.fsh in Resources */,
 				18D0F0341EE1B31400EEECAC /* quaternion.inl in Resources */,
+				1851B4B01F0CA8B3009049AE /* Asteroid.fsh in Resources */,
 				18D0F02E1EE1B31400EEECAC /* .editorconfig in Resources */,
 				189579051EDAAAF10025196E /* Lamp.fsh in Resources */,
 				18D0EFDE1EDD930900EEECAC /* MultipleLights.fsh in Resources */,
@@ -633,6 +640,7 @@
 				18A523FF1F04B3FB0037BAC4 /* Red.fsh in Resources */,
 				189578FC1EDAA4130025196E /* Lighting.fsh in Resources */,
 				18D0F0331EE1B31400EEECAC /* matrix4x4.inl in Resources */,
+				1851B4AE1F0CA81A009049AE /* Asteroid.vsh in Resources */,
 				18D0F0361EE1B31400EEECAC /* vector3.inl in Resources */,
 				18EF47B01EFCD36E00A79D09 /* Skybox.vsh in Resources */,
 				18D0F0351EE1B31400EEECAC /* vector2.inl in Resources */,
