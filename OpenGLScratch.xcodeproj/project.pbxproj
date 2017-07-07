@@ -21,6 +21,10 @@
 		181E25BA1EF664AE007CF90A /* WindowBlendRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E25B91EF664AE007CF90A /* WindowBlendRenderer.swift */; };
 		1851B4AE1F0CA81A009049AE /* Asteroid.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1851B4AD1F0CA81A009049AE /* Asteroid.vsh */; };
 		1851B4B01F0CA8B3009049AE /* Asteroid.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1851B4AF1F0CA8B3009049AE /* Asteroid.fsh */; };
+		1851B4B21F0E7CDC009049AE /* MSAARenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1851B4B11F0E7CDC009049AE /* MSAARenderer.swift */; };
+		1851B4B41F0E7EF9009049AE /* AntiAlias.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1851B4B31F0E7EF9009049AE /* AntiAlias.vsh */; };
+		1851B4B61F0E7F17009049AE /* AntiAlias.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1851B4B51F0E7F17009049AE /* AntiAlias.fsh */; };
+		1851B4B81F0E8085009049AE /* MyOpenGLMSAAFramebuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1851B4B71F0E8085009049AE /* MyOpenGLMSAAFramebuffer.swift */; };
 		185492E41E81FE14009773AE /* TriangleRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185492E31E81FE14009773AE /* TriangleRenderer.swift */; };
 		1878AE381F07AAF0005F8CCA /* AsteroidRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1878AE371F07AAF0005F8CCA /* AsteroidRenderer.swift */; };
 		189042BB1EC179AD0083B094 /* MyOpenGLProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189042BA1EC179AD0083B094 /* MyOpenGLProgram.swift */; };
@@ -133,6 +137,10 @@
 		181E25B91EF664AE007CF90A /* WindowBlendRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowBlendRenderer.swift; sourceTree = "<group>"; };
 		1851B4AD1F0CA81A009049AE /* Asteroid.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Asteroid.vsh; sourceTree = "<group>"; };
 		1851B4AF1F0CA8B3009049AE /* Asteroid.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Asteroid.fsh; sourceTree = "<group>"; };
+		1851B4B11F0E7CDC009049AE /* MSAARenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MSAARenderer.swift; sourceTree = "<group>"; };
+		1851B4B31F0E7EF9009049AE /* AntiAlias.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AntiAlias.vsh; sourceTree = "<group>"; };
+		1851B4B51F0E7F17009049AE /* AntiAlias.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = AntiAlias.fsh; sourceTree = "<group>"; };
+		1851B4B71F0E8085009049AE /* MyOpenGLMSAAFramebuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLMSAAFramebuffer.swift; sourceTree = "<group>"; };
 		185492E31E81FE14009773AE /* TriangleRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleRenderer.swift; sourceTree = "<group>"; };
 		1878AE371F07AAF0005F8CCA /* AsteroidRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsteroidRenderer.swift; sourceTree = "<group>"; };
 		189042BA1EC179AD0083B094 /* MyOpenGLProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLProgram.swift; sourceTree = "<group>"; };
@@ -340,6 +348,8 @@
 				18A524241F0797160037BAC4 /* InstancedArray.fsh */,
 				1851B4AD1F0CA81A009049AE /* Asteroid.vsh */,
 				1851B4AF1F0CA8B3009049AE /* Asteroid.fsh */,
+				1851B4B31F0E7EF9009049AE /* AntiAlias.vsh */,
+				1851B4B51F0E7F17009049AE /* AntiAlias.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -380,6 +390,7 @@
 				18A524161F0782500037BAC4 /* VisualizeNormalRenderer.swift */,
 				18A524201F0795A30037BAC4 /* InstancedArrayRenderer.swift */,
 				1878AE371F07AAF0005F8CCA /* AsteroidRenderer.swift */,
+				1851B4B11F0E7CDC009049AE /* MSAARenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -532,6 +543,7 @@
 				18F1CCA61EF4F8F400F03C68 /* MyOpenGLVertexObject.swift */,
 				181E25B71EF64CA3007CF90A /* MyOpenGLTextureCache.swift */,
 				18EF47AD1EFAB3FD00A79D09 /* MyOpenGLFramebuffer.swift */,
+				1851B4B71F0E8085009049AE /* MyOpenGLMSAAFramebuffer.swift */,
 				18EF47B51EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift */,
 			);
 			path = OpenGLScratch;
@@ -603,6 +615,7 @@
 				18A524031F04B4360037BAC4 /* Blue.fsh in Resources */,
 				18D0F0441EE4D7CC00EEECAC /* BasicModel.vsh in Resources */,
 				18D0EFCC1EDBB26800EEECAC /* LightingWithMaps.vsh in Resources */,
+				1851B4B41F0E7EF9009049AE /* AntiAlias.vsh in Resources */,
 				18EF47BC1EFEB74600A79D09 /* SkyboxReflectCube.fsh in Resources */,
 				18A5241F1F0788090037BAC4 /* Model.fsh in Resources */,
 				189578FA1EDAA3B70025196E /* Lighting.vsh in Resources */,
@@ -619,6 +632,7 @@
 				18A524051F04B4450037BAC4 /* Yellow.fsh in Resources */,
 				18D0F0341EE1B31400EEECAC /* quaternion.inl in Resources */,
 				1851B4B01F0CA8B3009049AE /* Asteroid.fsh in Resources */,
+				1851B4B61F0E7F17009049AE /* AntiAlias.fsh in Resources */,
 				18D0F02E1EE1B31400EEECAC /* .editorconfig in Resources */,
 				189579051EDAAAF10025196E /* Lamp.fsh in Resources */,
 				18D0EFDE1EDD930900EEECAC /* MultipleLights.fsh in Resources */,
@@ -692,6 +706,7 @@
 				18A524211F0795A30037BAC4 /* InstancedArrayRenderer.swift in Sources */,
 				180056D11EF4F32300446954 /* GrassBlendRenderer.swift in Sources */,
 				18D0EFD61EDC488100EEECAC /* PointLightRenderer.swift in Sources */,
+				1851B4B81F0E8085009049AE /* MyOpenGLMSAAFramebuffer.swift in Sources */,
 				189578F21ED3DAA20025196E /* MyOpenGLCamera.swift in Sources */,
 				189578EC1ED1C6DD0025196E /* NCubesRenderer.swift in Sources */,
 				180CD3191EDB1BEC00AD5364 /* SpinningLampRenderer.swift in Sources */,
@@ -707,6 +722,7 @@
 				189578F61ED470330025196E /* LightingAndLampRenderer.swift in Sources */,
 				18D0EFF11EE1B2AD00EEECAC /* MyAssimpLoader.mm in Sources */,
 				18D0EFCE1EDBB31400EEECAC /* LightingWithMapsRenderer.swift in Sources */,
+				1851B4B21F0E7CDC009049AE /* MSAARenderer.swift in Sources */,
 				18EF47B61EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift in Sources */,
 				D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */,
 				189578F01ED3D8F00025196E /* MyOpenGLUtils.swift in Sources */,

@@ -61,7 +61,9 @@ class FramebufferRenderer: DepthTestRenderer {
             glDisable(GLenum(GL_DEPTH_TEST))
         }
 
-        if let program = self.screenProgram, program.useProgram() {
+        self.screenProgram?.useProgramWith {
+            (program) in
+            program.setInt(name: "screenTexture", value: 0)
             glClearColor(1.0, 1.0, 1.0, 1.0)
             glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
             self.quadVertex?.useVertexObjectWith {_ in
