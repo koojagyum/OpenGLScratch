@@ -1,8 +1,8 @@
 //
-//  MyOpenGLFramebuffer.swift
+//  MyOpenGLMSAAFramebuffer.swift
 //  OpenGLScratch
 //
-//  Created by Jagyum Koo on 21/06/2017.
+//  Created by Jagyum Koo on 06/07/2017.
 //  Copyright © 2017 Jagyum Koo. All rights reserved.
 //
 
@@ -14,28 +14,56 @@ class MyOpenGLFramebuffer {
     var rbo: GLuint = 0
     var tex: GLuint = 0
     var width, height: Int
+    var multisamples: Int
 
-    var valid: Bool
+    var valid: Bool = false
 
-    init(width: Int, height: Int) {
+    var useMultisample: Bool {
+        return self.multisamples > 0
+    }
+    var textureTarget: Int32 {
+        return self.useMultisample ? GL_TEXTURE_2D_MULTISAMPLE : GL_TEXTURE_2D
+    }
+
+    convenience init(width: Int, height: Int) {
+        self.init(width: width, height: height, multisamples: 0)
+    }
+
+    init(width: Int, height: Int, multisamples: Int) {
         self.width = width
         self.height = height
+        self.multisamples = multisamples
 
         glGenFramebuffers(1, &self.fbo)
         glBindFramebuffer(GLenum(GL_FRAMEBUFFER), self.fbo)
 
         // create a color attachment texture
         glGenTextures(1, &self.tex)
-        glBindTexture(GLenum(GL_TEXTURE_2D), self.tex)
-        glTexImage2D(GLenum(GL_TEXTURE_2D), 0, GL_RGB, GLsizei(width), GLsizei(height), 0, GLenum(GL_RGB), GLenum(GL_UNSIGNED_BYTE), nil)
+
+        if self.useMultisample {
+            glBindTexture(GLenum(GL_TEXTURE_2D_MULTISAMPLE), self.tex)
+            glTexImage2DMultisample(GLenum(GL_TEXTURE_2D_MULTISAMPLE), GLsizei(self.multisamples), GL_RGB, GLsizei(width), GLsizei(height), GLboolean(GL_TRUE))
+            glFramebufferTexture2D(GLenum(GL_FRAMEBUFFER), GLenum(GL_COLOR_ATTACHMENT0), GLenum(GL_TEXTURE_2D_MULTISAMPLE), self.tex, 0)
+        }
+        else {
+            glBindTexture(GLenum(GL_TEXTURE_2D), self.tex)
+            glTexImage2D(GLenum(GL_TEXTURE_2D), 0, GL_RGB, GLsizei(width), GLsizei(height), 0, GLenum(GL_RGB), GLenum(GL_UNSIGNED_BYTE), nil)
+            glFramebufferTexture2D(GLenum(GL_FRAMEBUFFER), GLenum(GL_COLOR_ATTACHMENT0), GLenum(GL_TEXTURE_2D), self.tex, 0)
+        }
+
         glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MIN_FILTER), GL_LINEAR)
         glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MAG_FILTER), GL_LINEAR)
-        glFramebufferTexture2D(GLenum(GL_FRAMEBUFFER), GLenum(GL_COLOR_ATTACHMENT0), GLenum(GL_TEXTURE_2D), self.tex, 0)
 
         // create a renderbuffer object for depth and stencil attachment (we won't be sampling these)
         glGenRenderbuffers(1, &self.rbo)
         glBindRenderbuffer(GLenum(GL_RENDERBUFFER), self.rbo)
-        glRenderbufferStorage(GLenum(GL_RENDERBUFFER), GLenum(GL_DEPTH24_STENCIL8), GLsizei(width), GLsizei(height)) // use a single renderbuffer object for both a depth and stencil buffer
+
+        if self.useMultisample {
+            glRenderbufferStorageMultisample(GLenum(GL_RENDERBUFFER), GLsizei(self.multisamples), GLenum(GL_DEPTH24_STENCIL8), GLsizei(width), GLsizei(height))
+        }
+        else {
+            glRenderbufferStorage(GLenum(GL_RENDERBUFFER), GLenum(GL_DEPTH24_STENCIL8), GLsizei(width), GLsizei(height)) // use a single renderbuffer object for both a depth and stencil buffer
+        }
         glFramebufferRenderbuffer(GLenum(GL_FRAMEBUFFER), GLenum(GL_DEPTH_STENCIL_ATTACHMENT), GLenum(GL_RENDERBUFFER), self.rbo) // now actually attach it
 
         // now that we actually created the framebuffer and added add attachments we want to check if it is actually complete now

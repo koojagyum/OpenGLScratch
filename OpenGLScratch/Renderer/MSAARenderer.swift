@@ -20,13 +20,13 @@ class MSAARenderer: MyOpenGLRendererDelegate {
     var cubeVertexObject: MyOpenGLVertexObject?
     var quadVertexObject: MyOpenGLVertexObject?
 
-    var msaaFramebuffer: MyOpenGLMSAAFramebuffer?
+    var msaaFramebuffer: MyOpenGLFramebuffer?
     var normalFramebuffer: MyOpenGLFramebuffer?
 
     func prepare() {
         self.prepareProgram()
         self.prepareVertices()
-        self.msaaFramebuffer = MyOpenGLMSAAFramebuffer(width: 300, height: 200, multisample: true, multisampleNumber: 4)
+        self.msaaFramebuffer = MyOpenGLFramebuffer(width: 300, height: 200, multisamples: 4)
         self.normalFramebuffer = MyOpenGLFramebuffer(width: 300, height: 200)
     }
 
