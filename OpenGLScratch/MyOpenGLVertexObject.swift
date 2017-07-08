@@ -18,6 +18,8 @@ class MyOpenGLVertexObject {
     let count: Int
     let attributeCount: Int
 
+    var shared: MyOpenGLVertexObject? = nil
+
     init?(vertices: [GLfloat], alignment: [UInt], indices: [GLuint]?) {
         // Calc stride & count
         var sum = 0
@@ -54,6 +56,29 @@ class MyOpenGLVertexObject {
         glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
     }
 
+    init?(shared: MyOpenGLVertexObject, alignment: [UInt]) {
+        self.shared = shared
+
+        self.stride = shared.stride
+        self.attributeCount = alignment.count
+        self.count = shared.count
+        self.vbo = shared.vbo
+        self.ebo = shared.ebo
+
+        glGenVertexArrays(1, &self.vao)
+        glBindVertexArray(self.vao)
+
+        glBindBuffer(GLenum(GL_ARRAY_BUFFER), self.vbo)
+        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), self.ebo)
+        for i in 0..<self.attributeCount {
+            glVertexAttribPointer(GLuint(i), GLint(alignment[i]), GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(self.stride * MemoryLayout<GLfloat>.stride), MyOpenGLUtils.BUFFER_OFFSET(self.offsetOf(index: i, alignment: alignment) * MemoryLayout<GLfloat>.stride))
+            glEnableVertexAttribArray(GLuint(i)) // Check Me: Unordered layout would not work!
+        }
+        glBindVertexArray(0)
+        glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
+        glBindBuffer(GLenum(GL_ELEMENT_ARRAY_BUFFER), 0)
+    }
+
     convenience init?(vertices: [GLfloat], alignment: [UInt]) {
         self.init(vertices: vertices, alignment: alignment, indices: nil)
     }
@@ -78,7 +103,5 @@ class MyOpenGLVertexObject {
 
     deinit {
         glDeleteBuffers(1, &self.vao)
-        glDeleteBuffers(1, &self.vbo)
-        glDeleteBuffers(1, &self.ebo)
     }
 }

@@ -19,9 +19,8 @@ class LightingAndLampRenderer: MyOpenGLRendererDelegate {
     var lightingProgram: MyOpenGLProgram?
     var lampProgram: MyOpenGLProgram?
 
-    var containerVao: GLuint = 0
-    var lightVao: GLuint = 0
-    var vbo: GLuint = 0
+    var containerVertex: MyOpenGLVertexObject?
+    var lightVertex: MyOpenGLVertexObject?
 
     func prepare() {
         let vshLight = MyOpenGLUtils.loadStringFromResource(name: "Lighting", type: "vsh")
@@ -37,7 +36,8 @@ class LightingAndLampRenderer: MyOpenGLRendererDelegate {
     func render(_ bounds: NSRect) {
         glEnable(GLenum(GL_DEPTH_TEST))
         let lightPos = GLKVector3Make(0.2, 0.0, 1.0)
-        if let program = self.lightingProgram, program.useProgram() {
+        self.lightingProgram?.useProgramWith {
+            (program) in
             let modelLoc = glGetUniformLocation(program.program, "model")
             let viewLoc = glGetUniformLocation(program.program, "view")
             let projLoc = glGetUniformLocation(program.program, "projection")
@@ -50,7 +50,6 @@ class LightingAndLampRenderer: MyOpenGLRendererDelegate {
             glUniform3f(lightColorLoc, 1.0, 1.0, 1.0)
             glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z)
             glUniform3f(viewPosLoc, (camera?.position.x)!, (camera?.position.y)!, (camera?.position.z)!)
-            print("camera: \((camera?.position.x)!), \((camera?.position.y)!), \((camera?.position.z)!)")
 
             var model = GLKMatrix4Identity
             var projection = GLKMatrix4MakePerspective((camera?.zoom.radian)!, (Float(bounds.size.width / bounds.size.height)), 0.1, 100.0)
@@ -61,12 +60,14 @@ class LightingAndLampRenderer: MyOpenGLRendererDelegate {
                 MyOpenGLUtils.uniformMatrix4fv(viewLoc, 1, GLboolean(GL_FALSE), &view)
             }
 
-            glBindVertexArray(self.containerVao)
-            glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
-            glBindVertexArray(0)
+            self.containerVertex?.useVertexObjectWith {
+                (vertexObject) in
+                glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
+            }
         }
 
-        if let program = self.lampProgram, program.useProgram() {
+        self.lampProgram?.useProgramWith {
+            (program) in
             let modelLoc = glGetUniformLocation(program.program, "model")
             let viewLoc = glGetUniformLocation(program.program, "view")
             let projLoc = glGetUniformLocation(program.program, "projection")
@@ -83,17 +84,17 @@ class LightingAndLampRenderer: MyOpenGLRendererDelegate {
                 MyOpenGLUtils.uniformMatrix4fv(viewLoc, 1, GLboolean(GL_FALSE), &view)
             }
 
-            glBindVertexArray(self.lightVao)
-            glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
-            glBindVertexArray(0)
+            self.lightVertex?.useVertexObjectWith {
+                (vertexObject) in
+                glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
+            }
         }
         glDisable(GLenum(GL_DEPTH_TEST));
     }
 
     func dispose() {
-        glDeleteVertexArrays(1, &self.containerVao)
-        glDeleteVertexArrays(1, &self.lightVao)
-        glDeleteBuffers(1, &self.vbo)
+        self.containerVertex = nil
+        self.lightVertex = nil
         self.lightingProgram = nil
         self.lampProgram = nil
     }
@@ -142,26 +143,7 @@ class LightingAndLampRenderer: MyOpenGLRendererDelegate {
             -0.5,  0.5,  0.5,  0.0,  1.0,  0.0,
             -0.5,  0.5, -0.5,  0.0,  1.0,  0.0
         ]
-
-        glGenVertexArrays(1, &self.containerVao)
-        glGenVertexArrays(1, &self.lightVao)
-
-        glGenBuffers(1, &self.vbo)
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), self.vbo)
-        glBufferData(GLenum(GL_ARRAY_BUFFER), MemoryLayout<GLfloat>.stride * vertices.count, vertices, GLenum(GL_STATIC_DRAW))
-
-        glBindVertexArray(self.containerVao)
-        glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(6 * MemoryLayout<GLfloat>.stride), nil)
-        glVertexAttribPointer(1, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(6 * MemoryLayout<GLfloat>.stride), MyOpenGLUtils.BUFFER_OFFSET(MemoryLayout<GLfloat>.stride * 3))
-        glEnableVertexAttribArray(0)
-        glEnableVertexAttribArray(1)
-        glBindVertexArray(0)
-
-        glBindVertexArray(self.lightVao)
-        glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(6 * MemoryLayout<GLfloat>.stride), nil)
-        glEnableVertexAttribArray(0)
-        glBindVertexArray(0)
-
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
+        self.containerVertex = MyOpenGLVertexObject(vertices: vertices, alignment: [3, 3])
+        self.lightVertex = MyOpenGLVertexObject(shared: self.containerVertex!, alignment: [3])
     }
 }

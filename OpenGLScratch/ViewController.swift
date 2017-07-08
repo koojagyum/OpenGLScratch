@@ -24,15 +24,22 @@ class ViewController: NSViewController {
     @IBOutlet weak var openGLView: MyOpenGLView!
 
     let renderers: [SceneType : MyOpenGLRendererDelegate?] = [
+        SceneType.LightingAndLamp: LightingAndLampRenderer(),
+        SceneType.SpinningLamp: SpinningLampRenderer(),
+        SceneType.LightingWithMaterial: LightingWithMaterialRenderer(),
+        SceneType.DirectionalLight: DirectionalLightRenderer(),
+        SceneType.PointLight: PointLightRenderer(),
+        SceneType.SpotLight: SpotLightRenderer(),
         SceneType.MultipleLights: MultipleLightsRenderer(),
-        SceneType.WindowBlend: WindowBlendRenderer(),
-        SceneType.Framebuffer: FramebufferRenderer(),
-        SceneType.SkyboxReflect: SkyboxReflectRenderer(),
-        SceneType.ModelExplode: ModelExplodeRenderer(),
-        SceneType.VisualizeNormal: VisualizeNormalRenderer(),
-        SceneType.InstancedArray: InstancedArrayRenderer(),
-        SceneType.Asteroid: AsteroidRenderer(),
-        SceneType.MSAA: MSAARenderer(),
+//        SceneType.MultipleLights: MultipleLightsRenderer(),
+//        SceneType.WindowBlend: WindowBlendRenderer(),
+//        SceneType.Framebuffer: FramebufferRenderer(),
+//        SceneType.SkyboxReflect: SkyboxReflectRenderer(),
+//        SceneType.ModelExplode: ModelExplodeRenderer(),
+//        SceneType.VisualizeNormal: VisualizeNormalRenderer(),
+//        SceneType.InstancedArray: InstancedArrayRenderer(),
+//        SceneType.Asteroid: AsteroidRenderer(),
+//        SceneType.MSAA: MSAARenderer(),
     ]
 
     override func viewDidLoad() {

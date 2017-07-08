@@ -76,29 +76,8 @@ class LightingWithMapsRenderer: LightingAndLampRenderer {
             -0.5,  0.5,  0.5,  0.0,  1.0,  0.0,  0.0, 0.0,
             -0.5,  0.5, -0.5,  0.0,  1.0,  0.0,  0.0, 1.0
         ]
-
-        glGenVertexArrays(1, &self.containerVao)
-        glGenVertexArrays(1, &self.lightVao)
-
-        glGenBuffers(1, &self.vbo)
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), self.vbo)
-        glBufferData(GLenum(GL_ARRAY_BUFFER), MemoryLayout<GLfloat>.stride * vertices.count, vertices, GLenum(GL_STATIC_DRAW))
-
-        glBindVertexArray(self.containerVao)
-        glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(8 * MemoryLayout<GLfloat>.stride), nil)
-        glVertexAttribPointer(1, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(8 * MemoryLayout<GLfloat>.stride), MyOpenGLUtils.BUFFER_OFFSET(MemoryLayout<GLfloat>.stride * 3))
-        glVertexAttribPointer(2, 2, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(8 * MemoryLayout<GLfloat>.stride), MyOpenGLUtils.BUFFER_OFFSET(MemoryLayout<GLfloat>.stride * 6))
-        glEnableVertexAttribArray(0)
-        glEnableVertexAttribArray(1)
-        glEnableVertexAttribArray(2)
-        glBindVertexArray(0)
-
-        glBindVertexArray(self.lightVao)
-        glVertexAttribPointer(0, 3, GLenum(GL_FLOAT), GLboolean(GL_FALSE), GLsizei(8 * MemoryLayout<GLfloat>.stride), nil)
-        glEnableVertexAttribArray(0)
-        glBindVertexArray(0)
-
-        glBindBuffer(GLenum(GL_ARRAY_BUFFER), 0)
+        self.containerVertex = MyOpenGLVertexObject(vertices: vertices, alignment: [3, 3, 2])
+        self.lightVertex = MyOpenGLVertexObject(shared: self.containerVertex!, alignment: [3])
     }
 
     override func render(_ bounds: NSRect) {
@@ -114,7 +93,8 @@ class LightingWithMapsRenderer: LightingAndLampRenderer {
         let diffuseColor = GLKVector3Make(0.5, 0.5, 0.5)
         let lightColor = GLKVector3Make(1.0, 1.0, 1.0)
 
-        if let program = self.lightingProgram, program.useProgram() {
+        self.lightingProgram?.useProgramWith {
+            (program) in
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture1?.textureId)!)
             glActiveTexture(GLenum(GL_TEXTURE1))
@@ -154,16 +134,18 @@ class LightingWithMapsRenderer: LightingAndLampRenderer {
             glUniform3f(lightDiffuseLoc, diffuseColor.x, diffuseColor.y, diffuseColor.z);
             glUniform3f(lightSpecularLoc, lightColor.x, lightColor.y, lightColor.z);
 
-            glBindVertexArray(self.containerVao)
-            glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
-            glBindVertexArray(0)
+            self.containerVertex?.useVertexObjectWith {
+                (vertexObject) in
+                glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
+            }
 
             glBindTexture(GLenum(GL_TEXTURE_2D), 0)
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), 0)
         }
 
-        if let program = self.lampProgram, program.useProgram() {
+        self.lampProgram?.useProgramWith {
+            (program) in
             let modelLoc = glGetUniformLocation(program.program, "model")
             let viewLoc = glGetUniformLocation(program.program, "view")
             let projLoc = glGetUniformLocation(program.program, "projection")
@@ -180,9 +162,10 @@ class LightingWithMapsRenderer: LightingAndLampRenderer {
                 MyOpenGLUtils.uniformMatrix4fv(viewLoc, 1, GLboolean(GL_FALSE), &view)
             }
 
-            glBindVertexArray(self.lightVao)
-            glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
-            glBindVertexArray(0)
+            self.lightVertex?.useVertexObjectWith {
+                (vertexObject) in
+                glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
+            }
         }
         glDisable(GLenum(GL_DEPTH_TEST));
         // self.rotation += 1.0

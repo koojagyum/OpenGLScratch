@@ -35,7 +35,8 @@ class LightingWithMaterialRenderer: LightingAndLampRenderer {
         let diffuseColor = lightColor * 0.5 // Decrease the influence
         let ambientColor = diffuseColor * 0.2 // Low influence
 
-        if let program = self.lightingProgram, program.useProgram() {
+        self.lightingProgram?.useProgramWith {
+            (program) in
             let modelLoc = glGetUniformLocation(program.program, "model")
             let viewLoc = glGetUniformLocation(program.program, "view")
             let projLoc = glGetUniformLocation(program.program, "projection")
@@ -46,7 +47,6 @@ class LightingWithMaterialRenderer: LightingAndLampRenderer {
             glUniform3f(objectColorLoc, 1.0, 0.5, 0.31)
             glUniform3f(lightPosLoc, lightPos.x, lightPos.y, lightPos.z)
             glUniform3f(viewPosLoc, (camera?.position.x)!, (camera?.position.y)!, (camera?.position.z)!)
-            print("camera: \((camera?.position.x)!), \((camera?.position.y)!), \((camera?.position.z)!)")
 
             var model = GLKMatrix4Identity
             var projection = GLKMatrix4MakePerspective((camera?.zoom.radian)!, (Float(bounds.size.width / bounds.size.height)), 0.1, 100.0)
@@ -75,12 +75,14 @@ class LightingWithMaterialRenderer: LightingAndLampRenderer {
             glUniform3f(lightDiffuseLoc, diffuseColor.x, diffuseColor.y, diffuseColor.z);
             glUniform3f(lightSpecularLoc, 1.0, 1.0, 1.0);
 
-            glBindVertexArray(self.containerVao)
-            glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
-            glBindVertexArray(0)
+            self.containerVertex?.useVertexObjectWith {
+                (vertexObject) in
+                glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
+            }
         }
 
-        if let program = self.lampProgram, program.useProgram() {
+        self.lampProgram?.useProgramWith {
+            (program) in
             let modelLoc = glGetUniformLocation(program.program, "model")
             let viewLoc = glGetUniformLocation(program.program, "view")
             let projLoc = glGetUniformLocation(program.program, "projection")
@@ -97,9 +99,10 @@ class LightingWithMaterialRenderer: LightingAndLampRenderer {
                 MyOpenGLUtils.uniformMatrix4fv(viewLoc, 1, GLboolean(GL_FALSE), &view)
             }
 
-            glBindVertexArray(self.lightVao)
-            glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
-            glBindVertexArray(0)
+            self.lightVertex?.useVertexObjectWith {
+                (vertexObject) in
+                glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
+            }
         }
         glDisable(GLenum(GL_DEPTH_TEST));
         self.rotation += 1.0

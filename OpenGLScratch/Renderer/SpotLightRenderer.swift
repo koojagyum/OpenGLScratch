@@ -28,7 +28,8 @@ class SpotLightRenderer: LightingWithMapsRenderer {
         let diffuseColor = GLKVector3Make(0.5, 0.5, 0.5)
         let lightColor = GLKVector3Make(1.0, 1.0, 1.0)
 
-        if let program = self.lightingProgram, program.useProgram() {
+        self.lightingProgram?.useProgramWith {
+            (program) in
             glActiveTexture(GLenum(GL_TEXTURE0))
             glBindTexture(GLenum(GL_TEXTURE_2D), (self.texture1?.textureId)!)
             glActiveTexture(GLenum(GL_TEXTURE1))
@@ -81,31 +82,30 @@ class SpotLightRenderer: LightingWithMapsRenderer {
             glUniform1f(linearPos, 0.09)
             glUniform1f(quadraticPos, 0.032)
 
-            glBindVertexArray(self.containerVao)
-
-            let cubePositions: [GLKVector3] = [
-                GLKVector3Make(+0.0, +0.0, +0.0),
-                GLKVector3Make(+2.0, +5.0, -15.0),
-                GLKVector3Make(-1.5, -2.2, -2.5),
-                GLKVector3Make(-3.8, -2.0, -12.3),
-                GLKVector3Make(+2.4, -0.4, -3.5),
-                GLKVector3Make(-1.7, +3.0, -7.5),
-                GLKVector3Make(+1.3, -2.0, -2.5),
-                GLKVector3Make(+1.5, +2.0, -2.5),
-                GLKVector3Make(+1.5, +0.2, -1.5),
-                GLKVector3Make(-1.3, +1.0, -1.5),
+            self.containerVertex?.useVertexObjectWith {
+                (vertexObject) in
+                let cubePositions: [GLKVector3] = [
+                    GLKVector3Make(+0.0, +0.0, +0.0),
+                    GLKVector3Make(+2.0, +5.0, -15.0),
+                    GLKVector3Make(-1.5, -2.2, -2.5),
+                    GLKVector3Make(-3.8, -2.0, -12.3),
+                    GLKVector3Make(+2.4, -0.4, -3.5),
+                    GLKVector3Make(-1.7, +3.0, -7.5),
+                    GLKVector3Make(+1.3, -2.0, -2.5),
+                    GLKVector3Make(+1.5, +2.0, -2.5),
+                    GLKVector3Make(+1.5, +0.2, -1.5),
+                    GLKVector3Make(-1.3, +1.0, -1.5),
                 ]
-            for i in 0...9 {
-                let angle: GLfloat = 20.0 * Float(i)
-                var model = GLKMatrix4Identity
-                model = GLKMatrix4TranslateWithVector3(model, cubePositions[i])
-                model = GLKMatrix4RotateWithVector3(model, MyOpenGLUtils.DEGREE2RADIAN(angle), GLKVector3Make(1.0, 0.3, 0.5))
-                model = GLKMatrix4RotateWithVector3(model, MyOpenGLUtils.DEGREE2RADIAN(self.rotation), GLKVector3Make(0.5, 1.0, 0.0))
-                MyOpenGLUtils.uniformMatrix4fv(modelLoc, 1, GLboolean(GL_FALSE), &model)
-                glDrawArrays(GLenum(GL_TRIANGLES), 0, 36)
+                for i in 0...9 {
+                    let angle: GLfloat = 20.0 * Float(i)
+                    var model = GLKMatrix4Identity
+                    model = GLKMatrix4TranslateWithVector3(model, cubePositions[i])
+                    model = GLKMatrix4RotateWithVector3(model, MyOpenGLUtils.DEGREE2RADIAN(angle), GLKVector3Make(1.0, 0.3, 0.5))
+                    model = GLKMatrix4RotateWithVector3(model, MyOpenGLUtils.DEGREE2RADIAN(self.rotation), GLKVector3Make(0.5, 1.0, 0.0))
+                    MyOpenGLUtils.uniformMatrix4fv(modelLoc, 1, GLboolean(GL_FALSE), &model)
+                    glDrawArrays(GLenum(GL_TRIANGLES), 0, GLsizei(vertexObject.count))
+                }
             }
-
-            glBindVertexArray(0)
 
             glBindTexture(GLenum(GL_TEXTURE_2D), 0)
             glActiveTexture(GLenum(GL_TEXTURE0))
