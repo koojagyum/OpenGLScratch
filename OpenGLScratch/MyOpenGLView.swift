@@ -19,6 +19,10 @@ protocol MyOpenGLRendererDelegate {
     func dispose()
 }
 
+protocol MyOpenGLKeyConsumable {
+    func processKeyDown(keyCode: UInt16)
+}
+
 class MyOpenGLView : NSOpenGLView {
     private weak var currentTimer: Timer?
     private var _renderer: MyOpenGLRendererDelegate?
@@ -118,6 +122,9 @@ class MyOpenGLView : NSOpenGLView {
     }
 
     override func keyDown(with event: NSEvent) {
+        if let keyConsumable = self.renderer as? MyOpenGLKeyConsumable {
+            keyConsumable.processKeyDown(keyCode: event.keyCode)
+        }
         camera.processKeyboard(MyOpenGLUtils.keyCodeToMovement(keyCode: event.keyCode), 0.1)
         self.redraw()
     }

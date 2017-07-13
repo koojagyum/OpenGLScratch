@@ -103,6 +103,9 @@
 		18D0F0421EE4D6F200EEECAC /* ModelRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0F0411EE4D6F200EEECAC /* ModelRenderer.swift */; };
 		18D0F0441EE4D7CC00EEECAC /* BasicModel.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0F0431EE4D7CC00EEECAC /* BasicModel.vsh */; };
 		18D0F0461EE4D7E400EEECAC /* BasicModel.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0F0451EE4D7E400EEECAC /* BasicModel.fsh */; };
+		18D331301F17237B00C5B2A5 /* BlinnPhongRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3312F1F17237B00C5B2A5 /* BlinnPhongRenderer.swift */; };
+		18D331321F172AC400C5B2A5 /* BlinnPhong.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D331311F172AC400C5B2A5 /* BlinnPhong.vsh */; };
+		18D331341F172B6A00C5B2A5 /* BlinnPhong.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D331331F172B6A00C5B2A5 /* BlinnPhong.fsh */; };
 		18EF47A81EFAAA5200A79D09 /* FramebufferRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF47A71EFAAA5200A79D09 /* FramebufferRenderer.swift */; };
 		18EF47AA1EFAAC4300A79D09 /* FramebufferScreen.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EF47A91EFAAC4300A79D09 /* FramebufferScreen.vsh */; };
 		18EF47AC1EFAACCA00A79D09 /* FramebufferScreen.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EF47AB1EFAACCA00A79D09 /* FramebufferScreen.fsh */; };
@@ -260,6 +263,9 @@
 		18D0F0411EE4D6F200EEECAC /* ModelRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelRenderer.swift; sourceTree = "<group>"; };
 		18D0F0431EE4D7CC00EEECAC /* BasicModel.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicModel.vsh; sourceTree = "<group>"; };
 		18D0F0451EE4D7E400EEECAC /* BasicModel.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BasicModel.fsh; sourceTree = "<group>"; };
+		18D3312F1F17237B00C5B2A5 /* BlinnPhongRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlinnPhongRenderer.swift; sourceTree = "<group>"; };
+		18D331311F172AC400C5B2A5 /* BlinnPhong.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BlinnPhong.vsh; sourceTree = "<group>"; };
+		18D331331F172B6A00C5B2A5 /* BlinnPhong.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BlinnPhong.fsh; sourceTree = "<group>"; };
 		18EF47A71EFAAA5200A79D09 /* FramebufferRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramebufferRenderer.swift; sourceTree = "<group>"; };
 		18EF47A91EFAAC4300A79D09 /* FramebufferScreen.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FramebufferScreen.vsh; sourceTree = "<group>"; };
 		18EF47AB1EFAACCA00A79D09 /* FramebufferScreen.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FramebufferScreen.fsh; sourceTree = "<group>"; };
@@ -348,6 +354,8 @@
 				1851B4AF1F0CA8B3009049AE /* Asteroid.fsh */,
 				1851B4B31F0E7EF9009049AE /* AntiAlias.vsh */,
 				1851B4B51F0E7F17009049AE /* AntiAlias.fsh */,
+				18D331311F172AC400C5B2A5 /* BlinnPhong.vsh */,
+				18D331331F172B6A00C5B2A5 /* BlinnPhong.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -389,6 +397,7 @@
 				18A524201F0795A30037BAC4 /* InstancedArrayRenderer.swift */,
 				1878AE371F07AAF0005F8CCA /* AsteroidRenderer.swift */,
 				1851B4B11F0E7CDC009049AE /* MSAARenderer.swift */,
+				18D3312F1F17237B00C5B2A5 /* BlinnPhongRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -616,6 +625,7 @@
 				18EF47BC1EFEB74600A79D09 /* SkyboxReflectCube.fsh in Resources */,
 				18A5241F1F0788090037BAC4 /* Model.fsh in Resources */,
 				189578FA1EDAA3B70025196E /* Lighting.vsh in Resources */,
+				18D331321F172AC400C5B2A5 /* BlinnPhong.vsh in Resources */,
 				18AE58451EDB16570029BEAF /* Circle.vsh in Resources */,
 				180CD31D1EDB2C7400AD5364 /* LightingWithMaterial.fsh in Resources */,
 				18AE58491EDB17060029BEAF /* RectanglePerspective.fsh in Resources */,
@@ -638,6 +648,7 @@
 				189578FF1EDAA9580025196E /* Triangle.vsh in Resources */,
 				180056CF1EEFA41600446954 /* StencilTestSingleColor.fsh in Resources */,
 				180056CB1EEE4DB300446954 /* DepthTest.fsh in Resources */,
+				18D331341F172B6A00C5B2A5 /* BlinnPhong.fsh in Resources */,
 				D15650151E647505008B5428 /* Assets.xcassets in Resources */,
 				18D0F0461EE4D7E400EEECAC /* BasicModel.fsh in Resources */,
 				18A5240B1F0549FE0037BAC4 /* GeometryShader.fsh in Resources */,
@@ -718,6 +729,7 @@
 				189578F61ED470330025196E /* LightingAndLampRenderer.swift in Sources */,
 				18D0EFF11EE1B2AD00EEECAC /* MyAssimpLoader.mm in Sources */,
 				18D0EFCE1EDBB31400EEECAC /* LightingWithMapsRenderer.swift in Sources */,
+				18D331301F17237B00C5B2A5 /* BlinnPhongRenderer.swift in Sources */,
 				1851B4B21F0E7CDC009049AE /* MSAARenderer.swift in Sources */,
 				18EF47B61EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift in Sources */,
 				D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */,
