@@ -87,6 +87,12 @@ class MyOpenGLUtils {
     }
 }
 
+extension GLKMatrix4 {
+    static func * (left: GLKMatrix4, right: GLKMatrix4) -> GLKMatrix4 {
+        return GLKMatrix4Multiply(left, right)
+    }
+}
+
 extension GLKVector3 {
     static func * (left: GLKVector3, right: Float) -> GLKVector3 {
         return GLKVector3Make(left.x * right, left.y * right, left.z * right)

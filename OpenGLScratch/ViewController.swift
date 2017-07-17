@@ -10,7 +10,7 @@ import Cocoa
 
 // Move these into the proper module
 enum SceneType: String {
-    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer, Skybox, SkyboxReflect, UniformBufferObject, GeometryShader, ModelExplode, VisualizeNormal, InstancedArray, Asteroid, MSAA, BlinnPhong
+    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer, Skybox, SkyboxReflect, UniformBufferObject, GeometryShader, ModelExplode, VisualizeNormal, InstancedArray, Asteroid, MSAA, BlinnPhong, DepthMap, ShadowMapping
 }
 
 enum PolygonMode: String {
@@ -24,19 +24,15 @@ class ViewController: NSViewController {
     @IBOutlet weak var openGLView: MyOpenGLView!
 
     let renderers: [SceneType : MyOpenGLRendererDelegate?] = [
-//        SceneType.LightingAndLamp: LightingAndLampRenderer(),
-//        SceneType.SpinningLamp: SpinningLampRenderer(),
-//        SceneType.LightingWithMaterial: LightingWithMaterialRenderer(),
-//        SceneType.DirectionalLight: DirectionalLightRenderer(),
-//        SceneType.PointLight: PointLightRenderer(),
-//        SceneType.SpotLight: SpotLightRenderer(),
-//        SceneType.MultipleLights: MultipleLightsRenderer(),
+        SceneType.Framebuffer: FramebufferRenderer(),
         SceneType.MultipleLights: MultipleLightsRenderer(),
         SceneType.SkyboxReflect: SkyboxReflectRenderer(),
         SceneType.ModelExplode: ModelExplodeRenderer(),
         SceneType.Asteroid: AsteroidRenderer(),
         SceneType.MSAA: MSAARenderer(),
         SceneType.BlinnPhong: BlinnPhongRenderer(),
+        SceneType.DepthMap: DepthMapRenderer(),
+        SceneType.ShadowMapping: nil,
     ]
 
     override func viewDidLoad() {
