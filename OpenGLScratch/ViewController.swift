@@ -32,7 +32,7 @@ class ViewController: NSViewController {
         SceneType.MSAA: MSAARenderer(),
         SceneType.BlinnPhong: BlinnPhongRenderer(),
         SceneType.DepthMap: DepthMapRenderer(),
-        SceneType.ShadowMapping: nil,
+        SceneType.ShadowMapping: ShadowMappingRenderer(),
     ]
 
     override func viewDidLoad() {

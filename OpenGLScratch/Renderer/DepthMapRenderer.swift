@@ -27,6 +27,8 @@ class DepthMapRenderer: MyOpenGLRendererDelegate {
 
     var depthMapFbo: MyOpenGLFramebuffer?
 
+    let lightPos = GLKVector3Make(-2.0, +4.0, -1.0)
+
     func prepare() {
         self.prepareProgram()
         self.prepareTexture()
@@ -40,11 +42,10 @@ class DepthMapRenderer: MyOpenGLRendererDelegate {
         glClear(GLbitfield(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT))
         glEnable(GLenum(GL_DEPTH_TEST))
 
-        let lightPos = GLKVector3Make(-2.0, +4.0, -1.0)
         let nearPlane: GLfloat = 1.0
         let farPlane: GLfloat = 7.5
         let lightProjection = GLKMatrix4MakeOrtho(-10.0, +10.0, -10.0, +10.0, nearPlane, farPlane)
-        let lightView = GLKMatrix4MakeLookAt(lightPos.x, lightPos.y, lightPos.z, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
+        let lightView = GLKMatrix4MakeLookAt(self.lightPos.x, self.lightPos.y, self.lightPos.z, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0)
         let lightSpaceMatrix = lightProjection * lightView
 
         var depthMapTextureId: GLuint = 0
@@ -118,6 +119,10 @@ class DepthMapRenderer: MyOpenGLRendererDelegate {
     func prepareProgram() {
         self.depthMapProgram = MyOpenGLUtils.createProgramWithName(name: "Depthmap")
         self.debugDepthQuadProgram = MyOpenGLUtils.createProgramWithName(name: "DebugDepthQuad")
+        self.debugDepthQuadProgram?.useProgramWith {
+            (program) in
+            program.setInt(name: "depthMap", value: 0)
+        }
     }
 
     func prepareTexture() {
@@ -133,7 +138,7 @@ class DepthMapRenderer: MyOpenGLRendererDelegate {
 
             +25.0, -0.5,  25.0,  0.0, 1.0, 0.0,  25.0,  0.0,
             -25.0, -0.5, -25.0,  0.0, 1.0, 0.0,   0.0, 25.0,
-            +25.0, -0.5, -25.0,  0.0, 1.0, 0.0,  25.0, 10.0
+            +25.0, -0.5, -25.0,  0.0, 1.0, 0.0,  25.0, 25.0
         ]
         self.planeVertexObject = MyOpenGLVertexObject(vertices: planeVertices, alignment: [3,3,2])
 

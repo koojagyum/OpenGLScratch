@@ -112,6 +112,9 @@
 		18D3313C1F19D20D00C5B2A5 /* DebugDepthQuad.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D3313B1F19D20D00C5B2A5 /* DebugDepthQuad.vsh */; };
 		18D3313E1F19D22600C5B2A5 /* DebugDepthQuad.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D3313D1F19D22600C5B2A5 /* DebugDepthQuad.fsh */; };
 		18D331421F1CD49A00C5B2A5 /* MyOpenGLFramebufferForDepthMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D331411F1CD49A00C5B2A5 /* MyOpenGLFramebufferForDepthMap.swift */; };
+		18D331441F1CE3E900C5B2A5 /* ShadowMappingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D331431F1CE3E900C5B2A5 /* ShadowMappingRenderer.swift */; };
+		18D331461F1CE56300C5B2A5 /* ShadowMapping.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D331451F1CE56300C5B2A5 /* ShadowMapping.vsh */; };
+		18D331481F1CE5A100C5B2A5 /* ShadowMapping.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D331471F1CE5A100C5B2A5 /* ShadowMapping.fsh */; };
 		18EF47A81EFAAA5200A79D09 /* FramebufferRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF47A71EFAAA5200A79D09 /* FramebufferRenderer.swift */; };
 		18EF47AA1EFAAC4300A79D09 /* FramebufferScreen.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EF47A91EFAAC4300A79D09 /* FramebufferScreen.vsh */; };
 		18EF47AC1EFAACCA00A79D09 /* FramebufferScreen.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EF47AB1EFAACCA00A79D09 /* FramebufferScreen.fsh */; };
@@ -278,6 +281,9 @@
 		18D3313B1F19D20D00C5B2A5 /* DebugDepthQuad.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DebugDepthQuad.vsh; sourceTree = "<group>"; };
 		18D3313D1F19D22600C5B2A5 /* DebugDepthQuad.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DebugDepthQuad.fsh; sourceTree = "<group>"; };
 		18D331411F1CD49A00C5B2A5 /* MyOpenGLFramebufferForDepthMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLFramebufferForDepthMap.swift; sourceTree = "<group>"; };
+		18D331431F1CE3E900C5B2A5 /* ShadowMappingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowMappingRenderer.swift; sourceTree = "<group>"; };
+		18D331451F1CE56300C5B2A5 /* ShadowMapping.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShadowMapping.vsh; sourceTree = "<group>"; };
+		18D331471F1CE5A100C5B2A5 /* ShadowMapping.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShadowMapping.fsh; sourceTree = "<group>"; };
 		18EF47A71EFAAA5200A79D09 /* FramebufferRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramebufferRenderer.swift; sourceTree = "<group>"; };
 		18EF47A91EFAAC4300A79D09 /* FramebufferScreen.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FramebufferScreen.vsh; sourceTree = "<group>"; };
 		18EF47AB1EFAACCA00A79D09 /* FramebufferScreen.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FramebufferScreen.fsh; sourceTree = "<group>"; };
@@ -372,6 +378,8 @@
 				18D331391F19D1B900C5B2A5 /* Depthmap.fsh */,
 				18D3313B1F19D20D00C5B2A5 /* DebugDepthQuad.vsh */,
 				18D3313D1F19D22600C5B2A5 /* DebugDepthQuad.fsh */,
+				18D331451F1CE56300C5B2A5 /* ShadowMapping.vsh */,
+				18D331471F1CE5A100C5B2A5 /* ShadowMapping.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -415,6 +423,7 @@
 				1851B4B11F0E7CDC009049AE /* MSAARenderer.swift */,
 				18D3312F1F17237B00C5B2A5 /* BlinnPhongRenderer.swift */,
 				18D331351F19D05900C5B2A5 /* DepthMapRenderer.swift */,
+				18D331431F1CE3E900C5B2A5 /* ShadowMappingRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -643,6 +652,7 @@
 				18EF47BC1EFEB74600A79D09 /* SkyboxReflectCube.fsh in Resources */,
 				18A5241F1F0788090037BAC4 /* Model.fsh in Resources */,
 				189578FA1EDAA3B70025196E /* Lighting.vsh in Resources */,
+				18D331481F1CE5A100C5B2A5 /* ShadowMapping.fsh in Resources */,
 				18D331321F172AC400C5B2A5 /* BlinnPhong.vsh in Resources */,
 				18AE58451EDB16570029BEAF /* Circle.vsh in Resources */,
 				180CD31D1EDB2C7400AD5364 /* LightingWithMaterial.fsh in Resources */,
@@ -699,6 +709,7 @@
 				18A524091F0549900037BAC4 /* GeometryShader.vsh in Resources */,
 				18A524151F0772540037BAC4 /* ModelExplode.gsh in Resources */,
 				18D331381F19D1A500C5B2A5 /* Depthmap.vsh in Resources */,
+				18D331461F1CE56300C5B2A5 /* ShadowMapping.vsh in Resources */,
 				189579031EDAAACD0025196E /* Lamp.vsh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -710,6 +721,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D331441F1CE3E900C5B2A5 /* ShadowMappingRenderer.swift in Sources */,
 				189578F81ED865980025196E /* CircleRenderer.swift in Sources */,
 				18A524071F0548DE0037BAC4 /* GeometryShaderRenderer.swift in Sources */,
 				18D0EFE01EDFC93A00EEECAC /* MyOpenGLMesh.swift in Sources */,
