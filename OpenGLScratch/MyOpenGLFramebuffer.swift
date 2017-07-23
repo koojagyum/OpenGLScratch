@@ -44,26 +44,14 @@ class MyOpenGLFramebuffer {
         self.framebufferAttachment = attachment
         self.textureFormat = textureFormat
 
+        self.setupTexture()
         self.setupFramebuffer()
     }
 
-    private func setupFramebuffer() {
+    func setupFramebuffer() {
         glGenFramebuffers(1, &self.fbo)
         glBindFramebuffer(GLenum(GL_FRAMEBUFFER), self.fbo)
 
-        // create a color attachment texture
-        glGenTextures(1, &self.tex)
-        glBindTexture(GLenum(self.textureTarget), self.tex)
-
-        glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_MIN_FILTER), GL_LINEAR)
-        glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_MAG_FILTER), GL_LINEAR)
-
-        if self.useMultisample {
-            glTexImage2DMultisample(GLenum(GL_TEXTURE_2D_MULTISAMPLE), GLsizei(self.multisamples), self.textureFormat, GLsizei(width), GLsizei(height), GLboolean(GL_TRUE))
-        }
-        else {
-            glTexImage2D(GLenum(self.textureTarget), 0, self.textureFormat, GLsizei(width), GLsizei(height), 0, GLenum(self.textureFormat), GLenum(GL_UNSIGNED_BYTE), nil)
-        }
         glFramebufferTexture2D(GLenum(GL_FRAMEBUFFER), GLenum(self.framebufferAttachment), GLenum(self.textureTarget), self.tex, 0)
 
         // now that we actually created the framebuffer and added add attachments we want to check if it is actually complete now
@@ -73,7 +61,6 @@ class MyOpenGLFramebuffer {
         }
 
         glBindFramebuffer(GLenum(GL_FRAMEBUFFER), 0)
-        glBindTexture(GLenum(self.textureTarget), 0)
     }
 
     private func setupRenderbuffer() {
@@ -92,6 +79,24 @@ class MyOpenGLFramebuffer {
 
         glBindRenderbuffer(GLenum(GL_RENDERBUFFER), 0)
         glBindFramebuffer(GLenum(GL_FRAMEBUFFER), 0)
+    }
+
+    func setupTexture() {
+        // create a color attachment texture
+        glGenTextures(1, &self.tex)
+        glBindTexture(GLenum(self.textureTarget), self.tex)
+
+        glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_MIN_FILTER), GL_LINEAR)
+        glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_MAG_FILTER), GL_LINEAR)
+
+        if self.useMultisample {
+            glTexImage2DMultisample(GLenum(GL_TEXTURE_2D_MULTISAMPLE), GLsizei(self.multisamples), self.textureFormat, GLsizei(width), GLsizei(height), GLboolean(GL_TRUE))
+        }
+        else {
+            glTexImage2D(GLenum(self.textureTarget), 0, self.textureFormat, GLsizei(width), GLsizei(height), 0, GLenum(self.textureFormat), GLenum(GL_UNSIGNED_BYTE), nil)
+        }
+
+        glBindTexture(GLenum(self.textureTarget), 0)
     }
 
     func draw(block: () -> ()) -> GLuint {

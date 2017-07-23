@@ -115,6 +115,13 @@
 		18D331441F1CE3E900C5B2A5 /* ShadowMappingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D331431F1CE3E900C5B2A5 /* ShadowMappingRenderer.swift */; };
 		18D331461F1CE56300C5B2A5 /* ShadowMapping.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D331451F1CE56300C5B2A5 /* ShadowMapping.vsh */; };
 		18D331481F1CE5A100C5B2A5 /* ShadowMapping.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D331471F1CE5A100C5B2A5 /* ShadowMapping.fsh */; };
+		18D3314A1F1F8C0E00C5B2A5 /* PointShadowRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D331491F1F8C0E00C5B2A5 /* PointShadowRenderer.swift */; };
+		18D3314C1F206B6200C5B2A5 /* MyOpenGLFramebufferForDepthCubemap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D3314B1F206B6200C5B2A5 /* MyOpenGLFramebufferForDepthCubemap.swift */; };
+		18D3314E1F20CD8000C5B2A5 /* PointShadow.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D3314D1F20CD8000C5B2A5 /* PointShadow.vsh */; };
+		18D331501F20CD9200C5B2A5 /* PointShadow.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D3314F1F20CD9200C5B2A5 /* PointShadow.fsh */; };
+		18D331521F20CDF600C5B2A5 /* PointShadowDepth.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D331511F20CDF600C5B2A5 /* PointShadowDepth.fsh */; };
+		18D331541F20CE0100C5B2A5 /* PointShadowDepth.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D331531F20CE0100C5B2A5 /* PointShadowDepth.vsh */; };
+		18D331561F20CE0C00C5B2A5 /* PointShadowDepth.gsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D331551F20CE0C00C5B2A5 /* PointShadowDepth.gsh */; };
 		18EF47A81EFAAA5200A79D09 /* FramebufferRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EF47A71EFAAA5200A79D09 /* FramebufferRenderer.swift */; };
 		18EF47AA1EFAAC4300A79D09 /* FramebufferScreen.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EF47A91EFAAC4300A79D09 /* FramebufferScreen.vsh */; };
 		18EF47AC1EFAACCA00A79D09 /* FramebufferScreen.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18EF47AB1EFAACCA00A79D09 /* FramebufferScreen.fsh */; };
@@ -284,6 +291,13 @@
 		18D331431F1CE3E900C5B2A5 /* ShadowMappingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowMappingRenderer.swift; sourceTree = "<group>"; };
 		18D331451F1CE56300C5B2A5 /* ShadowMapping.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShadowMapping.vsh; sourceTree = "<group>"; };
 		18D331471F1CE5A100C5B2A5 /* ShadowMapping.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShadowMapping.fsh; sourceTree = "<group>"; };
+		18D331491F1F8C0E00C5B2A5 /* PointShadowRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointShadowRenderer.swift; sourceTree = "<group>"; };
+		18D3314B1F206B6200C5B2A5 /* MyOpenGLFramebufferForDepthCubemap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyOpenGLFramebufferForDepthCubemap.swift; path = Renderer/MyOpenGLFramebufferForDepthCubemap.swift; sourceTree = "<group>"; };
+		18D3314D1F20CD8000C5B2A5 /* PointShadow.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PointShadow.vsh; sourceTree = "<group>"; };
+		18D3314F1F20CD9200C5B2A5 /* PointShadow.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PointShadow.fsh; sourceTree = "<group>"; };
+		18D331511F20CDF600C5B2A5 /* PointShadowDepth.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PointShadowDepth.fsh; sourceTree = "<group>"; };
+		18D331531F20CE0100C5B2A5 /* PointShadowDepth.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PointShadowDepth.vsh; sourceTree = "<group>"; };
+		18D331551F20CE0C00C5B2A5 /* PointShadowDepth.gsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PointShadowDepth.gsh; sourceTree = "<group>"; };
 		18EF47A71EFAAA5200A79D09 /* FramebufferRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FramebufferRenderer.swift; sourceTree = "<group>"; };
 		18EF47A91EFAAC4300A79D09 /* FramebufferScreen.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FramebufferScreen.vsh; sourceTree = "<group>"; };
 		18EF47AB1EFAACCA00A79D09 /* FramebufferScreen.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = FramebufferScreen.fsh; sourceTree = "<group>"; };
@@ -380,6 +394,11 @@
 				18D3313D1F19D22600C5B2A5 /* DebugDepthQuad.fsh */,
 				18D331451F1CE56300C5B2A5 /* ShadowMapping.vsh */,
 				18D331471F1CE5A100C5B2A5 /* ShadowMapping.fsh */,
+				18D3314D1F20CD8000C5B2A5 /* PointShadow.vsh */,
+				18D3314F1F20CD9200C5B2A5 /* PointShadow.fsh */,
+				18D331531F20CE0100C5B2A5 /* PointShadowDepth.vsh */,
+				18D331551F20CE0C00C5B2A5 /* PointShadowDepth.gsh */,
+				18D331511F20CDF600C5B2A5 /* PointShadowDepth.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -424,6 +443,7 @@
 				18D3312F1F17237B00C5B2A5 /* BlinnPhongRenderer.swift */,
 				18D331351F19D05900C5B2A5 /* DepthMapRenderer.swift */,
 				18D331431F1CE3E900C5B2A5 /* ShadowMappingRenderer.swift */,
+				18D331491F1F8C0E00C5B2A5 /* PointShadowRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -577,6 +597,7 @@
 				181E25B71EF64CA3007CF90A /* MyOpenGLTextureCache.swift */,
 				1851B4B71F0E8085009049AE /* MyOpenGLFramebuffer.swift */,
 				18D331411F1CD49A00C5B2A5 /* MyOpenGLFramebufferForDepthMap.swift */,
+				18D3314B1F206B6200C5B2A5 /* MyOpenGLFramebufferForDepthCubemap.swift */,
 				18EF47B51EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift */,
 			);
 			path = OpenGLScratch;
@@ -650,6 +671,7 @@
 				18D0EFCC1EDBB26800EEECAC /* LightingWithMaps.vsh in Resources */,
 				1851B4B41F0E7EF9009049AE /* AntiAlias.vsh in Resources */,
 				18EF47BC1EFEB74600A79D09 /* SkyboxReflectCube.fsh in Resources */,
+				18D331521F20CDF600C5B2A5 /* PointShadowDepth.fsh in Resources */,
 				18A5241F1F0788090037BAC4 /* Model.fsh in Resources */,
 				189578FA1EDAA3B70025196E /* Lighting.vsh in Resources */,
 				18D331481F1CE5A100C5B2A5 /* ShadowMapping.fsh in Resources */,
@@ -665,6 +687,7 @@
 				18A524011F04B4250037BAC4 /* Green.fsh in Resources */,
 				18D3313A1F19D1B900C5B2A5 /* Depthmap.fsh in Resources */,
 				18A5241B1F0784290037BAC4 /* VisualizeNormal.gsh in Resources */,
+				18D331501F20CD9200C5B2A5 /* PointShadow.fsh in Resources */,
 				18EF47BA1EFEB73A00A79D09 /* SkyboxReflectCube.vsh in Resources */,
 				18A524051F04B4450037BAC4 /* Yellow.fsh in Resources */,
 				18D0F0341EE1B31400EEECAC /* quaternion.inl in Resources */,
@@ -703,9 +726,12 @@
 				181E25B61EF57B95007CF90A /* Blending.fsh in Resources */,
 				18AE58471EDB16F80029BEAF /* RectanglePerspective.vsh in Resources */,
 				18EF47AC1EFAACCA00A79D09 /* FramebufferScreen.fsh in Resources */,
+				18D331541F20CE0100C5B2A5 /* PointShadowDepth.vsh in Resources */,
 				18EF47B21EFCD3EC00A79D09 /* Skybox.fsh in Resources */,
 				18D3313C1F19D20D00C5B2A5 /* DebugDepthQuad.vsh in Resources */,
 				D15650181E647505008B5428 /* Main.storyboard in Resources */,
+				18D331561F20CE0C00C5B2A5 /* PointShadowDepth.gsh in Resources */,
+				18D3314E1F20CD8000C5B2A5 /* PointShadow.vsh in Resources */,
 				18A524091F0549900037BAC4 /* GeometryShader.vsh in Resources */,
 				18A524151F0772540037BAC4 /* ModelExplode.gsh in Resources */,
 				18D331381F19D1A500C5B2A5 /* Depthmap.vsh in Resources */,
@@ -728,11 +754,13 @@
 				1878AE381F07AAF0005F8CCA /* AsteroidRenderer.swift in Sources */,
 				18EF47B81EFEB67600A79D09 /* SkyboxReflectRenderer.swift in Sources */,
 				18F1CCA71EF4F8F400F03C68 /* MyOpenGLVertexObject.swift in Sources */,
+				18D3314A1F1F8C0E00C5B2A5 /* PointShadowRenderer.swift in Sources */,
 				D15650131E647504008B5428 /* ViewController.swift in Sources */,
 				18EF47B41EFD634B00A79D09 /* SkyboxRenderer.swift in Sources */,
 				189042BB1EC179AD0083B094 /* MyOpenGLProgram.swift in Sources */,
 				18A5240F1F076F030037BAC4 /* ModelExplodeRenderer.swift in Sources */,
 				189042BD1EC1E99C0083B094 /* RectangleRenderer.swift in Sources */,
+				18D3314C1F206B6200C5B2A5 /* MyOpenGLFramebufferForDepthCubemap.swift in Sources */,
 				189578EA1ED19A340025196E /* CubeRenderer.swift in Sources */,
 				18D0EFDC1EDD924200EEECAC /* MultipleLightsRenderer.swift in Sources */,
 				180CD31B1EDB2BFA00AD5364 /* LightingWithMaterialRenderer.swift in Sources */,
