@@ -121,6 +121,9 @@ extension GLKVector2 {
         var tmp = self.v
         return [Float](UnsafeBufferPointer(start: &tmp.0, count: 2))
     }
+    static func - (left:GLKVector2, right: GLKVector2) -> GLKVector2 {
+        return GLKVector2Subtract(left, right)
+    }
 }
 
 extension GLfloat {

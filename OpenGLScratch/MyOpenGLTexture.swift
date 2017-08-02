@@ -78,4 +78,12 @@ class MyOpenGLTexture {
         block()
         glBindTexture(GLenum(self.textureTarget), 0)
     }
+
+    func useTextureWith(target: Int32, block: () -> ()) {
+        glActiveTexture(GLenum(target))
+        glBindTexture(GLenum(self.textureTarget), self.textureId)
+        block()
+        glActiveTexture(GLenum(target))
+        glBindTexture(GLenum(self.textureTarget), 0)
+    }
 }
