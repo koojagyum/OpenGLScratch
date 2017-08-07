@@ -10,7 +10,7 @@ import Cocoa
 
 // Move these into the proper module
 enum SceneType: String {
-    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer, Skybox, SkyboxReflect, UniformBufferObject, GeometryShader, ModelExplode, VisualizeNormal, InstancedArray, Asteroid, MSAA, BlinnPhong, DepthMap, ShadowMapping, PointShadow, NormalMapping
+    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer, Skybox, SkyboxReflect, UniformBufferObject, GeometryShader, ModelExplode, VisualizeNormal, InstancedArray, Asteroid, MSAA, BlinnPhong, DepthMap, ShadowMapping, PointShadow, NormalMapping, ParallaxMapping
 }
 
 enum PolygonMode: String {
@@ -24,15 +24,11 @@ class ViewController: NSViewController {
     @IBOutlet weak var openGLView: MyOpenGLView!
 
     let renderers: [SceneType : MyOpenGLRendererDelegate?] = [
-        SceneType.Framebuffer: FramebufferRenderer(),
-        SceneType.MultipleLights: MultipleLightsRenderer(),
-        SceneType.SkyboxReflect: SkyboxReflectRenderer(),
         SceneType.ModelExplode: ModelExplodeRenderer(),
         SceneType.Asteroid: AsteroidRenderer(),
-        SceneType.MSAA: MSAARenderer(),
-        SceneType.ShadowMapping: ShadowMappingRenderer(),
         SceneType.PointShadow: PointShadowRenderer(),
         SceneType.NormalMapping: NormalMappingRenderer(),
+        SceneType.ParallaxMapping: ParallaxMappingRenderer(),
     ]
 
     override func viewDidLoad() {
