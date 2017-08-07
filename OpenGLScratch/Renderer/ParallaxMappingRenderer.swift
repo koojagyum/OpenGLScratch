@@ -93,6 +93,9 @@ class ParallaxMappingRenderer: MyOpenGLRendererDelegate, MyOpenGLKeyConsumable {
         self.diffuseMap = MyOpenGLTexture(imageName: "bricks2")
         self.normalMap = MyOpenGLTexture(imageName: "bricks2_normal")
         self.heightMap = MyOpenGLTexture(imageName: "bricks2_disp")
+        // self.diffuseMap = MyOpenGLTexture(imageName: "wood")
+        // self.normalMap = MyOpenGLTexture(imageName: "toy_box_normal")
+        // self.heightMap = MyOpenGLTexture(imageName: "toy_box_disp")
     }
 
     func render(_ bounds: NSRect) {
