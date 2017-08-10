@@ -42,6 +42,11 @@ class MyOpenGLView : NSOpenGLView {
             self.camera.reset(position: GLKVector3Make(0.0, 0.0, 3.0), worldUp: GLKVector3Make(0.0, 1.0, 0.0))
             _renderer?.camera = self.camera
 
+            // HDRRenderer requires its own camera direction
+            if let _ = _renderer as? HDRRenderer {
+                self.camera.yaw = 90.0;
+            }
+
             if let interval = _renderer?.renderInterval, interval > 0 {
                 let view = self
                 self.currentTimer = Timer.scheduledTimer(withTimeInterval: interval, repeats: true) {

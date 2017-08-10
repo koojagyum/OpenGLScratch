@@ -63,7 +63,7 @@ class MyOpenGLFramebuffer {
         glBindFramebuffer(GLenum(GL_FRAMEBUFFER), 0)
     }
 
-    private func setupRenderbuffer() {
+    func setupRenderbuffer() {
         glBindFramebuffer(GLenum(GL_FRAMEBUFFER), self.fbo)
         // create a renderbuffer object for depth and stencil attachment (we won't be sampling these)
         glGenRenderbuffers(1, &self.rbo)
@@ -90,10 +90,10 @@ class MyOpenGLFramebuffer {
         glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_MAG_FILTER), GL_LINEAR)
 
         if self.useMultisample {
-            glTexImage2DMultisample(GLenum(GL_TEXTURE_2D_MULTISAMPLE), GLsizei(self.multisamples), self.textureFormat, GLsizei(width), GLsizei(height), GLboolean(GL_TRUE))
+            glTexImage2DMultisample(GLenum(GL_TEXTURE_2D_MULTISAMPLE), GLsizei(self.multisamples), self.textureFormat, GLsizei(self.width), GLsizei(self.height), GLboolean(GL_TRUE))
         }
         else {
-            glTexImage2D(GLenum(self.textureTarget), 0, self.textureFormat, GLsizei(width), GLsizei(height), 0, GLenum(self.textureFormat), GLenum(GL_UNSIGNED_BYTE), nil)
+            glTexImage2D(GLenum(self.textureTarget), 0, self.textureFormat, GLsizei(self.width), GLsizei(self.height), 0, GLenum(self.textureFormat), GLenum(GL_UNSIGNED_BYTE), nil)
         }
 
         glBindTexture(GLenum(self.textureTarget), 0)

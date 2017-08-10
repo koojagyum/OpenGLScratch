@@ -10,7 +10,7 @@ import Cocoa
 
 // Move these into the proper module
 enum SceneType: String {
-    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer, Skybox, SkyboxReflect, UniformBufferObject, GeometryShader, ModelExplode, VisualizeNormal, InstancedArray, Asteroid, MSAA, BlinnPhong, DepthMap, ShadowMapping, PointShadow, NormalMapping, ParallaxMapping, SteepParallaxMapping
+    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer, Skybox, SkyboxReflect, UniformBufferObject, GeometryShader, ModelExplode, VisualizeNormal, InstancedArray, Asteroid, MSAA, BlinnPhong, DepthMap, ShadowMapping, PointShadow, NormalMapping, ParallaxMapping, SteepParallaxMapping, HDR
 }
 
 enum PolygonMode: String {
@@ -28,8 +28,8 @@ class ViewController: NSViewController {
         SceneType.Asteroid: AsteroidRenderer(),
         SceneType.PointShadow: PointShadowRenderer(),
         SceneType.NormalMapping: NormalMappingRenderer(),
-        SceneType.ParallaxMapping: ParallaxMappingRenderer(),
         SceneType.SteepParallaxMapping: SteepParallaxMappingRenderer(),
+        SceneType.HDR: HDRRenderer(),
     ]
 
     override func viewDidLoad() {

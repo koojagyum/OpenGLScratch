@@ -81,6 +81,12 @@
 		18B52D611EC832F000BCB1EA /* RectangleRotationRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18B52D601EC832F000BCB1EA /* RectangleRotationRenderer.swift */; };
 		18CDEA981F3823800013F0E2 /* SteepParallaxMappingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDEA971F3823800013F0E2 /* SteepParallaxMappingRenderer.swift */; };
 		18CDEA9A1F3824180013F0E2 /* SteepParallaxMapping.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18CDEA991F3824180013F0E2 /* SteepParallaxMapping.fsh */; };
+		18CDEA9C1F396C410013F0E2 /* HDRRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDEA9B1F396C410013F0E2 /* HDRRenderer.swift */; };
+		18CDEA9E1F3A0A640013F0E2 /* HDRLighting.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18CDEA9D1F3A0A640013F0E2 /* HDRLighting.vsh */; };
+		18CDEAA01F3A0A6F0013F0E2 /* HDRLighting.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18CDEA9F1F3A0A6F0013F0E2 /* HDRLighting.fsh */; };
+		18CDEAA21F3A0D8F0013F0E2 /* HDR.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18CDEAA11F3A0D8F0013F0E2 /* HDR.vsh */; };
+		18CDEAA41F3A0D9B0013F0E2 /* HDR.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18CDEAA31F3A0D9B0013F0E2 /* HDR.fsh */; };
+		18CDEAA61F3ABF7A0013F0E2 /* MyOpenGLFloatingPointFramebuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CDEAA51F3ABF7A0013F0E2 /* MyOpenGLFloatingPointFramebuffer.swift */; };
 		18D0EFCA1EDBB0EE00EEECAC /* LightingWithMaps.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFC91EDBB0EE00EEECAC /* LightingWithMaps.fsh */; };
 		18D0EFCC1EDBB26800EEECAC /* LightingWithMaps.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18D0EFCB1EDBB26800EEECAC /* LightingWithMaps.vsh */; };
 		18D0EFCE1EDBB31400EEECAC /* LightingWithMapsRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D0EFCD1EDBB31400EEECAC /* LightingWithMapsRenderer.swift */; };
@@ -223,6 +229,12 @@
 		18B52D601EC832F000BCB1EA /* RectangleRotationRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleRotationRenderer.swift; sourceTree = "<group>"; };
 		18CDEA971F3823800013F0E2 /* SteepParallaxMappingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SteepParallaxMappingRenderer.swift; sourceTree = "<group>"; };
 		18CDEA991F3824180013F0E2 /* SteepParallaxMapping.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = SteepParallaxMapping.fsh; sourceTree = "<group>"; };
+		18CDEA9B1F396C410013F0E2 /* HDRRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HDRRenderer.swift; sourceTree = "<group>"; };
+		18CDEA9D1F3A0A640013F0E2 /* HDRLighting.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HDRLighting.vsh; sourceTree = "<group>"; };
+		18CDEA9F1F3A0A6F0013F0E2 /* HDRLighting.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HDRLighting.fsh; sourceTree = "<group>"; };
+		18CDEAA11F3A0D8F0013F0E2 /* HDR.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HDR.vsh; sourceTree = "<group>"; };
+		18CDEAA31F3A0D9B0013F0E2 /* HDR.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = HDR.fsh; sourceTree = "<group>"; };
+		18CDEAA51F3ABF7A0013F0E2 /* MyOpenGLFloatingPointFramebuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLFloatingPointFramebuffer.swift; sourceTree = "<group>"; };
 		18D0EFC91EDBB0EE00EEECAC /* LightingWithMaps.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = LightingWithMaps.fsh; sourceTree = "<group>"; };
 		18D0EFCB1EDBB26800EEECAC /* LightingWithMaps.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = LightingWithMaps.vsh; sourceTree = "<group>"; };
 		18D0EFCD1EDBB31400EEECAC /* LightingWithMapsRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightingWithMapsRenderer.swift; sourceTree = "<group>"; };
@@ -420,6 +432,10 @@
 				184316ED1F342E1300B11796 /* ParallaxMapping.vsh */,
 				184316EF1F342E1D00B11796 /* ParallaxMapping.fsh */,
 				18CDEA991F3824180013F0E2 /* SteepParallaxMapping.fsh */,
+				18CDEA9D1F3A0A640013F0E2 /* HDRLighting.vsh */,
+				18CDEA9F1F3A0A6F0013F0E2 /* HDRLighting.fsh */,
+				18CDEAA11F3A0D8F0013F0E2 /* HDR.vsh */,
+				18CDEAA31F3A0D9B0013F0E2 /* HDR.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -468,6 +484,7 @@
 				184316E51F30340F00B11796 /* NormalMappingRenderer.swift */,
 				184316EB1F342C5800B11796 /* ParallaxMappingRenderer.swift */,
 				18CDEA971F3823800013F0E2 /* SteepParallaxMappingRenderer.swift */,
+				18CDEA9B1F396C410013F0E2 /* HDRRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -609,7 +626,6 @@
 				D15650191E647505008B5428 /* Info.plist */,
 				D1088F111E704C6200C060FF /* MyOpenGLView.swift */,
 				189042BA1EC179AD0083B094 /* MyOpenGLProgram.swift */,
-				18B52D551EC5EF6D00BCB1EA /* MyOpenGLTexture.swift */,
 				189578EF1ED3D8F00025196E /* MyOpenGLUtils.swift */,
 				189578F11ED3DAA20025196E /* MyOpenGLCamera.swift */,
 				18D0EFDF1EDFC93A00EEECAC /* MyOpenGLMesh.swift */,
@@ -618,11 +634,13 @@
 				18D0EFF01EE1B2AD00EEECAC /* MyAssimpLoader.mm */,
 				18D0F03B1EE1BC9700EEECAC /* MyAssimpLoader.h */,
 				18F1CCA61EF4F8F400F03C68 /* MyOpenGLVertexObject.swift */,
+				18B52D551EC5EF6D00BCB1EA /* MyOpenGLTexture.swift */,
+				18EF47B51EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift */,
 				181E25B71EF64CA3007CF90A /* MyOpenGLTextureCache.swift */,
 				1851B4B71F0E8085009049AE /* MyOpenGLFramebuffer.swift */,
 				18D331411F1CD49A00C5B2A5 /* MyOpenGLFramebufferForDepthMap.swift */,
 				18D3314B1F206B6200C5B2A5 /* MyOpenGLFramebufferForDepthCubemap.swift */,
-				18EF47B51EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift */,
+				18CDEAA51F3ABF7A0013F0E2 /* MyOpenGLFloatingPointFramebuffer.swift */,
 			);
 			path = OpenGLScratch;
 			sourceTree = "<group>";
@@ -727,6 +745,7 @@
 				18A524251F0797160037BAC4 /* InstancedArray.fsh in Resources */,
 				189578FF1EDAA9580025196E /* Triangle.vsh in Resources */,
 				180056CF1EEFA41600446954 /* StencilTestSingleColor.fsh in Resources */,
+				18CDEAA21F3A0D8F0013F0E2 /* HDR.vsh in Resources */,
 				180056CB1EEE4DB300446954 /* DepthTest.fsh in Resources */,
 				18D331341F172B6A00C5B2A5 /* BlinnPhong.fsh in Resources */,
 				D15650151E647505008B5428 /* Assets.xcassets in Resources */,
@@ -743,16 +762,19 @@
 				189578FC1EDAA4130025196E /* Lighting.fsh in Resources */,
 				18D0F0331EE1B31400EEECAC /* matrix4x4.inl in Resources */,
 				184316EA1F303DA500B11796 /* NormalMapping.fsh in Resources */,
+				18CDEAA41F3A0D9B0013F0E2 /* HDR.fsh in Resources */,
 				184316F01F342E1D00B11796 /* ParallaxMapping.fsh in Resources */,
 				1851B4AE1F0CA81A009049AE /* Asteroid.vsh in Resources */,
 				18D0F0361EE1B31400EEECAC /* vector3.inl in Resources */,
 				18EF47B01EFCD36E00A79D09 /* Skybox.vsh in Resources */,
 				18D0F0351EE1B31400EEECAC /* vector2.inl in Resources */,
+				18CDEAA01F3A0A6F0013F0E2 /* HDRLighting.fsh in Resources */,
 				18D0F0301EE1B31400EEECAC /* config.h.in in Resources */,
 				18A523FD1F04B38B0037BAC4 /* UniformBufferObject.vsh in Resources */,
 				18EF47AA1EFAAC4300A79D09 /* FramebufferScreen.vsh in Resources */,
 				18A5241D1F0787E90037BAC4 /* Model.vsh in Resources */,
 				181E25B61EF57B95007CF90A /* Blending.fsh in Resources */,
+				18CDEA9E1F3A0A640013F0E2 /* HDRLighting.vsh in Resources */,
 				18AE58471EDB16F80029BEAF /* RectanglePerspective.vsh in Resources */,
 				18EF47AC1EFAACCA00A79D09 /* FramebufferScreen.fsh in Resources */,
 				18D331541F20CE0100C5B2A5 /* PointShadowDepth.vsh in Resources */,
@@ -801,6 +823,7 @@
 				189578F41ED429FE0025196E /* NCubesWithCameraRenderer.swift in Sources */,
 				180056C71EEE478800446954 /* DepthTestRenderer.swift in Sources */,
 				18D0EFD01EDC3D0C00EEECAC /* DirectionalLightRenderer.swift in Sources */,
+				18CDEAA61F3ABF7A0013F0E2 /* MyOpenGLFloatingPointFramebuffer.swift in Sources */,
 				18EF47A81EFAAA5200A79D09 /* FramebufferRenderer.swift in Sources */,
 				18A524211F0795A30037BAC4 /* InstancedArrayRenderer.swift in Sources */,
 				180056D11EF4F32300446954 /* GrassBlendRenderer.swift in Sources */,
@@ -811,6 +834,7 @@
 				189578EC1ED1C6DD0025196E /* NCubesRenderer.swift in Sources */,
 				180CD3191EDB1BEC00AD5364 /* SpinningLampRenderer.swift in Sources */,
 				18B52D611EC832F000BCB1EA /* RectangleRotationRenderer.swift in Sources */,
+				18CDEA9C1F396C410013F0E2 /* HDRRenderer.swift in Sources */,
 				18D331361F19D05900C5B2A5 /* DepthMapRenderer.swift in Sources */,
 				18D331421F1CD49A00C5B2A5 /* MyOpenGLFramebufferForDepthMap.swift in Sources */,
 				18A524171F0782500037BAC4 /* VisualizeNormalRenderer.swift in Sources */,
