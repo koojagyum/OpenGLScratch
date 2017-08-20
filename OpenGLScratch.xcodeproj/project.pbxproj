@@ -49,6 +49,13 @@
 		189579011EDAA9AD0025196E /* Triangle.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 189579001EDAA9AD0025196E /* Triangle.fsh */; };
 		189579031EDAAACD0025196E /* Lamp.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 189579021EDAAACD0025196E /* Lamp.vsh */; };
 		189579051EDAAAF10025196E /* Lamp.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 189579041EDAAAF10025196E /* Lamp.fsh */; };
+		189918001F3F1D3A0066CB0E /* BloomRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189917FF1F3F1D3A0066CB0E /* BloomRenderer.swift */; };
+		189918021F3F22520066CB0E /* BloomScene.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 189918011F3F22520066CB0E /* BloomScene.vsh */; };
+		189918041F3F225E0066CB0E /* BloomScene.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 189918031F3F225E0066CB0E /* BloomScene.fsh */; };
+		189918061F3F22750066CB0E /* BloomLightbox.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 189918051F3F22750066CB0E /* BloomLightbox.fsh */; };
+		189918081F3F22860066CB0E /* BloomBlur.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 189918071F3F22860066CB0E /* BloomBlur.fsh */; };
+		1899180A1F3F22940066CB0E /* BloomBlend.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 189918091F3F22940066CB0E /* BloomBlend.fsh */; };
+		1899180C1F3F2BBA0066CB0E /* MyOpenGLFloatingPointFramebufferMultiTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1899180B1F3F2BBA0066CB0E /* MyOpenGLFloatingPointFramebufferMultiTarget.swift */; };
 		18A523FB1F04B1DC0037BAC4 /* UniformBufferObjectRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A523FA1F04B1DC0037BAC4 /* UniformBufferObjectRenderer.swift */; };
 		18A523FD1F04B38B0037BAC4 /* UniformBufferObject.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A523FC1F04B38B0037BAC4 /* UniformBufferObject.vsh */; };
 		18A523FF1F04B3FB0037BAC4 /* Red.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 18A523FE1F04B3FB0037BAC4 /* Red.fsh */; };
@@ -197,6 +204,13 @@
 		189579001EDAA9AD0025196E /* Triangle.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Triangle.fsh; sourceTree = "<group>"; };
 		189579021EDAAACD0025196E /* Lamp.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Lamp.vsh; sourceTree = "<group>"; };
 		189579041EDAAAF10025196E /* Lamp.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Lamp.fsh; sourceTree = "<group>"; };
+		189917FF1F3F1D3A0066CB0E /* BloomRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BloomRenderer.swift; sourceTree = "<group>"; };
+		189918011F3F22520066CB0E /* BloomScene.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BloomScene.vsh; sourceTree = "<group>"; };
+		189918031F3F225E0066CB0E /* BloomScene.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BloomScene.fsh; sourceTree = "<group>"; };
+		189918051F3F22750066CB0E /* BloomLightbox.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BloomLightbox.fsh; sourceTree = "<group>"; };
+		189918071F3F22860066CB0E /* BloomBlur.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BloomBlur.fsh; sourceTree = "<group>"; };
+		189918091F3F22940066CB0E /* BloomBlend.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BloomBlend.fsh; sourceTree = "<group>"; };
+		1899180B1F3F2BBA0066CB0E /* MyOpenGLFloatingPointFramebufferMultiTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLFloatingPointFramebufferMultiTarget.swift; sourceTree = "<group>"; };
 		18A523FA1F04B1DC0037BAC4 /* UniformBufferObjectRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniformBufferObjectRenderer.swift; sourceTree = "<group>"; };
 		18A523FC1F04B38B0037BAC4 /* UniformBufferObject.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = UniformBufferObject.vsh; sourceTree = "<group>"; };
 		18A523FE1F04B3FB0037BAC4 /* Red.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Red.fsh; sourceTree = "<group>"; };
@@ -436,6 +450,11 @@
 				18CDEA9F1F3A0A6F0013F0E2 /* HDRLighting.fsh */,
 				18CDEAA11F3A0D8F0013F0E2 /* HDR.vsh */,
 				18CDEAA31F3A0D9B0013F0E2 /* HDR.fsh */,
+				189918011F3F22520066CB0E /* BloomScene.vsh */,
+				189918031F3F225E0066CB0E /* BloomScene.fsh */,
+				189918051F3F22750066CB0E /* BloomLightbox.fsh */,
+				189918071F3F22860066CB0E /* BloomBlur.fsh */,
+				189918091F3F22940066CB0E /* BloomBlend.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -485,6 +504,7 @@
 				184316EB1F342C5800B11796 /* ParallaxMappingRenderer.swift */,
 				18CDEA971F3823800013F0E2 /* SteepParallaxMappingRenderer.swift */,
 				18CDEA9B1F396C410013F0E2 /* HDRRenderer.swift */,
+				189917FF1F3F1D3A0066CB0E /* BloomRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -641,6 +661,7 @@
 				18D331411F1CD49A00C5B2A5 /* MyOpenGLFramebufferForDepthMap.swift */,
 				18D3314B1F206B6200C5B2A5 /* MyOpenGLFramebufferForDepthCubemap.swift */,
 				18CDEAA51F3ABF7A0013F0E2 /* MyOpenGLFloatingPointFramebuffer.swift */,
+				1899180B1F3F2BBA0066CB0E /* MyOpenGLFloatingPointFramebufferMultiTarget.swift */,
 			);
 			path = OpenGLScratch;
 			sourceTree = "<group>";
@@ -717,6 +738,7 @@
 				18A5241F1F0788090037BAC4 /* Model.fsh in Resources */,
 				189578FA1EDAA3B70025196E /* Lighting.vsh in Resources */,
 				18D331481F1CE5A100C5B2A5 /* ShadowMapping.fsh in Resources */,
+				189918041F3F225E0066CB0E /* BloomScene.fsh in Resources */,
 				18D331321F172AC400C5B2A5 /* BlinnPhong.vsh in Resources */,
 				18AE58451EDB16570029BEAF /* Circle.vsh in Resources */,
 				180CD31D1EDB2C7400AD5364 /* LightingWithMaterial.fsh in Resources */,
@@ -731,6 +753,7 @@
 				18A524011F04B4250037BAC4 /* Green.fsh in Resources */,
 				18D3313A1F19D1B900C5B2A5 /* Depthmap.fsh in Resources */,
 				184316EE1F342E1300B11796 /* ParallaxMapping.vsh in Resources */,
+				1899180A1F3F22940066CB0E /* BloomBlend.fsh in Resources */,
 				18A5241B1F0784290037BAC4 /* VisualizeNormal.gsh in Resources */,
 				18D331501F20CD9200C5B2A5 /* PointShadow.fsh in Resources */,
 				18EF47BA1EFEB73A00A79D09 /* SkyboxReflectCube.vsh in Resources */,
@@ -761,10 +784,12 @@
 				18A523FF1F04B3FB0037BAC4 /* Red.fsh in Resources */,
 				189578FC1EDAA4130025196E /* Lighting.fsh in Resources */,
 				18D0F0331EE1B31400EEECAC /* matrix4x4.inl in Resources */,
+				189918021F3F22520066CB0E /* BloomScene.vsh in Resources */,
 				184316EA1F303DA500B11796 /* NormalMapping.fsh in Resources */,
 				18CDEAA41F3A0D9B0013F0E2 /* HDR.fsh in Resources */,
 				184316F01F342E1D00B11796 /* ParallaxMapping.fsh in Resources */,
 				1851B4AE1F0CA81A009049AE /* Asteroid.vsh in Resources */,
+				189918061F3F22750066CB0E /* BloomLightbox.fsh in Resources */,
 				18D0F0361EE1B31400EEECAC /* vector3.inl in Resources */,
 				18EF47B01EFCD36E00A79D09 /* Skybox.vsh in Resources */,
 				18D0F0351EE1B31400EEECAC /* vector2.inl in Resources */,
@@ -776,6 +801,7 @@
 				181E25B61EF57B95007CF90A /* Blending.fsh in Resources */,
 				18CDEA9E1F3A0A640013F0E2 /* HDRLighting.vsh in Resources */,
 				18AE58471EDB16F80029BEAF /* RectanglePerspective.vsh in Resources */,
+				189918081F3F22860066CB0E /* BloomBlur.fsh in Resources */,
 				18EF47AC1EFAACCA00A79D09 /* FramebufferScreen.fsh in Resources */,
 				18D331541F20CE0100C5B2A5 /* PointShadowDepth.vsh in Resources */,
 				18EF47B21EFCD3EC00A79D09 /* Skybox.fsh in Resources */,
@@ -808,6 +834,7 @@
 				18D3314A1F1F8C0E00C5B2A5 /* PointShadowRenderer.swift in Sources */,
 				D15650131E647504008B5428 /* ViewController.swift in Sources */,
 				18EF47B41EFD634B00A79D09 /* SkyboxRenderer.swift in Sources */,
+				189918001F3F1D3A0066CB0E /* BloomRenderer.swift in Sources */,
 				189042BB1EC179AD0083B094 /* MyOpenGLProgram.swift in Sources */,
 				18A5240F1F076F030037BAC4 /* ModelExplodeRenderer.swift in Sources */,
 				189042BD1EC1E99C0083B094 /* RectangleRenderer.swift in Sources */,
@@ -833,6 +860,7 @@
 				189578F21ED3DAA20025196E /* MyOpenGLCamera.swift in Sources */,
 				189578EC1ED1C6DD0025196E /* NCubesRenderer.swift in Sources */,
 				180CD3191EDB1BEC00AD5364 /* SpinningLampRenderer.swift in Sources */,
+				1899180C1F3F2BBA0066CB0E /* MyOpenGLFloatingPointFramebufferMultiTarget.swift in Sources */,
 				18B52D611EC832F000BCB1EA /* RectangleRotationRenderer.swift in Sources */,
 				18CDEA9C1F396C410013F0E2 /* HDRRenderer.swift in Sources */,
 				18D331361F19D05900C5B2A5 /* DepthMapRenderer.swift in Sources */,
