@@ -15,18 +15,22 @@ class MyOpenGLFramebuffer {
     let textureFormat: Int32
     let framebufferAttachment: Int32
 
+    let texture: MyOpenGLTexture
+
     var fbo: GLuint = 0
     var rbo: GLuint = 0
-    var tex: GLuint = 0
+    var tex: GLuint {
+        get {
+            return texture.textureId
+        }
+    }
 
     var valid: Bool = false
 
     var useMultisample: Bool {
         return self.multisamples > 0
     }
-    var textureTarget: Int32 {
-        return self.useMultisample ? GL_TEXTURE_2D_MULTISAMPLE : GL_TEXTURE_2D
-    }
+    let textureTarget: Int32
 
     convenience init(width: Int, height: Int) {
         self.init(width: width, height: height, multisamples: 0)
@@ -37,12 +41,18 @@ class MyOpenGLFramebuffer {
         self.setupRenderbuffer()
     }
 
-    init(width: Int, height: Int, multisamples: Int, attachment: GLint, textureFormat: GLint) {
+    convenience init(width: Int, height: Int, multisamples: Int, attachment: GLint, textureFormat: GLint) {
+        self.init(width: width, height: height, multisamples: multisamples, attachment: attachment, textureFormat: textureFormat, textureTarget: multisamples > 0 ? GL_TEXTURE_2D_MULTISAMPLE : GL_TEXTURE_2D)
+    }
+
+    init(width: Int, height: Int, multisamples: Int, attachment: GLint, textureFormat: GLint, textureTarget: Int32) {
         self.width = width
         self.height = height
         self.multisamples = multisamples
         self.framebufferAttachment = attachment
         self.textureFormat = textureFormat
+        self.textureTarget = textureTarget
+        self.texture = MyOpenGLTexture(textureTarget: textureTarget)
 
         self.setupTexture()
         self.setupFramebuffer()
@@ -82,21 +92,17 @@ class MyOpenGLFramebuffer {
     }
 
     func setupTexture() {
-        // create a color attachment texture
-        glGenTextures(1, &self.tex)
-        glBindTexture(GLenum(self.textureTarget), self.tex)
+        self.texture.useTextureWith {
+            glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_MIN_FILTER), GL_LINEAR)
+            glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_MAG_FILTER), GL_LINEAR)
 
-        glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_MIN_FILTER), GL_LINEAR)
-        glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_MAG_FILTER), GL_LINEAR)
-
-        if self.useMultisample {
-            glTexImage2DMultisample(GLenum(GL_TEXTURE_2D_MULTISAMPLE), GLsizei(self.multisamples), self.textureFormat, GLsizei(self.width), GLsizei(self.height), GLboolean(GL_TRUE))
+            if self.useMultisample {
+                glTexImage2DMultisample(GLenum(GL_TEXTURE_2D_MULTISAMPLE), GLsizei(self.multisamples), self.textureFormat, GLsizei(self.width), GLsizei(self.height), GLboolean(GL_TRUE))
+            }
+            else {
+                glTexImage2D(GLenum(self.textureTarget), 0, self.textureFormat, GLsizei(self.width), GLsizei(self.height), 0, GLenum(self.textureFormat), GLenum(GL_UNSIGNED_BYTE), nil)
+            }
         }
-        else {
-            glTexImage2D(GLenum(self.textureTarget), 0, self.textureFormat, GLsizei(self.width), GLsizei(self.height), 0, GLenum(self.textureFormat), GLenum(GL_UNSIGNED_BYTE), nil)
-        }
-
-        glBindTexture(GLenum(self.textureTarget), 0)
     }
 
     func draw(block: () -> ()) -> GLuint {
@@ -114,7 +120,6 @@ class MyOpenGLFramebuffer {
 
     deinit {
         glDeleteFramebuffers(1, &self.fbo)
-        glDeleteTextures(1, &self.tex)
         glDeleteRenderbuffers(1, &self.rbo)
     }
 }

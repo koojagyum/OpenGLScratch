@@ -17,21 +17,18 @@ class MyOpenGLFloatingPointFramebufferMultiTarget: MyOpenGLFramebuffer {
     var tex2: GLuint = 0
 
     init(width: Int, height: Int) {
-        super.init(width: width, height: height, multisamples: 0, attachment: GL_COLOR_ATTACHMENT0, textureFormat: GL_RGB)
+        super.init(width: width, height: height, multisamples: 0, attachment: GL_COLOR_ATTACHMENT0, textureFormat: GL_RGB, textureTarget: GL_TEXTURE_2D)
         self.setupRenderbuffer() // Poor code!
     }
 
     override func setupTexture() {
-        glGenTextures(1, &self.tex)
-        glBindTexture(GLenum(self.textureTarget), self.tex1)
-
-        glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_MIN_FILTER), GL_LINEAR)
-        glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_MAG_FILTER), GL_LINEAR)
-        glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_WRAP_S), GL_CLAMP_TO_EDGE)
-        glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_WRAP_T), GL_CLAMP_TO_EDGE)
-        glTexImage2D(GLenum(self.textureTarget), 0, GL_RGBA16F, GLsizei(self.width), GLsizei(self.height), 0, GLenum(self.textureFormat), GLenum(GL_FLOAT), nil)
-
-        glBindTexture(GLenum(self.textureTarget), 0)
+        self.texture.useTextureWith {
+            glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_MIN_FILTER), GL_LINEAR)
+            glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_MAG_FILTER), GL_LINEAR)
+            glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_WRAP_S), GL_CLAMP_TO_EDGE)
+            glTexParameteri(GLenum(self.textureTarget), GLenum(GL_TEXTURE_WRAP_T), GL_CLAMP_TO_EDGE)
+            glTexImage2D(GLenum(self.textureTarget), 0, GL_RGBA16F, GLsizei(self.width), GLsizei(self.height), 0, GLenum(self.textureFormat), GLenum(GL_FLOAT), nil)
+        }
 
         glGenTextures(1, &self.tex2)
         glBindTexture(GLenum(self.textureTarget), self.tex2)
