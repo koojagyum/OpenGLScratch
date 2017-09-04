@@ -19,6 +19,14 @@
 		181E25B61EF57B95007CF90A /* Blending.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 181E25B51EF57B95007CF90A /* Blending.fsh */; };
 		181E25B81EF64CA3007CF90A /* MyOpenGLTextureCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E25B71EF64CA3007CF90A /* MyOpenGLTextureCache.swift */; };
 		181E25BA1EF664AE007CF90A /* WindowBlendRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181E25B91EF664AE007CF90A /* WindowBlendRenderer.swift */; };
+		182645CF1F5C392F005D8EC2 /* DeferredShadingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182645CE1F5C392F005D8EC2 /* DeferredShadingRenderer.swift */; };
+		182645D11F5C3D40005D8EC2 /* gBuffer.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 182645D01F5C3D40005D8EC2 /* gBuffer.vsh */; };
+		182645D31F5C3D4B005D8EC2 /* gBuffer.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 182645D21F5C3D4B005D8EC2 /* gBuffer.fsh */; };
+		182645D51F5C4180005D8EC2 /* DeferredShading.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 182645D41F5C4180005D8EC2 /* DeferredShading.vsh */; };
+		182645D71F5C418D005D8EC2 /* DeferredShading.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 182645D61F5C418D005D8EC2 /* DeferredShading.fsh */; };
+		182645D91F5C46E0005D8EC2 /* Lightbox.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 182645D81F5C46E0005D8EC2 /* Lightbox.vsh */; };
+		182645DB1F5C46EC005D8EC2 /* Lightbox.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 182645DA1F5C46EC005D8EC2 /* Lightbox.fsh */; };
+		182645DD1F5DB564005D8EC2 /* MyOpenGLFramebufferObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182645DC1F5DB564005D8EC2 /* MyOpenGLFramebufferObject.swift */; };
 		184316E61F30340F00B11796 /* NormalMappingRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184316E51F30340F00B11796 /* NormalMappingRenderer.swift */; };
 		184316E81F303D9900B11796 /* NormalMapping.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 184316E71F303D9900B11796 /* NormalMapping.vsh */; };
 		184316EA1F303DA500B11796 /* NormalMapping.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 184316E91F303DA500B11796 /* NormalMapping.fsh */; };
@@ -174,6 +182,14 @@
 		181E25B51EF57B95007CF90A /* Blending.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Blending.fsh; sourceTree = "<group>"; };
 		181E25B71EF64CA3007CF90A /* MyOpenGLTextureCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLTextureCache.swift; sourceTree = "<group>"; };
 		181E25B91EF664AE007CF90A /* WindowBlendRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowBlendRenderer.swift; sourceTree = "<group>"; };
+		182645CE1F5C392F005D8EC2 /* DeferredShadingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeferredShadingRenderer.swift; sourceTree = "<group>"; };
+		182645D01F5C3D40005D8EC2 /* gBuffer.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gBuffer.vsh; sourceTree = "<group>"; };
+		182645D21F5C3D4B005D8EC2 /* gBuffer.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = gBuffer.fsh; sourceTree = "<group>"; };
+		182645D41F5C4180005D8EC2 /* DeferredShading.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DeferredShading.vsh; sourceTree = "<group>"; };
+		182645D61F5C418D005D8EC2 /* DeferredShading.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = DeferredShading.fsh; sourceTree = "<group>"; };
+		182645D81F5C46E0005D8EC2 /* Lightbox.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Lightbox.vsh; sourceTree = "<group>"; };
+		182645DA1F5C46EC005D8EC2 /* Lightbox.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Lightbox.fsh; sourceTree = "<group>"; };
+		182645DC1F5DB564005D8EC2 /* MyOpenGLFramebufferObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOpenGLFramebufferObject.swift; sourceTree = "<group>"; };
 		184316E51F30340F00B11796 /* NormalMappingRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalMappingRenderer.swift; sourceTree = "<group>"; };
 		184316E71F303D9900B11796 /* NormalMapping.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = NormalMapping.vsh; sourceTree = "<group>"; };
 		184316E91F303DA500B11796 /* NormalMapping.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = NormalMapping.fsh; sourceTree = "<group>"; };
@@ -455,6 +471,12 @@
 				189918051F3F22750066CB0E /* BloomLightbox.fsh */,
 				189918071F3F22860066CB0E /* BloomBlur.fsh */,
 				189918091F3F22940066CB0E /* BloomBlend.fsh */,
+				182645D01F5C3D40005D8EC2 /* gBuffer.vsh */,
+				182645D21F5C3D4B005D8EC2 /* gBuffer.fsh */,
+				182645D41F5C4180005D8EC2 /* DeferredShading.vsh */,
+				182645D61F5C418D005D8EC2 /* DeferredShading.fsh */,
+				182645D81F5C46E0005D8EC2 /* Lightbox.vsh */,
+				182645DA1F5C46EC005D8EC2 /* Lightbox.fsh */,
 			);
 			name = Shader;
 			path = Sharder;
@@ -505,6 +527,7 @@
 				18CDEA971F3823800013F0E2 /* SteepParallaxMappingRenderer.swift */,
 				18CDEA9B1F396C410013F0E2 /* HDRRenderer.swift */,
 				189917FF1F3F1D3A0066CB0E /* BloomRenderer.swift */,
+				182645CE1F5C392F005D8EC2 /* DeferredShadingRenderer.swift */,
 			);
 			path = Renderer;
 			sourceTree = "<group>";
@@ -662,6 +685,7 @@
 				18D3314B1F206B6200C5B2A5 /* MyOpenGLFramebufferForDepthCubemap.swift */,
 				18CDEAA51F3ABF7A0013F0E2 /* MyOpenGLFloatingPointFramebuffer.swift */,
 				1899180B1F3F2BBA0066CB0E /* MyOpenGLFloatingPointFramebufferMultiTarget.swift */,
+				182645DC1F5DB564005D8EC2 /* MyOpenGLFramebufferObject.swift */,
 			);
 			path = OpenGLScratch;
 			sourceTree = "<group>";
@@ -731,6 +755,7 @@
 				18D0EFDA1EDC4FE900EEECAC /* SpotLight.fsh in Resources */,
 				18A524031F04B4360037BAC4 /* Blue.fsh in Resources */,
 				18D0F0441EE4D7CC00EEECAC /* BasicModel.vsh in Resources */,
+				182645D91F5C46E0005D8EC2 /* Lightbox.vsh in Resources */,
 				18D0EFCC1EDBB26800EEECAC /* LightingWithMaps.vsh in Resources */,
 				1851B4B41F0E7EF9009049AE /* AntiAlias.vsh in Resources */,
 				18EF47BC1EFEB74600A79D09 /* SkyboxReflectCube.fsh in Resources */,
@@ -761,6 +786,7 @@
 				18D0F0341EE1B31400EEECAC /* quaternion.inl in Resources */,
 				1851B4B01F0CA8B3009049AE /* Asteroid.fsh in Resources */,
 				1851B4B61F0E7F17009049AE /* AntiAlias.fsh in Resources */,
+				182645DB1F5C46EC005D8EC2 /* Lightbox.fsh in Resources */,
 				18D0F02E1EE1B31400EEECAC /* .editorconfig in Resources */,
 				189579051EDAAAF10025196E /* Lamp.fsh in Resources */,
 				18D0EFDE1EDD930900EEECAC /* MultipleLights.fsh in Resources */,
@@ -775,6 +801,7 @@
 				18D0F0461EE4D7E400EEECAC /* BasicModel.fsh in Resources */,
 				18A5240B1F0549FE0037BAC4 /* GeometryShader.fsh in Resources */,
 				18D0EFD21EDC3DFC00EEECAC /* DirectionalLight.fsh in Resources */,
+				182645D71F5C418D005D8EC2 /* DeferredShading.fsh in Resources */,
 				18D0EFCA1EDBB0EE00EEECAC /* LightingWithMaps.fsh in Resources */,
 				18A524231F0796C10037BAC4 /* InstancedArray.vsh in Resources */,
 				18A524191F0783A50037BAC4 /* VisualizeNormal.vsh in Resources */,
@@ -804,12 +831,15 @@
 				189918081F3F22860066CB0E /* BloomBlur.fsh in Resources */,
 				18EF47AC1EFAACCA00A79D09 /* FramebufferScreen.fsh in Resources */,
 				18D331541F20CE0100C5B2A5 /* PointShadowDepth.vsh in Resources */,
+				182645D51F5C4180005D8EC2 /* DeferredShading.vsh in Resources */,
 				18EF47B21EFCD3EC00A79D09 /* Skybox.fsh in Resources */,
+				182645D11F5C3D40005D8EC2 /* gBuffer.vsh in Resources */,
 				18D3313C1F19D20D00C5B2A5 /* DebugDepthQuad.vsh in Resources */,
 				D15650181E647505008B5428 /* Main.storyboard in Resources */,
 				18D331561F20CE0C00C5B2A5 /* PointShadowDepth.gsh in Resources */,
 				18D3314E1F20CD8000C5B2A5 /* PointShadow.vsh in Resources */,
 				18A524091F0549900037BAC4 /* GeometryShader.vsh in Resources */,
+				182645D31F5C3D4B005D8EC2 /* gBuffer.fsh in Resources */,
 				18A524151F0772540037BAC4 /* ModelExplode.gsh in Resources */,
 				18D331381F19D1A500C5B2A5 /* Depthmap.vsh in Resources */,
 				18D331461F1CE56300C5B2A5 /* ShadowMapping.vsh in Resources */,
@@ -865,6 +895,7 @@
 				18CDEA9C1F396C410013F0E2 /* HDRRenderer.swift in Sources */,
 				18D331361F19D05900C5B2A5 /* DepthMapRenderer.swift in Sources */,
 				18D331421F1CD49A00C5B2A5 /* MyOpenGLFramebufferForDepthMap.swift in Sources */,
+				182645DD1F5DB564005D8EC2 /* MyOpenGLFramebufferObject.swift in Sources */,
 				18A524171F0782500037BAC4 /* VisualizeNormalRenderer.swift in Sources */,
 				18B52D5F1EC7096300BCB1EA /* RectangleTextureRenderer.swift in Sources */,
 				18D0F0421EE4D6F200EEECAC /* ModelRenderer.swift in Sources */,
@@ -879,6 +910,7 @@
 				18D331301F17237B00C5B2A5 /* BlinnPhongRenderer.swift in Sources */,
 				1851B4B21F0E7CDC009049AE /* MSAARenderer.swift in Sources */,
 				18EF47B61EFE38E300A79D09 /* MyOpenGLCubemapTexture.swift in Sources */,
+				182645CF1F5C392F005D8EC2 /* DeferredShadingRenderer.swift in Sources */,
 				D1088F121E704C6200C060FF /* MyOpenGLView.swift in Sources */,
 				189578F01ED3D8F00025196E /* MyOpenGLUtils.swift in Sources */,
 				189578E81ED18B670025196E /* RectanglePerspectiveRenderer.swift in Sources */,

@@ -14,7 +14,7 @@ class FramebufferRenderer: DepthTestRenderer {
 
     var screenProgram: MyOpenGLProgram?
     var quadVertex: MyOpenGLVertexObject?
-    var framebuffer: MyOpenGLFramebuffer?
+    var framebuffer: MyOpenGLFramebufferObject?
 
     override func prepareProgram() {
         super.prepareProgram()
@@ -49,7 +49,7 @@ class FramebufferRenderer: DepthTestRenderer {
 
     override func prepare() {
         super.prepare()
-        self.framebuffer = MyOpenGLFramebuffer(width: 300, height: 200)
+        self.framebuffer = MyOpenGLFramebufferObject(width: 300, height: 200)
     }
 
     override func render(_ bounds: NSRect) {
@@ -67,8 +67,9 @@ class FramebufferRenderer: DepthTestRenderer {
             glClearColor(1.0, 1.0, 1.0, 1.0)
             glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
             self.quadVertex?.useVertexObjectWith {_ in
-                glBindTexture(GLenum(GL_TEXTURE_2D), tex!)
-                glDrawArrays(GLenum(GL_TRIANGLES), 0, 6)
+                tex!.useTextureWith {
+                    glDrawArrays(GLenum(GL_TRIANGLES), 0, 6)
+                }
             }
         }
     }

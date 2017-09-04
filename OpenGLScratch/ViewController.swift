@@ -10,7 +10,7 @@ import Cocoa
 
 // Move these into the proper module
 enum SceneType: String {
-    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer, Skybox, SkyboxReflect, UniformBufferObject, GeometryShader, ModelExplode, VisualizeNormal, InstancedArray, Asteroid, MSAA, BlinnPhong, DepthMap, ShadowMapping, PointShadow, NormalMapping, ParallaxMapping, SteepParallaxMapping, HDR, Bloom
+    case Triangle, Rectangle, TriangleTexture, RectangleTexture, RectangleRotation, RectanglePerspective, Cube, NCubes, NCubesWithCamera, LightingAndLamp, Circle, SpinningLamp, LightingWithMaterial, LightingWithMaps, DirectionalLight, PointLight, SpotLight, MultipleLights, Model, DepthTest, StencilOutline, GrassBlend, WindowBlend, Framebuffer, Skybox, SkyboxReflect, UniformBufferObject, GeometryShader, ModelExplode, VisualizeNormal, InstancedArray, Asteroid, MSAA, BlinnPhong, DepthMap, ShadowMapping, PointShadow, NormalMapping, ParallaxMapping, SteepParallaxMapping, HDR, Bloom, DeferredShading
 }
 
 enum PolygonMode: String {
@@ -31,6 +31,8 @@ class ViewController: NSViewController {
         SceneType.HDR: HDRRenderer(),
         SceneType.Bloom: BloomRenderer(),
         SceneType.Framebuffer: FramebufferRenderer(),
+        SceneType.MSAA: MSAARenderer(),
+        SceneType.DeferredShading: nil,
     ]
 
     override func viewDidLoad() {
